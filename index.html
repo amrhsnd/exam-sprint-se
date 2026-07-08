@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#39b54a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Exam Sprint">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Exam Sprint</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./icon.svg">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow" id="courseLabel">Smart Environments</p>
+          <h1>Exam Sprint</h1>
+        </div>
+        <div class="stat-grid" aria-label="Study stats">
+          <div class="stat">
+            <span>XP</span>
+            <strong id="xpValue">0</strong>
+          </div>
+          <div class="stat">
+            <span>Streak</span>
+            <strong id="streakValue">0</strong>
+          </div>
+          <div class="stat">
+            <span>Hearts</span>
+            <strong id="heartValue">5</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="goal-strip" aria-label="Daily goal">
+        <div>
+          <span class="small-label">Daily goal</span>
+          <strong id="dailyGoalText">0 / 50 XP</strong>
+        </div>
+        <div class="goal-track" aria-hidden="true">
+          <span id="dailyGoalBar"></span>
+        </div>
+        <div>
+          <span class="small-label">Level</span>
+          <strong id="levelValue">1</strong>
+        </div>
+      </section>
+
+      <section class="control-row" aria-label="Study controls">
+        <div class="segmented" id="focusControls">
+          <button type="button" class="is-active" data-action="set-focus" data-focus="sprint">Sprint</button>
+          <button type="button" data-action="set-focus" data-focus="formulas">Formulas</button>
+          <button type="button" data-action="set-focus" data-focus="weak">Weak</button>
+        </div>
+        <label class="deck-picker">
+          <span>Deck</span>
+          <select id="deckSelect" aria-label="Deck filter"></select>
+        </label>
+      </section>
+
+      <main>
+        <section id="lessonPanel" class="view-panel is-active" aria-live="polite"></section>
+        <section id="decksPanel" class="view-panel" hidden></section>
+        <section id="cheatPanel" class="view-panel" hidden></section>
+      </main>
+
+      <nav class="tabbar" aria-label="App sections">
+        <button type="button" class="is-active" data-action="show-tab" data-tab="lesson">Lesson</button>
+        <button type="button" data-action="show-tab" data-tab="decks">Decks</button>
+        <button type="button" data-action="show-tab" data-tab="cheat">Cheat Sheet</button>
+      </nav>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

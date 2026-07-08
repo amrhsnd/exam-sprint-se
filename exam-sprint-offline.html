@@ -1,0 +1,1816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#39b54a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Exam Sprint">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Exam Sprint</title>
+    <style>
+:root {
+  --bg: #f5fbf3;
+  --panel: #ffffff;
+  --ink: #102017;
+  --muted: #5d7164;
+  --line: #dbe9dc;
+  --green: #39b54a;
+  --green-dark: #248a33;
+  --blue: #1d7fd6;
+  --orange: #f49b29;
+  --red: #d94b45;
+  --shadow: 0 12px 30px rgba(27, 71, 34, 0.12);
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(57, 181, 74, 0.16), transparent 34rem),
+    linear-gradient(180deg, #f7fff5 0%, #eef8ee 100%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(100%, 760px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) 14px calc(88px + env(safe-area-inset-bottom));
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 8vw, 2.35rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.small-label {
+  display: block;
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(52px, 1fr));
+  gap: 6px;
+}
+
+.stat {
+  min-width: 54px;
+  padding: 8px 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 1rem;
+}
+
+.goal-strip {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.goal-track,
+.lesson-track {
+  overflow: hidden;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #deeadf;
+}
+
+.goal-track span,
+.lesson-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), #8ed94a);
+  transition: width 220ms ease;
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.segmented button {
+  min-height: 42px;
+  padding: 10px 8px;
+  color: var(--muted);
+  background: transparent;
+  font-weight: 850;
+}
+
+.segmented button.is-active {
+  color: #ffffff;
+  background: var(--green);
+}
+
+.deck-picker {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.deck-picker span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.deck-picker select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+  font-weight: 750;
+}
+
+.view-panel {
+  animation: rise 180ms ease-out;
+}
+
+.lesson-card,
+.summary-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.lesson-card {
+  overflow: hidden;
+}
+
+.lesson-head {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfffa;
+}
+
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--green-dark);
+  background: #e7f8e8;
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.pill.priority {
+  color: #7b4b00;
+  background: #fff0d3;
+}
+
+.pill.weak {
+  color: #a3312c;
+  background: #ffe3e1;
+}
+
+.lesson-progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.lesson-progress span:last-child {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.card-body {
+  display: grid;
+  gap: 16px;
+  padding: 18px 16px 16px;
+}
+
+.prompt {
+  margin: 0;
+  font-size: clamp(1.25rem, 6.2vw, 2rem);
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: 0;
+}
+
+.subprompt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.42;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.choice-btn,
+.primary-btn,
+.secondary-btn,
+.danger-btn,
+.plain-btn,
+.grade-btn {
+  min-height: 48px;
+  border-radius: 8px;
+  font-weight: 850;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.choice-btn {
+  padding: 13px 14px;
+  border: 2px solid #cfe3d0;
+  color: var(--ink);
+  background: #ffffff;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.choice-btn:active,
+.primary-btn:active,
+.secondary-btn:active,
+.danger-btn:active,
+.plain-btn:active,
+.grade-btn:active {
+  transform: scale(0.985);
+}
+
+.choice-btn.is-correct {
+  border-color: var(--green);
+  background: #e7f8e8;
+}
+
+.choice-btn.is-wrong {
+  border-color: var(--red);
+  background: #ffe8e6;
+}
+
+.type-box {
+  display: grid;
+  gap: 10px;
+}
+
+.type-box input {
+  min-height: 52px;
+  width: 100%;
+  border: 2px solid #cfe3d0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: #ffffff;
+  font-weight: 800;
+}
+
+.type-box input:focus {
+  border-color: var(--green);
+  outline: 3px solid rgba(57, 181, 74, 0.18);
+}
+
+.answer-panel {
+  display: grid;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 8px;
+  background: #f4faf4;
+  border: 1px solid var(--line);
+}
+
+.answer-panel.correct {
+  border-color: #b9e8bf;
+  background: #ecfaed;
+}
+
+.answer-panel.wrong {
+  border-color: #f0c1bd;
+  background: #fff0ee;
+}
+
+.answer-main {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  line-height: 1.36;
+}
+
+.answer-explanation {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.button-row,
+.grade-row {
+  display: grid;
+  gap: 10px;
+}
+
+.button-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grade-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.primary-btn {
+  color: #ffffff;
+  background: var(--green);
+}
+
+.secondary-btn {
+  color: var(--green-dark);
+  background: #e7f8e8;
+}
+
+.danger-btn {
+  color: #ffffff;
+  background: var(--red);
+}
+
+.plain-btn {
+  color: var(--muted);
+  background: #edf5ee;
+}
+
+.grade-btn {
+  padding: 10px 8px;
+  color: var(--ink);
+  background: #edf5ee;
+}
+
+.grade-btn[data-grade="wrong"] {
+  color: #9f2f2a;
+  background: #ffe8e6;
+}
+
+.grade-btn[data-grade="unsure"] {
+  color: #805000;
+  background: #fff0d3;
+}
+
+.grade-btn[data-grade="correct"] {
+  color: var(--green-dark);
+  background: #e7f8e8;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: #edf5ee;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.summary-card {
+  display: grid;
+  gap: 16px;
+  padding: 18px 16px;
+}
+
+.summary-card h2 {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.summary-tile {
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfffa;
+  text-align: center;
+}
+
+.summary-tile span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.summary-tile strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.25rem;
+}
+
+.deck-list,
+.cheat-list {
+  display: grid;
+  gap: 10px;
+}
+
+.deck-row,
+.cheat-item {
+  display: grid;
+  gap: 7px;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #ffffff;
+  text-align: left;
+  box-shadow: 0 8px 18px rgba(27, 71, 34, 0.07);
+}
+
+.deck-row strong,
+.cheat-item strong {
+  font-size: 1rem;
+}
+
+.deck-row span,
+.cheat-item span {
+  color: var(--muted);
+  line-height: 1.36;
+}
+
+.meter {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: #deeadf;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green);
+}
+
+.section-title {
+  margin: 4px 0 12px;
+  font-size: 1.25rem;
+}
+
+.empty-state {
+  padding: 22px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.tabbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.tabbar button {
+  min-height: 44px;
+  border-radius: 8px;
+  color: var(--muted);
+  background: #edf5ee;
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.tabbar button.is-active {
+  color: #ffffff;
+  background: var(--green);
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: calc(82px + env(safe-area-inset-bottom));
+  left: 16px;
+  z-index: 20;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: rgba(16, 32, 23, 0.94);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .app-shell {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .control-row {
+    grid-template-columns: 1fr minmax(220px, 0.72fr);
+  }
+
+  .button-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .goal-strip {
+    grid-template-columns: 1fr auto;
+  }
+
+  .goal-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .grade-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow" id="courseLabel">Smart Environments</p>
+          <h1>Exam Sprint</h1>
+        </div>
+        <div class="stat-grid" aria-label="Study stats">
+          <div class="stat">
+            <span>XP</span>
+            <strong id="xpValue">0</strong>
+          </div>
+          <div class="stat">
+            <span>Streak</span>
+            <strong id="streakValue">0</strong>
+          </div>
+          <div class="stat">
+            <span>Hearts</span>
+            <strong id="heartValue">5</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="goal-strip" aria-label="Daily goal">
+        <div>
+          <span class="small-label">Daily goal</span>
+          <strong id="dailyGoalText">0 / 50 XP</strong>
+        </div>
+        <div class="goal-track" aria-hidden="true">
+          <span id="dailyGoalBar"></span>
+        </div>
+        <div>
+          <span class="small-label">Level</span>
+          <strong id="levelValue">1</strong>
+        </div>
+      </section>
+
+      <section class="control-row" aria-label="Study controls">
+        <div class="segmented" id="focusControls">
+          <button type="button" class="is-active" data-action="set-focus" data-focus="sprint">Sprint</button>
+          <button type="button" data-action="set-focus" data-focus="formulas">Formulas</button>
+          <button type="button" data-action="set-focus" data-focus="weak">Weak</button>
+        </div>
+        <label class="deck-picker">
+          <span>Deck</span>
+          <select id="deckSelect" aria-label="Deck filter"></select>
+        </label>
+      </section>
+
+      <main>
+        <section id="lessonPanel" class="view-panel is-active" aria-live="polite"></section>
+        <section id="decksPanel" class="view-panel" hidden></section>
+        <section id="cheatPanel" class="view-panel" hidden></section>
+      </main>
+
+      <nav class="tabbar" aria-label="App sections">
+        <button type="button" class="is-active" data-action="show-tab" data-tab="lesson">Lesson</button>
+        <button type="button" data-action="show-tab" data-tab="decks">Decks</button>
+        <button type="button" data-action="show-tab" data-tab="cheat">Cheat Sheet</button>
+      </nav>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script>window.EXAM_SPRINT_DATA={"metadata":{"title":"Smart Environments Exam Quiz Data","version":"1.0","created_for":"Duolingo-style rapid review app","study_mode":"short active recall, formulas, cloze, multiple choice","estimated_use":"3-hour emergency exam preparation","sources":["Se.pdf handwritten notes","01_SE_Intro.pdf","02_SE_Applications.pdf","03_SE_Communications.pdf","04_SE_Low_Power_Standards.ppt.pdf","05_SE_VANET_Communications.pdf","06_Applications_Reordered.pdf","lect01_SE_sampling1D.pdf","lect02_SE_Part1.pdf","lect02_SE_Part2_sampling2D.pdf","lect03_3D.pdf","lect04_SE_sourcecoding.pdf","lect05_notes.pdf"],"card_priority_meaning":{"1":"must memorize","2":"high-yield concept","3":"supporting detail"},"counts":{"formula_cards":23,"concept_cards":123,"multiple_choice_cards":10,"cloze_cards":10,"exam_sentences":20,"total_cards":166}},"formula_cards":[{"id":"F001","deck":"formulas_sampling","priority":1,"front":"Sampling period formula","back":"T_s = 1 / f_s","latex":"T_s=\\frac{1}{f_s}","explanation":"Sampling period is the time between samples; it is the reciprocal of sampling frequency.","tags":["sampling","ADC","must_memorize"]},{"id":"F002","deck":"formulas_sampling","priority":1,"front":"Nyquist condition","back":"f_s ≥ 2W","latex":"f_s \\ge 2W","explanation":"To reconstruct a band-limited signal, sample at least twice the maximum frequency W.","tags":["sampling","nyquist","aliasing","must_memorize"]},{"id":"F003","deck":"formulas_sampling","priority":1,"front":"What is W in f_s ≥ 2W?","back":"W is the highest frequency component in the signal.","latex":"W=f_{max}","explanation":"If the fastest component is 5 kHz, then W = 5 kHz and minimum f_s = 10 kHz.","tags":["sampling","nyquist"]},{"id":"F004","deck":"formulas_fourier","priority":1,"front":"Continuous-time Fourier transform","back":"X(f) = ∫ x(t)e^{-j2πft} dt over all time","latex":"X(f)=\\int_{-\\infty}^{+\\infty}x(t)e^{-j2\\pi ft}\\,dt","explanation":"Represents a signal as a weighted sum of complex sinusoids.","tags":["fourier","frequency","must_memorize"]},{"id":"F005","deck":"formulas_fourier","priority":1,"front":"What is j in the Fourier transform?","back":"j = sqrt(-1), the imaginary unit used in engineering.","latex":"j=\\sqrt{-1}","explanation":"Engineers use j instead of i because i is often used for current.","tags":["fourier","complex"]},{"id":"F006","deck":"formulas_sampling","priority":1,"front":"sinc definition used in the notes","back":"sinc(x) = sin(x) / x","latex":"\\operatorname{sinc}(x)=\\frac{\\sin x}{x}","explanation":"Because this convention lacks π inside sinc, the reconstruction argument should include π.","tags":["sinc","reconstruction"]},{"id":"F007","deck":"formulas_sampling","priority":1,"front":"Ideal reconstruction formula using sinc(x)=sin(x)/x","back":"x(t)=Σ x(nT_s) sinc((π/T_s)(t-nT_s))","latex":"x(t)=\\sum_{n=-\\infty}^{+\\infty}x(nT_s)\\operatorname{sinc}\\left(\\frac{\\pi}{T_s}(t-nT_s)\\right)","explanation":"Continuous signal reconstructed as a sum of shifted sinc interpolation functions.","tags":["sampling","reconstruction","sinc","must_memorize"]},{"id":"F008","deck":"formulas_quantization","priority":1,"front":"Number of quantization levels from B bits","back":"L = 2^B","latex":"L=2^B","explanation":"B bits can represent 2^B amplitude levels.","tags":["quantization","ADC","must_memorize"]},{"id":"F009","deck":"formulas_quantization","priority":1,"front":"Quantization step size for range [-A, A]","back":"Δ = 2A / L = 2A / 2^B","latex":"\\Delta=\\frac{2A}{L}=\\frac{2A}{2^B}","explanation":"Δ is the spacing between neighboring quantization levels.","tags":["quantization","delta","must_memorize"]},{"id":"F010","deck":"formulas_quantization","priority":1,"front":"Uniform quantization error interval","back":"e ∈ [-Δ/2, Δ/2]","latex":"e\\in\\left[-\\frac{\\Delta}{2},\\frac{\\Delta}{2}\\right]","explanation":"With rounding to nearest level, the maximum absolute error is half a quantization step.","tags":["quantization","error"]},{"id":"F011","deck":"formulas_quantization","priority":1,"front":"Mean square quantization error","back":"MSE = D ≈ Δ² / 12","latex":"MSE=D\\approx\\frac{\\Delta^2}{12}","explanation":"For uniform quantization error, distortion is proportional to the square of the step size.","tags":["quantization","MSE","distortion","must_memorize"]},{"id":"F012","deck":"formulas_rate_distortion","priority":1,"front":"Rate-distortion approximation from notes","back":"D = σ_x² / 2^{2B}","latex":"D=\\frac{\\sigma_x^2}{2^{2B}}","explanation":"More bits B reduce distortion exponentially.","tags":["rate_distortion","quantization","must_memorize"]},{"id":"F013","deck":"formulas_rate_distortion","priority":1,"front":"Bits needed for distortion D","back":"B ≈ 1/2 log₂(σ_x² / D)","latex":"B\\approx\\frac{1}{2}\\log_2\\left(\\frac{\\sigma_x^2}{D}\\right)","explanation":"If desired distortion D decreases, required bits B increase.","tags":["rate_distortion","bits","must_memorize"]},{"id":"F014","deck":"formulas_graphs","priority":1,"front":"Degree matrix formula","back":"D_ii = Σ_j A_ij","latex":"D_{ii}=\\sum_j A_{ij}","explanation":"The degree of a node is the sum of its adjacency weights.","tags":["graphs","degree_matrix"]},{"id":"F015","deck":"formulas_graphs","priority":1,"front":"Graph Laplacian","back":"L = D − A","latex":"L=D-A","explanation":"The graph Laplacian describes graph connectivity.","tags":["graphs","laplacian","must_memorize"]},{"id":"F016","deck":"formulas_eigen","priority":1,"front":"Eigenvector equation","back":"A v = λ v","latex":"Av=\\lambda v","explanation":"When A acts on eigenvector v, it only scales it by eigenvalue λ.","tags":["eigenvectors","PCA","graph_fourier","must_memorize"]},{"id":"F017","deck":"formulas_graph_fourier","priority":1,"front":"Graph Fourier Transform","back":"x_hat = U^T x","latex":"\\hat{x}=U^Tx","explanation":"Projects a graph signal onto the Laplacian eigenvector basis.","tags":["graph_fourier","graphs","must_memorize"]},{"id":"F018","deck":"formulas_graph_fourier","priority":1,"front":"Inverse Graph Fourier Transform","back":"x = U x_hat","latex":"x=U\\hat{x}","explanation":"Reconstructs the graph signal from graph-frequency coefficients.","tags":["graph_fourier","graphs"]},{"id":"F019","deck":"formulas_camera_lidar","priority":1,"front":"Pinhole camera projection","back":"x = fX/Z, y = fY/Z","latex":"x=f\\frac{X}{Z},\\quad y=f\\frac{Y}{Z}","explanation":"A 3D point projects to a 2D image; increasing depth Z makes the projection smaller.","tags":["camera_model","3D","projection"]},{"id":"F020","deck":"formulas_camera_lidar","priority":1,"front":"LiDAR time-of-flight distance","back":"d = ct / 2","latex":"d=\\frac{ct}{2}","explanation":"Divide by 2 because the light travels to the object and back.","tags":["lidar","3D","distance"]},{"id":"F021","deck":"formulas_convolution","priority":1,"front":"Discrete convolution","back":"y[n] = Σ_k x[k]h[n−k]","latex":"y[n]=\\sum_k x[k]h[n-k]","explanation":"Convolution computes weighted sums of neighboring signal values.","tags":["convolution","filtering"]},{"id":"F022","deck":"formulas_convolution","priority":1,"front":"Convolution theorem","back":"x*h in time/space corresponds to X(f)H(f) in frequency.","latex":"x*h\\Longleftrightarrow X(f)H(f)","explanation":"Filtering by convolution becomes multiplication in the frequency domain.","tags":["convolution","fourier","filtering","must_memorize"]},{"id":"F023","deck":"formulas_lora","priority":1,"front":"LoRa symbol time","back":"T_s = 2^SF / BW","latex":"T_s=\\frac{2^{SF}}{BW}","explanation":"Higher spreading factor means longer symbol time and lower bitrate, but better sensitivity/range.","tags":["LoRa","spreading_factor","LPWAN","must_memorize"]}],"concept_cards":[{"id":"C001","deck":"01_SE_Intro","priority":1,"front":"Define a smart environment.","back":"A physical environment enriched with sensors, actuators, computation, and communication so it can monitor conditions, process data, decide, and act.","tags":["smart_environment","definition"]},{"id":"C002","deck":"01_SE_Intro","priority":1,"front":"Smart flow: put the chain in order.","back":"Sensors → data/database → information processing → decision algorithms → services/actuators → physical environment.","tags":["smart_flow","data_path"]},{"id":"C003","deck":"01_SE_Intro","priority":1,"front":"What are smart devices?","back":"Small autonomous networked devices that interact with the physical world, humans, or other devices.","tags":["smart_devices","IoT"]},{"id":"C004","deck":"01_SE_Intro","priority":1,"front":"Define IoT.","back":"A network of physical objects embedded with sensors, electronics, software, and connectivity, enabling them to collect/exchange data and receive/react to commands.","tags":["IoT","definition"]},{"id":"C005","deck":"01_SE_Intro","priority":1,"front":"Main IoT implementation issues.","back":"Energy constraints, security, privacy, performance/reliability, interoperability, scalability.","tags":["IoT","requirements","must_memorize"]},{"id":"C006","deck":"01_SE_Intro","priority":2,"front":"What does 'Anything + Communications = Smart Anything' mean?","back":"Adding sensing/communication/processing to ordinary objects turns them into smart applications such as smart homes, smart cars, or smart healthcare.","tags":["IoT","applications"]},{"id":"C007","deck":"01_SE_Intro","priority":1,"front":"Data path elements in smart environments.","back":"Data acquisition, local data processing, data communication, data stream, data storage/cloud, data analytics.","tags":["data_path","must_memorize"]},{"id":"C008","deck":"01_SE_Intro","priority":2,"front":"Data acquisition concerns.","back":"Sensor design/embedding, density, accuracy, tunability, energy efficiency, cost, privacy, environmental concerns.","tags":["data_acquisition"]},{"id":"C009","deck":"01_SE_Intro","priority":2,"front":"Local data processing tradeoff.","back":"Balance local vs remote processing and computation vs communication; local processing can reduce data transmission but consumes processing energy.","tags":["local_processing","tradeoff"]},{"id":"C010","deck":"01_SE_Intro","priority":2,"front":"Data communication QoS requirements.","back":"Reliability, latency, throughput, security, energy efficiency, mobility, architecture, range/coverage, bandwidth.","tags":["communication","QoS"]},{"id":"C011","deck":"01_SE_Intro","priority":2,"front":"What is context/location awareness useful for?","back":"It allows devices to infer user activity/location and adapt information content and distribution.","tags":["context_awareness","mobility"]},{"id":"C012","deck":"02_SE_Applications","priority":1,"front":"Long-range IoT technology families.","back":"Non-3GPP: LoRa, Sigfox, Weightless, others. 3GPP: LTE-M, EC-GSM, NB-IoT, 5G.","tags":["applications","LPWAN","3GPP"]},{"id":"C013","deck":"02_SE_Applications","priority":2,"front":"Examples of smart city applications.","back":"Adaptive traffic lights, multiservice public lighting, smart bins, people-flow sensing, pollution monitoring, building security, structural health monitoring, energy/resource optimization.","tags":["smart_city","applications"]},{"id":"C014","deck":"02_SE_Applications","priority":2,"front":"Road application examples.","back":"Structural health of roads/bridges/tunnels, traffic flow, parking availability, environmental conditions, intelligent parking, EV recharging.","tags":["road_applications","smart_city"]},{"id":"C015","deck":"02_SE_Applications","priority":2,"front":"LoRaWAN smart city use cases in the slides.","back":"Smart metering, smart bins, LoRaWAN signposts, water metering, parking management, smart buildings, edible oil recycling, port logistics.","tags":["LoRaWAN","smart_city"]},{"id":"C016","deck":"02_SE_Applications","priority":2,"front":"Parking monitoring: what data is collected?","back":"Lot occupancy status, time spent on stalls, occupancy times by type and time slot, individual or area-level statistics.","tags":["parking_monitoring","applications"]},{"id":"C017","deck":"02_SE_Applications","priority":2,"front":"Waste management IoT purpose.","back":"Sensors measure container fill levels; digitized data helps route trucks efficiently and supports circular-economy collection.","tags":["waste_management","applications"]},{"id":"C018","deck":"02_SE_Applications","priority":2,"front":"Why intelligent water metering?","back":"Replaces manual reading, reduces water waste, helps utilities/cities manage consumption, and can provide hourly insights.","tags":["water_metering","applications"]},{"id":"C019","deck":"03_SE_Communications","priority":1,"front":"What is a WLAN?","back":"A wireless local area network that uses radio waves as its carrier; usually the last link to users is wireless while backbone is wired.","tags":["WLAN","wireless"]},{"id":"C020","deck":"03_SE_Communications","priority":1,"front":"Elements of a wireless network.","back":"Wireless hosts, base stations/access points, wireless links, and network infrastructure.","tags":["wireless","architecture"]},{"id":"C021","deck":"03_SE_Communications","priority":1,"front":"Infrastructure mode vs ad hoc mode.","back":"Infrastructure: base station connects mobiles to wired network. Ad hoc: no base station; nodes organize and route among themselves.","tags":["wireless","infrastructure","ad_hoc"]},{"id":"C022","deck":"03_SE_Communications","priority":1,"front":"Wireless taxonomy dimensions.","back":"Single-hop vs multi-hop, and infrastructure vs no infrastructure.","tags":["wireless_taxonomy"]},{"id":"C023","deck":"03_SE_Communications","priority":1,"front":"Why are wireless links harder than wired links?","back":"Signal attenuation/path loss, interference from other sources, and multipath propagation.","tags":["wireless","channel"]},{"id":"C024","deck":"03_SE_Communications","priority":1,"front":"SNR and BER relation.","back":"Higher SNR makes it easier to extract the signal and usually decreases BER.","tags":["SNR","BER","must_memorize"]},{"id":"C025","deck":"03_SE_Communications","priority":1,"front":"Given a fixed SNR, how should the physical layer be chosen?","back":"Choose the modulation/rate that meets the BER requirement while giving the highest throughput.","tags":["SNR","modulation","BER"]},{"id":"C026","deck":"03_SE_Communications","priority":1,"front":"High frequency wireless: benefit and drawback.","back":"Higher frequency can support higher data transfer, but obstacles/path loss become more problematic.","tags":["spectrum","frequency"]},{"id":"C027","deck":"03_SE_Communications","priority":1,"front":"Hidden terminal problem.","back":"A and C cannot hear each other but both can interfere at B, so they are unaware of a collision at B.","tags":["hidden_terminal","wireless","must_memorize"]},{"id":"C028","deck":"03_SE_Communications","priority":2,"front":"Physical layer vs data link layer.","back":"Physical layer transmits raw bits. Data link layer manages medium access/collision avoidance such as CSMA/CA.","tags":["layers","MAC"]},{"id":"C029","deck":"03_SE_Communications","priority":2,"front":"What is IEEE?","back":"An organization that creates standards for protocols such as Wi-Fi/802.11.","tags":["IEEE","802.11"]},{"id":"C030","deck":"03_SE_Communications","priority":2,"front":"802.11 radio bands.","back":"Most WLAN products operate in unlicensed bands; 2.4 GHz is common, and 5 GHz is used by 802.11a.","tags":["802.11","spectrum"]},{"id":"C031","deck":"03_SE_Communications","priority":2,"front":"Frequency hopping vs direct sequence spread spectrum.","back":"FH hops carrier frequency according to a known pattern; DS keeps a fixed carrier band and spreads data over a wider frequency range.","tags":["spread_spectrum","FH","DSSS"]},{"id":"C032","deck":"03_SE_Communications","priority":2,"front":"802.11a key properties.","back":"Uses OFDM, operates around 5 GHz, up to 54 Mbps, less interference but shorter range and poorer compatibility with 802.11b.","tags":["802.11a","OFDM"]},{"id":"C033","deck":"03_SE_Communications","priority":2,"front":"802.11b vs 802.11a.","back":"802.11b: 2.4 GHz, DSSS, up to 11 Mbps, longer range. 802.11a: 5 GHz, OFDM, up to 54 Mbps, shorter range.","tags":["802.11a","802.11b"]},{"id":"C034","deck":"03_SE_Communications","priority":2,"front":"802.11g key idea.","back":"High-speed extension to 802.11b: up to 54 Mbps, 2.4 GHz, backward compatible.","tags":["802.11g"]},{"id":"C035","deck":"03_SE_Communications","priority":2,"front":"WEP security services.","back":"Authentication, confidentiality, and integrity, but WEP is vulnerable and uses weak/static keys.","tags":["WEP","security"]},{"id":"C036","deck":"03_SE_Communications","priority":2,"front":"What is a site survey?","back":"A planning activity to define coverage areas, data rates, AP placement, signal strength, SNR, and RF interference.","tags":["site_survey","network_planning"]},{"id":"C037","deck":"04_Low_Power_Standards","priority":1,"front":"Why are communications needed in IoT?","back":"To exchange information between sensors, communicate with a remote sink/cloud, and enable remote control.","tags":["IoT","communication"]},{"id":"C038","deck":"04_Low_Power_Standards","priority":1,"front":"Classical short-range IoT technologies: pros and cons.","back":"Pros: low cost, low power, unlicensed. Cons: limited distance and need for local coordinator/hub/AP.","tags":["IoT","short_range"]},{"id":"C039","deck":"04_Low_Power_Standards","priority":1,"front":"Cellular WAN IoT: pros and cons.","back":"Pros: long range. Cons: higher device cost, complex protocols, licensed spectrum and operation cost.","tags":["cellular","WAN"]},{"id":"C040","deck":"04_Low_Power_Standards","priority":1,"front":"What is LPWAN?","back":"Low-Power Wide Area Network: combines low energy/low cost with long-range coverage for low-rate IoT traffic.","tags":["LPWAN","must_memorize"]},{"id":"C041","deck":"04_Low_Power_Standards","priority":1,"front":"LPWAN requirements.","back":"Long battery life, massive number of devices, extended coverage, low device cost, low deployment cost.","tags":["LPWAN","requirements","must_memorize"]},{"id":"C042","deck":"04_Low_Power_Standards","priority":1,"front":"LPWAN architecture.","back":"End devices communicate to LPWAN gateways; gateways forward over backhaul to network/application servers and cloud/customer IT.","tags":["LPWAN","architecture"]},{"id":"C043","deck":"04_Low_Power_Standards","priority":1,"front":"Available LPWAN technologies.","back":"LoRaWAN, Sigfox, Ingenu RPMA, Weightless/other, and cellular IoT such as LTE-M, NB-IoT, EC-GSM.","tags":["LPWAN","technologies"]},{"id":"C044","deck":"04_Low_Power_Standards","priority":1,"front":"Difference between LoRa and LoRaWAN.","back":"LoRa is the physical modulation/link layer; LoRaWAN is the network protocol/system architecture built on top of LoRa.","tags":["LoRa","LoRaWAN","must_memorize"]},{"id":"C045","deck":"04_Low_Power_Standards","priority":1,"front":"LoRa technology overview.","back":"LoRaWAN is LPWAN; LoRa uses Chirp Spread Spectrum, typical 125 kHz bandwidth, high sensitivity, long range, good indoor penetration.","tags":["LoRa","CSS","must_memorize"]},{"id":"C046","deck":"04_Low_Power_Standards","priority":1,"front":"What is a chirp?","back":"A frequency-modulated pulse whose frequency changes monotonically during its duration: up-chirp rises, down-chirp falls.","tags":["chirp","LoRa","CSS"]},{"id":"C047","deck":"04_Low_Power_Standards","priority":1,"front":"How does LoRa encode bits?","back":"Information is encoded by shifting chirps in time/frequency slots; the number of possible shifts depends on the spreading factor.","tags":["LoRa","chirp","modulation"]},{"id":"C048","deck":"04_Low_Power_Standards","priority":1,"front":"What does increasing spreading factor do?","back":"Increases sensitivity and range/penetration but decreases bitrate and increases time-on-air/energy/collision risk.","tags":["LoRa","spreading_factor","tradeoff","must_memorize"]},{"id":"C049","deck":"04_Low_Power_Standards","priority":1,"front":"LoRa SF7 vs SF12.","back":"SF7: higher bitrate, lower sensitivity, for close/good signal. SF12: lower bitrate, higher sensitivity, for far/deep-indoor/poor signal.","tags":["LoRa","spreading_factor"]},{"id":"C050","deck":"04_Low_Power_Standards","priority":1,"front":"LoRaWAN and ALOHA.","back":"LoRaWAN behavior is close to pure ALOHA; channel capacity usage is limited and collisions can drop many packets under load.","tags":["LoRaWAN","ALOHA","collisions"]},{"id":"C051","deck":"04_Low_Power_Standards","priority":1,"front":"LoRaWAN Class A.","back":"Device listens only after its own uplink transmission; most energy-efficient; suitable for battery devices with no latency constraint.","tags":["LoRaWAN","classes","must_memorize"]},{"id":"C052","deck":"04_Low_Power_Standards","priority":1,"front":"LoRaWAN Class B.","back":"Device opens scheduled receive windows synchronized by beacons; optimized energy with bounded latency.","tags":["LoRaWAN","classes"]},{"id":"C053","deck":"04_Low_Power_Standards","priority":1,"front":"LoRaWAN Class C.","back":"Device is almost always listening except during transmissions; lowest latency but high power use, suitable for grid-powered devices.","tags":["LoRaWAN","classes"]},{"id":"C054","deck":"04_Low_Power_Standards","priority":2,"front":"LoRaWAN activation methods.","back":"ABP: fixed addresses/keys, simple but vulnerable after reset. OTAA: join procedure with new session keys, supports roaming.","tags":["LoRaWAN","security","activation"]},{"id":"C055","deck":"04_Low_Power_Standards","priority":1,"front":"Sigfox key properties.","back":"First LPWAN; ultra-narrowband, proprietary, low throughput (~100 bps), low power, long range, 140 messages/day/device, subscription/cloud model.","tags":["Sigfox","LPWAN"]},{"id":"C056","deck":"04_Low_Power_Standards","priority":1,"front":"Main difference: LoRaWAN vs Sigfox gateways.","back":"With LoRaWAN you can deploy your own gateways; Sigfox is a proprietary operator/subscription network.","tags":["Sigfox","LoRaWAN"]},{"id":"C057","deck":"04_Low_Power_Standards","priority":2,"front":"Sigfox payload limits.","back":"Uplink payload is about 12 bytes; downlink payload is about 8 bytes; each uplink message is transmitted 3 times.","tags":["Sigfox","payload"]},{"id":"C058","deck":"04_Low_Power_Standards","priority":1,"front":"Cellular IoT examples.","back":"LTE-M/eMTC, NB-IoT, EC-GSM-IoT.","tags":["cellular_IoT","3GPP"]},{"id":"C059","deck":"04_Low_Power_Standards","priority":1,"front":"LTE-M key idea.","back":"Evolution of LTE optimized for IoT: low power, easy deployment, interoperable with LTE, up to about 1 Mbps, uses legacy cellular infrastructure.","tags":["LTE-M","cellular_IoT"]},{"id":"C060","deck":"04_Low_Power_Standards","priority":2,"front":"NB-IoT key idea.","back":"A 3GPP cellular IoT technology optimized for low-end IoT with narrow bandwidth, low power, and licensed-spectrum QoS.","tags":["NB-IoT","cellular_IoT"]},{"id":"C061","deck":"04_Low_Power_Standards","priority":2,"front":"EC-GSM key idea.","back":"GSM/EDGE enhancements for IoT, leveraging existing GSM coverage, with low data rates and extended coverage.","tags":["EC-GSM","cellular_IoT"]},{"id":"C062","deck":"05_VANET","priority":1,"front":"What is a VANET?","back":"Vehicular Ad Hoc Network: vehicles and roadside units communicate, often without central access points, for safety and traffic applications.","tags":["VANET","definition"]},{"id":"C063","deck":"05_VANET","priority":1,"front":"Why vehicular networks?","back":"Improve safety, reduce congestion/fuel waste, support traffic efficiency, and add high-tech vehicle services.","tags":["VANET","motivation"]},{"id":"C064","deck":"05_VANET","priority":1,"front":"SIVC vs MIVC.","back":"Single-hop IVC is for short-range applications; multihop IVC supports longer-range communication but is more complex.","tags":["VANET","IVC"]},{"id":"C065","deck":"05_VANET","priority":1,"front":"DSRC frequency band.","back":"DSRC uses the 5.9 GHz band, approximately 5.850–5.925 GHz.","tags":["DSRC","802.11p","must_memorize"]},{"id":"C066","deck":"05_VANET","priority":1,"front":"VANET vs MANET: main differences.","back":"Vehicles have high but predictable mobility, dynamic topology, no severe power constraint, and accurate localization via GPS/sensors.","tags":["VANET","MANET"]},{"id":"C067","deck":"05_VANET","priority":2,"front":"VANET operating environment challenges.","back":"Buildings and obstacles, interference, high speed, changing topology, city/highway differences, and 2D road topology.","tags":["VANET","environment"]},{"id":"C068","deck":"05_VANET","priority":2,"front":"Threat model categories.","back":"Attackers can be insider/outsider, malicious/rational, active/passive, local/extended.","tags":["VANET","security"]},{"id":"C069","deck":"05_VANET","priority":2,"front":"VANET attack examples.","back":"Bogus traffic information, intelligent collisions, identity/speed/position cheating, jamming, tunnel, tracking.","tags":["VANET","security"]},{"id":"C070","deck":"05_VANET","priority":1,"front":"DSRC/802.11p physical layer.","back":"Based on IEEE 802.11a ideas, uses OFDM and supports BPSK, QPSK, 16-QAM, 64-QAM with coding rates.","tags":["DSRC","802.11p","physical_layer"]},{"id":"C071","deck":"05_VANET","priority":1,"front":"CSMA/CD vs CSMA/CA.","back":"CSMA/CD detects collisions after they occur; CSMA/CA tries to avoid collisions before transmission, used in wireless.","tags":["CSMA","MAC","must_memorize"]},{"id":"C072","deck":"05_VANET","priority":1,"front":"Why is CSMA/CD unsuitable for wireless?","back":"Wireless nodes cannot reliably detect collisions while transmitting, so collision avoidance is preferred.","tags":["CSMA","wireless"]},{"id":"C073","deck":"05_VANET","priority":1,"front":"Hidden terminal problem in VANET/wireless.","back":"Two nodes cannot hear each other but both can interfere at a receiver, causing collision.","tags":["hidden_terminal","CSMA"]},{"id":"C074","deck":"05_VANET","priority":1,"front":"Exposed terminal problem.","back":"A node unnecessarily refrains from transmitting because it hears a nearby transmission, even though its transmission would not interfere with the intended receiver.","tags":["exposed_terminal","CSMA"]},{"id":"C075","deck":"05_VANET","priority":1,"front":"RTS/CTS purpose.","back":"Request-to-Send/Clear-to-Send handshaking helps reserve the medium and reduce hidden-terminal collisions.","tags":["RTS_CTS","DCF"]},{"id":"C076","deck":"05_VANET","priority":1,"front":"IEEE 802.11 DCF.","back":"Distributed Coordination Function: CSMA/CA-based MAC with contention/backoff and optional RTS/CTS.","tags":["DCF","802.11","MAC"]},{"id":"C077","deck":"05_VANET","priority":2,"front":"Backoff time tradeoff.","back":"High density needs longer backoff to avoid collisions; low density with too long backoff wastes time.","tags":["backoff","CSMA"]},{"id":"C078","deck":"05_VANET","priority":1,"front":"Why broadcast routing in VANETs?","back":"Broadcast spreads traffic warnings such as detour routes, accident alerts, construction warnings, and safety messages.","tags":["broadcast_routing","VANET"]},{"id":"C079","deck":"05_VANET","priority":1,"front":"Broadcast storm.","back":"Contention and collisions caused by excessive/redundant rebroadcasting in a broadcasting network.","tags":["broadcast_storm","VANET"]},{"id":"C080","deck":"05_VANET","priority":1,"front":"Four VANET broadcast strategies.","back":"Probability-based, location-based, neighbor-based, cluster-based.","tags":["broadcast_routing","must_memorize"]},{"id":"C081","deck":"05_VANET","priority":2,"front":"Location-based broadcast strategy.","back":"Selects forwarding nodes based on how much additional area they cover, possibly using position prediction.","tags":["broadcast_routing","location_based"]},{"id":"C082","deck":"05_VANET","priority":2,"front":"Cluster-based broadcast strategy.","back":"Nodes are grouped into clusters; elected cluster-heads forward packets.","tags":["broadcast_routing","cluster_based"]},{"id":"C083","deck":"06_Applications_Reordered","priority":1,"front":"Why data stream protocols?","back":"To transmit data from nodes to server, server to nodes, and between nodes; simple IoT data should not need heavy file/email protocols.","tags":["data_stream_protocols"]},{"id":"C084","deck":"06_Applications_Reordered","priority":1,"front":"Data stream protocols listed.","back":"MQTT, CoAP, HTTP, XMPP, AMQP.","tags":["data_stream_protocols","must_memorize"]},{"id":"C085","deck":"06_Applications_Reordered","priority":1,"front":"HTTP key idea.","back":"A well-understood application protocol for client-server data transfer; traverses firewalls/NAT easily because clients initiate connections.","tags":["HTTP"]},{"id":"C086","deck":"06_Applications_Reordered","priority":1,"front":"Common HTTP methods.","back":"GET read page, HEAD read header, POST append, PUT store, DELETE remove, TRACE echo, CONNECT proxy, OPTIONS query options.","tags":["HTTP","methods"]},{"id":"C087","deck":"06_Applications_Reordered","priority":1,"front":"MQTT definition.","back":"A lightweight client-server publish/subscribe messaging transport protocol, designed for high volumes of data in low-bandwidth networks.","tags":["MQTT","publish_subscribe","must_memorize"]},{"id":"C088","deck":"06_Applications_Reordered","priority":1,"front":"MQTT publish/subscribe model.","back":"Clients publish messages to topics; the broker forwards messages to clients subscribed to those topics.","tags":["MQTT","broker","topics"]},{"id":"C089","deck":"06_Applications_Reordered","priority":1,"front":"MQTT session stages.","back":"Connection, authentication, communication, termination.","tags":["MQTT","session"]},{"id":"C090","deck":"06_Applications_Reordered","priority":1,"front":"MQTT QoS services.","back":"At most once: PUBLISH. At least once: PUBLISH/PUBACK. Exactly once: PUBLISH/PUBREC and PUBREL/PUBCOMP.","tags":["MQTT","QoS","must_memorize"]},{"id":"C091","deck":"06_Applications_Reordered","priority":2,"front":"MQTT challenges.","back":"Scalability with tree/topic structure, interoperability because payloads are binary and app-specific, security requiring authentication and TLS.","tags":["MQTT","challenges"]},{"id":"C092","deck":"06_Applications_Reordered","priority":1,"front":"WebSockets definition.","back":"Application-layer protocol providing bidirectional full-duplex communication over a single TCP connection.","tags":["WebSockets","full_duplex"]},{"id":"C093","deck":"06_Applications_Reordered","priority":1,"front":"WebSockets key features.","back":"Bidirectional, full-duplex, single TCP connection, efficient implementation.","tags":["WebSockets"]},{"id":"C094","deck":"06_Applications_Reordered","priority":2,"front":"XML vs HTML.","back":"XML describes and focuses on what data is; HTML displays and focuses on how data looks.","tags":["XML","HTML"]},{"id":"C095","deck":"06_Applications_Reordered","priority":1,"front":"XMPP definition.","back":"Extensible Messaging and Presence Protocol: XML-based protocol for near-real-time exchange of structured extensible data.","tags":["XMPP","XML"]},{"id":"C096","deck":"06_Applications_Reordered","priority":1,"front":"XMPP model.","back":"Decentralized client-server architecture: clients do not talk directly, there is no central authoritative server, anyone can run a server.","tags":["XMPP","decentralized"]},{"id":"C097","deck":"06_Applications_Reordered","priority":2,"front":"XMPP implementation options.","back":"Originally XMPP on TCP; now many messages over HTTP; WebSockets are an alternative.","tags":["XMPP"]},{"id":"C098","deck":"06_Applications_Reordered","priority":1,"front":"Cloud computing definition.","back":"On-demand compute services over the Internet, including IaaS, PaaS, SaaS, and Security as a Service.","tags":["cloud","definition"]},{"id":"C099","deck":"06_Applications_Reordered","priority":2,"front":"Cloud deployment patterns.","back":"Public cloud and private cloud; public cloud may suffer from noisy-neighbor effects when services share hardware.","tags":["cloud","deployment"]},{"id":"C100","deck":"06_Applications_Reordered","priority":1,"front":"IoT cloud solution elements.","back":"Sensors collecting data, CPU/MCU processing locally, gateway facilitating communication, remote server receiving commands/data and providing analytics/visualization.","tags":["cloud","IoT"]},{"id":"C101","deck":"06_Applications_Reordered","priority":2,"front":"Cloud security: main idea.","back":"Computer security matters because attacks may be physical, financial, or reputational; use encryption and authentication between client/server.","tags":["cloud","security"]},{"id":"C102","deck":"06_Applications_Reordered","priority":1,"front":"Data analytics definition.","back":"Process of cleansing, transforming, and modeling data to discover useful information, suggest conclusions, and support decision-making.","tags":["analytics","definition"]},{"id":"C103","deck":"06_Applications_Reordered","priority":1,"front":"Steps in data analytics.","back":"Collection, ingestion, discovery \u0026 cleansing, integration, analysis, delivery.","tags":["analytics","pipeline","must_memorize"]},{"id":"C104","deck":"06_Applications_Reordered","priority":2,"front":"Challenges in data analytics.","back":"Bad/multitude sensor data, huge volume requiring decentralized/parallel processing, many attributes needing parsimonious models, real-time quick-vs-accurate tradeoff.","tags":["analytics","challenges"]},{"id":"C105","deck":"media_sampling_sourcecoding","priority":1,"front":"Aliasing definition.","back":"High frequencies appear as false lower frequencies after undersampling, making perfect reconstruction impossible.","tags":["sampling","aliasing","must_memorize"]},{"id":"C106","deck":"media_sampling_sourcecoding","priority":1,"front":"Why low-pass filter before sampling?","back":"To remove frequencies above Nyquist and prevent aliasing.","tags":["filtering","sampling","anti_aliasing"]},{"id":"C107","deck":"media_sampling_sourcecoding","priority":1,"front":"Quantization reversibility.","back":"Quantization is not reversible; rounding amplitudes into levels loses information.","tags":["quantization","lossy"]},{"id":"C108","deck":"media_sampling_sourcecoding","priority":1,"front":"Rate-distortion intuition.","back":"More bits/rate gives lower distortion and better quality; fewer bits gives higher distortion and smaller files.","tags":["rate_distortion","compression"]},{"id":"C109","deck":"media_sampling_sourcecoding","priority":1,"front":"Luminance vs chrominance.","back":"Luminance Y is brightness; chrominance Cb/Cr is color information.","tags":["images","YCbCr"]},{"id":"C110","deck":"media_sampling_sourcecoding","priority":1,"front":"Why compress chrominance more?","back":"The human eye is more sensitive to brightness than color, so chrominance can be reduced more with less perceived loss.","tags":["JPEG","chrominance"]},{"id":"C111","deck":"media_sampling_sourcecoding","priority":1,"front":"JPEG pipeline.","back":"RGB → YCbCr → blocks → DCT → quantization → entropy coding.","tags":["JPEG","DCT","must_memorize"]},{"id":"C112","deck":"media_sampling_sourcecoding","priority":1,"front":"What does DCT do?","back":"Represents image blocks as weighted sums of cosine frequency components, concentrating energy in low-frequency coefficients.","tags":["DCT","JPEG"]},{"id":"C113","deck":"media_sampling_sourcecoding","priority":1,"front":"Lossy step in JPEG.","back":"Quantization.","tags":["JPEG","quantization","must_memorize"]},{"id":"C114","deck":"media_sampling_sourcecoding","priority":1,"front":"Entropy coding idea.","back":"Lossless coding that gives short codes to frequent symbols and longer codes to rare symbols.","tags":["entropy_coding","compression"]},{"id":"C115","deck":"media_sampling_sourcecoding","priority":1,"front":"JPEG vs MPEG.","back":"JPEG compresses still images, mainly spatial redundancy. MPEG compresses video using spatial and temporal redundancy.","tags":["JPEG","MPEG"]},{"id":"C116","deck":"media_sampling_sourcecoding","priority":1,"front":"Inter-frame coding.","back":"Encodes a frame by predicting it from other frames and storing only differences/motion information.","tags":["MPEG","video"]},{"id":"C117","deck":"media_sampling_sourcecoding","priority":1,"front":"Motion estimation vs compensation.","back":"Motion estimation finds where blocks moved; motion compensation uses that motion to predict/reconstruct frames.","tags":["MPEG","motion"]},{"id":"C118","deck":"media_3D_graphs","priority":1,"front":"Point cloud.","back":"A set/sample of 3D points (x,y,z) representing the geometry of an object or scene.","tags":["3D","point_cloud"]},{"id":"C119","deck":"media_3D_graphs","priority":1,"front":"Graph signal.","back":"A value/function defined on each node of a graph.","tags":["graph_signal","graphs"]},{"id":"C120","deck":"media_3D_graphs","priority":1,"front":"Graph Fourier basis.","back":"The Laplacian eigenvectors play the role of Fourier basis functions on a graph.","tags":["graph_fourier","eigenvectors"]},{"id":"C121","deck":"media_3D_graphs","priority":1,"front":"Low vs high graph frequency.","back":"Low graph frequency: neighboring nodes similar. High graph frequency: neighboring nodes very different.","tags":["graph_fourier","frequency"]},{"id":"C122","deck":"media_3D_graphs","priority":1,"front":"PCA goal.","back":"Dimensionality reduction by keeping directions/components with largest variance.","tags":["PCA","dimension_reduction"]},{"id":"C123","deck":"media_3D_graphs","priority":1,"front":"PCA eigenvectors and eigenvalues.","back":"Eigenvectors are principal directions; eigenvalues measure variance explained along those directions.","tags":["PCA","eigenvectors"]}],"multiple_choice_cards":[{"id":"M001","deck":"formulas_sampling","priority":1,"question":"A signal has maximum frequency W = 5 kHz. What is the minimum sampling frequency?","choices":["5 kHz","10 kHz","2.5 kHz","10 Hz"],"answer":"10 kHz","explanation":"Nyquist says f_s ≥ 2W, so f_s ≥ 10 kHz.","tags":["sampling","nyquist"]},{"id":"M002","deck":"formulas_quantization","priority":1,"question":"If B = 8 bits, how many quantization levels are available?","choices":["8","16","128","256"],"answer":"256","explanation":"L = 2^B = 2^8 = 256.","tags":["quantization"]},{"id":"M003","deck":"04_Low_Power_Standards","priority":1,"question":"What happens when LoRa spreading factor increases?","choices":["Bitrate increases and range decreases","Bitrate decreases and sensitivity/range increase","Power consumption always becomes zero","The signal stops using chirps"],"answer":"Bitrate decreases and sensitivity/range increase","explanation":"Higher SF gives longer symbol time and better sensitivity, but lower throughput.","tags":["LoRa","spreading_factor"]},{"id":"M004","deck":"05_VANET","priority":1,"question":"Which MAC approach is used in wireless to avoid collisions?","choices":["CSMA/CD","CSMA/CA","FTP","DCT"],"answer":"CSMA/CA","explanation":"Wireless cannot reliably detect collisions, so it tries to avoid them.","tags":["CSMA","MAC"]},{"id":"M005","deck":"06_Applications_Reordered","priority":1,"question":"MQTT uses which communication model?","choices":["File transfer","Publish/subscribe","Only peer-to-peer","Batch-only upload"],"answer":"Publish/subscribe","explanation":"Clients publish to topics and subscribers receive messages via a broker.","tags":["MQTT"]},{"id":"M006","deck":"media_sampling_sourcecoding","priority":1,"question":"In JPEG, which step is lossy?","choices":["DCT","Quantization","Entropy coding","RGB to YCbCr only"],"answer":"Quantization","explanation":"DCT is a transform; entropy coding is lossless; quantization discards information.","tags":["JPEG","quantization"]},{"id":"M007","deck":"media_3D_graphs","priority":1,"question":"In graph Fourier transform, what plays the role of Fourier basis functions?","choices":["Laplacian eigenvectors","Only eigenvalues","MQTT topics","Quantization intervals"],"answer":"Laplacian eigenvectors","explanation":"The graph signal is expanded in the eigenvector basis of the graph Laplacian.","tags":["graph_fourier"]},{"id":"M008","deck":"03_SE_Communications","priority":1,"question":"If SNR increases, what generally happens to BER?","choices":["BER increases","BER decreases","BER becomes exactly 1","SNR has no relation to BER"],"answer":"BER decreases","explanation":"A stronger signal relative to noise makes bit errors less likely.","tags":["SNR","BER"]},{"id":"M009","deck":"05_VANET","priority":1,"question":"What is a broadcast storm?","choices":["A weather event affecting sensors","Excessive/redundant rebroadcasts causing contention and collisions","A LoRaWAN activation method","A JPEG compression artifact"],"answer":"Excessive/redundant rebroadcasts causing contention and collisions","explanation":"Broadcast storm is a major issue when many VANET nodes rebroadcast messages inefficiently.","tags":["broadcast_routing"]},{"id":"M010","deck":"01_SE_Intro","priority":1,"question":"Which list best matches the smart-environment data path?","choices":["DCT → quantization → entropy","Acquisition → local processing → communication → stream → storage/cloud → analytics","RTS → CTS → ACK only","SF7 → SF8 → SF12"],"answer":"Acquisition → local processing → communication → stream → storage/cloud → analytics","explanation":"This is the data path sequence from the intro slides.","tags":["data_path"]}],"cloze_cards":[{"id":"Z001","deck":"formulas_sampling","priority":1,"text":"Nyquist condition: f_s ≥ {{c1::2W}}.","answer":"2W","tags":["sampling"]},{"id":"Z002","deck":"formulas_quantization","priority":1,"text":"The quantization step size is {{c1::Δ}} = 2A / 2^B.","answer":"Δ","tags":["quantization"]},{"id":"Z003","deck":"formulas_graphs","priority":1,"text":"The graph Laplacian is L = {{c1::D - A}}.","answer":"D - A","tags":["graphs"]},{"id":"Z004","deck":"04_Low_Power_Standards","priority":1,"text":"LoRa uses {{c1::Chirp Spread Spectrum}} modulation.","answer":"Chirp Spread Spectrum","tags":["LoRa"]},{"id":"Z005","deck":"04_Low_Power_Standards","priority":1,"text":"LoRaWAN Class {{c1::A}} listens only after the end device transmits.","answer":"A","tags":["LoRaWAN"]},{"id":"Z006","deck":"05_VANET","priority":1,"text":"DSRC uses the {{c1::5.9 GHz}} band.","answer":"5.9 GHz","tags":["DSRC"]},{"id":"Z007","deck":"06_Applications_Reordered","priority":1,"text":"MQTT clients publish to {{c1::topics}} and a broker forwards messages to subscribers.","answer":"topics","tags":["MQTT"]},{"id":"Z008","deck":"media_sampling_sourcecoding","priority":1,"text":"JPEG pipeline: RGB → YCbCr → blocks → {{c1::DCT}} → quantization → entropy coding.","answer":"DCT","tags":["JPEG"]},{"id":"Z009","deck":"media_3D_graphs","priority":1,"text":"In PCA, eigenvalues represent {{c1::variance explained}} by each principal component.","answer":"variance explained","tags":["PCA"]},{"id":"Z010","deck":"03_SE_Communications","priority":1,"text":"Higher SNR generally means lower {{c1::BER}}.","answer":"BER","tags":["SNR"]}],"exam_sentences":["A smart environment monitors physical conditions, processes data, makes decisions, and acts on the environment.","IoT is a network of physical objects embedded with sensors, electronics, software, and connectivity so they can collect/exchange data and react to commands.","The smart-environment data path is data acquisition, local processing, communication, stream, storage/cloud, and analytics.","LPWAN combines long range with low power and low data rate for IoT applications.","LoRa is the chirp-spread-spectrum physical modulation, while LoRaWAN is the network protocol and architecture built on top.","Increasing LoRa spreading factor improves sensitivity/range but decreases bitrate and increases time-on-air.","Sigfox is proprietary, ultra-narrowband, low-throughput, subscription-based LPWAN.","VANETs are vehicular ad hoc networks supporting V2V and V2I communication for safety and traffic efficiency.","CSMA/CA avoids collisions before transmission and is preferred in wireless where collision detection is difficult.","Broadcast storm occurs when redundant rebroadcasts cause contention and collisions.","MQTT is a lightweight publish/subscribe protocol where clients publish to topics and a broker forwards to subscribers.","WebSockets provide bidirectional full-duplex communication over a single TCP connection.","XMPP is an XML-based decentralized client-server protocol for near-real-time structured data exchange.","Cloud computing provides on-demand compute services over the Internet: IaaS, PaaS, SaaS, and security as a service.","Data analytics cleanses, transforms, and models data to discover useful information and support decisions.","Fourier transform represents a signal as a weighted sum of complex sinusoids.","Aliasing means high frequencies appear as false lower frequencies after undersampling.","DCT represents image blocks as weighted sums of cosine frequency components.","Quantization is the lossy step in JPEG.","Graph Fourier transform represents graph signals using Laplacian eigenvectors."],"recommended_app_logic":{"session_length_minutes":10,"question_mix":{"formula_cards":0.3,"concept_cards":0.4,"multiple_choice_cards":0.2,"cloze_cards":0.1},"spaced_repetition_hint":{"wrong_answer":"repeat within 2 minutes","hesitant_answer":"repeat within 10 minutes","correct_answer":"repeat after 30-60 minutes","priority_1":"show twice as often as priority_2","priority_3":"show only after priority_1 and priority_2 are stable"},"ui_modes":["rapid_fire","type_formula","multiple_choice","fill_blank","explain_in_one_sentence"]}};</script>
+    <script>
+(() => {
+  "use strict";
+
+  const DATA_URL = "./data/se_duolingo_quiz_data.json";
+  const STORAGE_KEY = "exam-sprint-state-v1";
+  const DAILY_GOAL_XP = 50;
+  const LESSON_SIZE = 10;
+  const MAX_HEARTS = 5;
+  const LEVEL_SIZE_XP = 120;
+  const TYPE_SEQUENCE = [
+    "concept",
+    "formula",
+    "choice",
+    "concept",
+    "formula",
+    "choice",
+    "cloze",
+    "concept",
+    "formula",
+    "concept"
+  ];
+
+  const TYPE_LABELS = {
+    concept: "Recall",
+    formula: "Formula",
+    choice: "Multiple choice",
+    cloze: "Fill blank"
+  };
+
+  const app = {
+    data: null,
+    cards: [],
+    decks: [],
+    state: loadState(),
+    session: emptySession(),
+    tab: "lesson",
+    focus: "sprint",
+    deck: "all",
+    toastTimer: 0,
+    els: {}
+  };
+
+  document.addEventListener("DOMContentLoaded", init);
+
+  async function init() {
+    bindElements();
+    bindEvents();
+    renderShell();
+
+    try {
+      app.data = await loadQuizData();
+      app.cards = normalizeCards(app.data);
+      app.decks = getDeckNames(app.cards);
+      renderDeckOptions();
+      startLesson();
+      await registerServiceWorker();
+    } catch (error) {
+      renderLoadError(error);
+    }
+  }
+
+  function bindElements() {
+    app.els.courseLabel = document.querySelector("#courseLabel");
+    app.els.xpValue = document.querySelector("#xpValue");
+    app.els.streakValue = document.querySelector("#streakValue");
+    app.els.heartValue = document.querySelector("#heartValue");
+    app.els.dailyGoalText = document.querySelector("#dailyGoalText");
+    app.els.dailyGoalBar = document.querySelector("#dailyGoalBar");
+    app.els.levelValue = document.querySelector("#levelValue");
+    app.els.deckSelect = document.querySelector("#deckSelect");
+    app.els.lessonPanel = document.querySelector("#lessonPanel");
+    app.els.decksPanel = document.querySelector("#decksPanel");
+    app.els.cheatPanel = document.querySelector("#cheatPanel");
+    app.els.focusControls = document.querySelector("#focusControls");
+    app.els.toast = document.querySelector("#toast");
+  }
+
+  function bindEvents() {
+    document.body.addEventListener("click", handleClick);
+    document.body.addEventListener("input", handleInput);
+    document.body.addEventListener("keydown", handleKeydown);
+
+    app.els.deckSelect.addEventListener("change", () => {
+      app.deck = app.els.deckSelect.value;
+      startLesson();
+      renderAll();
+    });
+  }
+
+  function handleClick(event) {
+    const target = event.target.closest("[data-action]");
+    if (!target) return;
+
+    const action = target.dataset.action;
+
+    if (action === "set-focus") {
+      app.focus = target.dataset.focus || "sprint";
+      updateFocusButtons();
+      startLesson();
+      renderAll();
+      return;
+    }
+
+    if (action === "show-tab") {
+      showTab(target.dataset.tab || "lesson");
+      return;
+    }
+
+    if (action === "new-lesson") {
+      startLesson();
+      renderAll();
+      return;
+    }
+
+    if (action === "review-mistakes") {
+      startLesson({ mistakesOnly: true });
+      renderAll();
+      return;
+    }
+
+    if (action === "reveal") {
+      app.session.interaction.revealed = true;
+      renderLesson();
+      return;
+    }
+
+    if (action === "choice") {
+      submitChoice(target.dataset.choice || "");
+      return;
+    }
+
+    if (action === "check-type") {
+      checkTypedAnswer();
+      return;
+    }
+
+    if (action === "grade") {
+      submitGrade(target.dataset.grade || "unsure");
+      return;
+    }
+
+    if (action === "next") {
+      advanceCard();
+      return;
+    }
+
+    if (action === "select-deck") {
+      app.deck = target.dataset.deck || "all";
+      app.els.deckSelect.value = app.deck;
+      showTab("lesson");
+      startLesson();
+      renderAll();
+    }
+  }
+
+  function handleInput(event) {
+    if (event.target.id === "typedAnswer") {
+      app.session.interaction.typedValue = event.target.value;
+    }
+  }
+
+  function handleKeydown(event) {
+    if (event.key !== "Enter") return;
+    if (event.target.id === "typedAnswer") {
+      event.preventDefault();
+      checkTypedAnswer();
+    }
+  }
+
+  async function loadQuizData() {
+    if (window.EXAM_SPRINT_DATA) {
+      return window.EXAM_SPRINT_DATA;
+    }
+
+    const response = await fetch(DATA_URL, { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`Could not load quiz data: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function normalizeCards(data) {
+    const formulaCards = (data.formula_cards || []).map((card) => ({
+      id: card.id,
+      type: "formula",
+      deck: card.deck || "formulas",
+      priority: card.priority || 2,
+      prompt: card.front || "Formula",
+      answer: card.back || "",
+      latex: card.latex || "",
+      explanation: card.explanation || "",
+      tags: card.tags || []
+    }));
+
+    const conceptCards = (data.concept_cards || []).map((card) => ({
+      id: card.id,
+      type: "concept",
+      deck: card.deck || "concepts",
+      priority: card.priority || 2,
+      prompt: card.front || "Concept",
+      answer: card.back || "",
+      explanation: card.explanation || "",
+      tags: card.tags || []
+    }));
+
+    const choiceCards = (data.multiple_choice_cards || []).map((card) => ({
+      id: card.id,
+      type: "choice",
+      deck: card.deck || "multiple_choice",
+      priority: card.priority || 2,
+      prompt: card.question || "Question",
+      answer: card.answer || "",
+      choices: card.choices || [],
+      explanation: card.explanation || "",
+      tags: card.tags || []
+    }));
+
+    const clozeCards = (data.cloze_cards || []).map((card) => {
+      const prompt = (card.text || "").replace(/\{\{c\d+::(.*?)\}\}/g, "____");
+      const fullText = (card.text || "").replace(/\{\{c\d+::(.*?)\}\}/g, "$1");
+      return {
+        id: card.id,
+        type: "cloze",
+        deck: card.deck || "cloze",
+        priority: card.priority || 2,
+        prompt,
+        answer: card.answer || "",
+        fullText,
+        explanation: fullText,
+        tags: card.tags || []
+      };
+    });
+
+    return [...formulaCards, ...conceptCards, ...choiceCards, ...clozeCards].filter(
+      (card) => card.id && card.prompt && card.answer
+    );
+  }
+
+  function getDeckNames(cards) {
+    return [...new Set(cards.map((card) => card.deck))].sort((a, b) => a.localeCompare(b));
+  }
+
+  function renderDeckOptions() {
+    const options = [
+      `<option value="all">All decks</option>`,
+      ...app.decks.map((deck) => `<option value="${escapeAttr(deck)}">${formatDeckName(deck)}</option>`)
+    ];
+    app.els.deckSelect.innerHTML = options.join("");
+    app.els.deckSelect.value = app.deck;
+  }
+
+  function startLesson(options = {}) {
+    const queue = buildLessonQueue(options);
+    app.session = {
+      queue,
+      index: 0,
+      results: [],
+      mistakes: [],
+      repeats: {},
+      completed: queue.length === 0,
+      startedAt: Date.now(),
+      interaction: freshInteraction()
+    };
+
+    if (app.session.completed) {
+      showToast("No cards match this filter yet.");
+    }
+  }
+
+  function buildLessonQueue(options = {}) {
+    let source = filteredCards();
+
+    if (options.mistakesOnly) {
+      const mistakeIds = new Set(app.state.lastMistakes || []);
+      source = source.filter((card) => mistakeIds.has(card.id));
+    }
+
+    if (app.focus === "weak") {
+      source = source.filter((card) => {
+        const progress = getCardProgress(card.id);
+        return progress.wrong > 0 || progress.mastery < 1 || progress.seen === 0;
+      });
+    }
+
+    if (app.focus === "formulas") {
+      source = source.filter((card) => card.type === "formula" || card.type === "cloze");
+    }
+
+    if (!source.length) {
+      source = filteredCards();
+    }
+
+    const selected = [];
+    const selectedIds = new Set();
+
+    for (let i = 0; i < LESSON_SIZE; i += 1) {
+      const targetType = app.focus === "sprint" ? TYPE_SEQUENCE[i % TYPE_SEQUENCE.length] : null;
+      const card = pickWeightedCard(source, targetType, selectedIds);
+      if (!card) break;
+      selected.push(card.id);
+      selectedIds.add(card.id);
+    }
+
+    if (selected.length < Math.min(LESSON_SIZE, source.length)) {
+      const fallbackIds = new Set(selected);
+      while (selected.length < Math.min(LESSON_SIZE, source.length)) {
+        const card = pickWeightedCard(source, null, fallbackIds);
+        if (!card) break;
+        selected.push(card.id);
+        fallbackIds.add(card.id);
+      }
+    }
+
+    return selected;
+  }
+
+  function filteredCards() {
+    if (app.deck === "all") return app.cards;
+    return app.cards.filter((card) => card.deck === app.deck);
+  }
+
+  function pickWeightedCard(source, targetType, excludedIds) {
+    let pool = source.filter((card) => !excludedIds.has(card.id));
+    if (targetType) {
+      const typePool = pool.filter((card) => card.type === targetType);
+      if (typePool.length) pool = typePool;
+    }
+
+    if (!pool.length) return null;
+
+    const now = Date.now();
+    const weighted = pool.map((card) => {
+      const progress = getCardProgress(card.id);
+      const priorityWeight = card.priority === 1 ? 2.15 : 1.2;
+      const unseenWeight = progress.seen ? 1 : 1.85;
+      const dueWeight = !progress.due || progress.due <= now ? 1.65 : 0.3;
+      const weakWeight = progress.mastery < 0 ? 2.2 : 1 + Math.min(progress.wrong, 4) * 0.28;
+      const recentPenalty = progress.last && now - progress.last < 3 * 60 * 1000 ? 0.45 : 1;
+      const score = priorityWeight * unseenWeight * dueWeight * weakWeight * recentPenalty;
+      return { card, score: Math.max(0.05, score) };
+    });
+
+    const total = weighted.reduce((sum, item) => sum + item.score, 0);
+    let cursor = Math.random() * total;
+    for (const item of weighted) {
+      cursor -= item.score;
+      if (cursor <= 0) return item.card;
+    }
+    return weighted[weighted.length - 1].card;
+  }
+
+  function renderAll() {
+    renderShell();
+    renderLesson();
+    renderDecks();
+    renderCheatSheet();
+    updateTabButtons();
+    updateFocusButtons();
+  }
+
+  function renderShell() {
+    ensureToday(false);
+    app.els.xpValue.textContent = String(app.state.xp);
+    app.els.streakValue.textContent = String(app.state.streak);
+    app.els.heartValue.textContent = String(app.state.hearts);
+    app.els.levelValue.textContent = String(getLevel());
+    app.els.dailyGoalText.textContent = `${app.state.todayXp} / ${DAILY_GOAL_XP} XP`;
+    app.els.dailyGoalBar.style.width = `${Math.min(100, (app.state.todayXp / DAILY_GOAL_XP) * 100)}%`;
+
+    if (app.data && app.data.metadata && app.data.metadata.title) {
+      app.els.courseLabel.textContent = app.data.metadata.title.replace(" Exam Quiz Data", "");
+    }
+  }
+
+  function renderLesson() {
+    if (!app.cards.length) return;
+
+    if (app.session.completed) {
+      app.els.lessonPanel.innerHTML = renderSummary();
+      return;
+    }
+
+    const card = getCurrentCard();
+    if (!card) {
+      app.session.completed = true;
+      app.els.lessonPanel.innerHTML = renderSummary();
+      return;
+    }
+
+    const progressPercent = ((app.session.index) / Math.max(1, app.session.queue.length)) * 100;
+    const progress = getCardProgress(card.id);
+    const kind = getInteractionKind(card);
+
+    app.els.lessonPanel.innerHTML = `
+      <article class="lesson-card">
+        <div class="lesson-head">
+          <div class="lesson-progress">
+            <div class="lesson-track"><span style="width: ${progressPercent}%"></span></div>
+            <span>${app.session.index + 1} / ${app.session.queue.length}</span>
+          </div>
+          <div class="lesson-meta">
+            <span class="pill">${TYPE_LABELS[card.type]}</span>
+            <span class="pill priority">Priority ${card.priority}</span>
+            ${progress.mastery < 0 ? `<span class="pill weak">Needs review</span>` : ""}
+            <span class="pill">${formatDeckName(card.deck)}</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="prompt">${escapeHtml(card.prompt)}</p>
+          ${renderKindBody(card, kind)}
+          ${renderTags(card)}
+        </div>
+      </article>
+    `;
+
+    const input = document.querySelector("#typedAnswer");
+    if (input && !app.session.interaction.checked && !app.session.interaction.submitted) {
+      input.focus({ preventScroll: true });
+      const value = app.session.interaction.typedValue || "";
+      input.value = value;
+      input.setSelectionRange(value.length, value.length);
+    }
+  }
+
+  function renderKindBody(card, kind) {
+    if (app.session.interaction.submitted) {
+      return renderSubmittedFeedback(card);
+    }
+
+    if (kind === "choice") {
+      return renderChoiceBody(card);
+    }
+
+    if (kind === "type") {
+      return renderTypeBody(card);
+    }
+
+    return renderRecallBody(card);
+  }
+
+  function renderChoiceBody(card) {
+    const choices = buildChoices(card);
+    return `
+      <div class="choice-grid">
+        ${choices
+          .map(
+            (choice) => `
+              <button type="button" class="choice-btn" data-action="choice" data-choice="${escapeAttr(choice)}">
+                ${escapeHtml(choice)}
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  function renderTypeBody(card) {
+    const interaction = app.session.interaction;
+
+    if (interaction.checked) {
+      return `
+        <div class="answer-panel ${interaction.typeMatch ? "correct" : "wrong"}">
+          <p class="answer-main">${interaction.typeMatch ? "Correct." : "Check it against the answer."}</p>
+          ${renderAnswer(card)}
+          <div class="grade-row">
+            <button type="button" class="grade-btn" data-action="grade" data-grade="wrong">Missed</button>
+            <button type="button" class="grade-btn" data-action="grade" data-grade="unsure">Almost</button>
+            <button type="button" class="grade-btn" data-action="grade" data-grade="correct">I had it</button>
+          </div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="type-box">
+        <input
+          id="typedAnswer"
+          type="text"
+          inputmode="text"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          placeholder="Type the missing term or formula"
+          value="${escapeAttr(interaction.typedValue || "")}"
+        >
+        <button type="button" class="primary-btn" data-action="check-type">Check</button>
+      </div>
+    `;
+  }
+
+  function renderRecallBody(card) {
+    if (!app.session.interaction.revealed) {
+      return `
+        <p class="subprompt">Answer out loud, then reveal.</p>
+        <button type="button" class="primary-btn" data-action="reveal">Reveal answer</button>
+      `;
+    }
+
+    return `
+      <div class="answer-panel">
+        ${renderAnswer(card)}
+        <div class="grade-row">
+          <button type="button" class="grade-btn" data-action="grade" data-grade="wrong">Forgot</button>
+          <button type="button" class="grade-btn" data-action="grade" data-grade="unsure">Hesitated</button>
+          <button type="button" class="grade-btn" data-action="grade" data-grade="correct">Knew it</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSubmittedFeedback(card) {
+    const result = app.session.interaction.result;
+    const label = result === "correct" ? "Correct" : result === "unsure" ? "Almost" : "Review soon";
+    const panelClass = result === "correct" ? "correct" : result === "wrong" ? "wrong" : "";
+    const xp = app.session.interaction.xpAwarded || 0;
+
+    return `
+      <div class="answer-panel ${panelClass}">
+        <p class="answer-main">${label}. +${xp} XP</p>
+        ${renderAnswer(card)}
+        <button type="button" class="primary-btn" data-action="next">
+          ${app.session.index + 1 >= app.session.queue.length ? "Finish lesson" : "Continue"}
+        </button>
+      </div>
+    `;
+  }
+
+  function renderAnswer(card) {
+    const answer = card.fullText || card.answer;
+    const latex = card.latex ? `<p class="answer-explanation">Latex: ${escapeHtml(card.latex)}</p>` : "";
+    const explanation =
+      card.explanation && card.explanation !== answer
+        ? `<p class="answer-explanation">${escapeHtml(card.explanation)}</p>`
+        : "";
+
+    return `
+      <p class="answer-main">${escapeHtml(answer)}</p>
+      ${latex}
+      ${explanation}
+    `;
+  }
+
+  function renderTags(card) {
+    const tags = (card.tags || []).slice(0, 5);
+    if (!tags.length) return "";
+    return `<div class="tags">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>`;
+  }
+
+  function renderSummary() {
+    const results = app.session.results;
+    const total = Math.max(1, results.length);
+    const correct = results.filter((item) => item.result === "correct").length;
+    const unsure = results.filter((item) => item.result === "unsure").length;
+    const accuracy = Math.round((correct / total) * 100);
+    const xp = results.reduce((sum, item) => sum + item.xp, 0);
+    const mistakeButton =
+      app.state.lastMistakes && app.state.lastMistakes.length
+        ? `<button type="button" class="secondary-btn" data-action="review-mistakes">Review mistakes</button>`
+        : "";
+
+    return `
+      <section class="summary-card">
+        <h2>Lesson complete</h2>
+        <div class="summary-grid">
+          <div class="summary-tile"><span>Accuracy</span><strong>${accuracy}%</strong></div>
+          <div class="summary-tile"><span>XP</span><strong>${xp}</strong></div>
+          <div class="summary-tile"><span>Almost</span><strong>${unsure}</strong></div>
+        </div>
+        <div class="button-row">
+          <button type="button" class="primary-btn" data-action="new-lesson">Next lesson</button>
+          ${mistakeButton}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderDecks() {
+    if (!app.cards.length) return;
+
+    const rows = app.decks.map((deck) => {
+      const cards = app.cards.filter((card) => card.deck === deck);
+      const seen = cards.filter((card) => getCardProgress(card.id).seen > 0).length;
+      const weak = cards.filter((card) => {
+        const progress = getCardProgress(card.id);
+        return progress.wrong > 0 || progress.mastery < 0;
+      }).length;
+      const pct = Math.round((seen / cards.length) * 100);
+      return `
+        <button type="button" class="deck-row" data-action="select-deck" data-deck="${escapeAttr(deck)}">
+          <strong>${formatDeckName(deck)}</strong>
+          <span>${cards.length} cards - ${seen} seen - ${weak} weak</span>
+          <div class="meter" aria-hidden="true"><span style="width: ${pct}%"></span></div>
+        </button>
+      `;
+    });
+
+    app.els.decksPanel.innerHTML = `
+      <h2 class="section-title">Decks</h2>
+      <div class="deck-list">
+        <button type="button" class="deck-row" data-action="select-deck" data-deck="all">
+          <strong>All decks</strong>
+          <span>${app.cards.length} cards total</span>
+          <div class="meter" aria-hidden="true"><span style="width: ${getOverallSeenPercent()}%"></span></div>
+        </button>
+        ${rows.join("")}
+      </div>
+    `;
+  }
+
+  function renderCheatSheet() {
+    if (!app.data) return;
+
+    const formulas = (app.data.formula_cards || []).map(
+      (card) => `
+        <div class="cheat-item">
+          <strong>${escapeHtml(card.front || "Formula")}</strong>
+          <span>${escapeHtml(card.back || "")}</span>
+          ${card.explanation ? `<span>${escapeHtml(card.explanation)}</span>` : ""}
+        </div>
+      `
+    );
+
+    const sentences = (app.data.exam_sentences || []).map(
+      (sentence, index) => `
+        <div class="cheat-item">
+          <strong>Exam sentence ${index + 1}</strong>
+          <span>${escapeHtml(sentence)}</span>
+        </div>
+      `
+    );
+
+    app.els.cheatPanel.innerHTML = `
+      <h2 class="section-title">Must Memorize Formulas</h2>
+      <div class="cheat-list">${formulas.join("")}</div>
+      <h2 class="section-title">Exam Sentences</h2>
+      <div class="cheat-list">${sentences.join("")}</div>
+    `;
+  }
+
+  function submitChoice(choice) {
+    const card = getCurrentCard();
+    if (!card || app.session.interaction.submitted) return;
+
+    const correct = normalizeForCompare(choice) === normalizeForCompare(card.answer);
+    submitResult(correct ? "correct" : "wrong", { selected: choice });
+  }
+
+  function checkTypedAnswer() {
+    const card = getCurrentCard();
+    if (!card || app.session.interaction.submitted) return;
+
+    const input = document.querySelector("#typedAnswer");
+    const value = input ? input.value : app.session.interaction.typedValue;
+    const isMatch = answerLooksCorrect(value, card);
+
+    app.session.interaction.typedValue = value || "";
+    app.session.interaction.checked = true;
+    app.session.interaction.typeMatch = isMatch;
+
+    if (isMatch) {
+      submitResult("correct", { typed: value });
+      return;
+    }
+
+    renderLesson();
+  }
+
+  function submitGrade(grade) {
+    if (app.session.interaction.submitted) return;
+    const result = ["wrong", "unsure", "correct"].includes(grade) ? grade : "unsure";
+    submitResult(result, {});
+  }
+
+  function submitResult(result, detail) {
+    const card = getCurrentCard();
+    if (!card || app.session.interaction.submitted) return;
+
+    ensureToday(true);
+    const xp = awardXp(result);
+    updateCardProgress(card, result);
+    maybeInsertRepeat(card, result);
+
+    app.session.interaction = {
+      ...app.session.interaction,
+      ...detail,
+      submitted: true,
+      result,
+      xpAwarded: xp
+    };
+
+    app.session.results.push({
+      id: card.id,
+      result,
+      xp,
+      at: Date.now()
+    });
+
+    if (result === "wrong") {
+      app.session.mistakes.push(card.id);
+      app.state.lastMistakes = uniqueRecent([card.id, ...(app.state.lastMistakes || [])], 30);
+      softBuzz(50);
+    } else {
+      softBuzz(18);
+    }
+
+    saveState();
+    renderAll();
+  }
+
+  function advanceCard() {
+    if (!app.session.interaction.submitted) return;
+
+    app.session.index += 1;
+    app.session.interaction = freshInteraction();
+
+    if (app.session.index >= app.session.queue.length) {
+      completeLesson();
+    }
+
+    saveState();
+    renderAll();
+  }
+
+  function completeLesson() {
+    app.session.completed = true;
+    app.state.lessonsToday += 1;
+
+    const results = app.session.results;
+    const correct = results.filter((item) => item.result === "correct").length;
+    const accuracy = results.length ? correct / results.length : 0;
+    if (accuracy >= 0.8 && app.state.hearts < MAX_HEARTS) {
+      app.state.hearts += 1;
+    }
+    if (!app.session.mistakes.length) {
+      showToast("Clean lesson. Nice.");
+    } else {
+      showToast("Mistakes are queued for review.");
+    }
+  }
+
+  function updateCardProgress(card, result) {
+    const progress = getCardProgress(card.id);
+    const now = Date.now();
+
+    progress.seen += 1;
+    progress.last = now;
+
+    if (result === "correct") {
+      progress.correct += 1;
+      progress.mastery = clamp(progress.mastery + 1, -5, 8);
+      progress.due = now + (30 + Math.random() * 30) * 60 * 1000;
+      app.state.combo += 1;
+      app.state.bestCombo = Math.max(app.state.bestCombo, app.state.combo);
+      if (app.state.combo > 0 && app.state.combo % 5 === 0 && app.state.hearts < MAX_HEARTS) {
+        app.state.hearts += 1;
+        showToast(`Combo ${app.state.combo}. Heart restored.`);
+      }
+    } else if (result === "unsure") {
+      progress.unsure += 1;
+      progress.mastery = clamp(progress.mastery + 0.25, -5, 8);
+      progress.due = now + 10 * 60 * 1000;
+      app.state.combo = 0;
+    } else {
+      progress.wrong += 1;
+      progress.mastery = clamp(progress.mastery - 1.5, -5, 8);
+      progress.due = now + 2 * 60 * 1000;
+      app.state.combo = 0;
+      app.state.hearts = Math.max(0, app.state.hearts - 1);
+    }
+
+    app.state.cards[card.id] = progress;
+  }
+
+  function maybeInsertRepeat(card, result) {
+    if (result !== "wrong") return;
+    const count = app.session.repeats[card.id] || 0;
+    if (count >= 2) return;
+    app.session.repeats[card.id] = count + 1;
+    const insertAt = Math.min(app.session.index + 3, app.session.queue.length);
+    app.session.queue.splice(insertAt, 0, card.id);
+  }
+
+  function awardXp(result) {
+    let xp = result === "correct" ? 10 : result === "unsure" ? 4 : 1;
+    if (result === "correct" && app.state.combo > 0 && app.state.combo % 5 === 4) {
+      xp += 5;
+    }
+    app.state.xp += xp;
+    app.state.todayXp += xp;
+    return xp;
+  }
+
+  function getCurrentCard() {
+    return app.cards.find((card) => card.id === app.session.queue[app.session.index]) || null;
+  }
+
+  function getInteractionKind(card) {
+    if (card.type === "choice") return "choice";
+    if (card.type === "formula" || card.type === "cloze") return "type";
+    return "recall";
+  }
+
+  function buildChoices(card) {
+    const baseChoices = card.choices && card.choices.length ? [...card.choices] : [];
+    if (baseChoices.length >= 2) {
+      return shuffle(uniqueRecent(baseChoices, 5));
+    }
+
+    const distractors = app.cards
+      .filter((candidate) => candidate.id !== card.id && candidate.type === card.type)
+      .map((candidate) => candidate.answer)
+      .filter(Boolean);
+
+    const choices = uniqueRecent([card.answer, ...shuffle(distractors)], 4);
+    return shuffle(choices);
+  }
+
+  function getCardProgress(id) {
+    const existing = app.state.cards[id];
+    if (existing) return existing;
+    return {
+      seen: 0,
+      correct: 0,
+      wrong: 0,
+      unsure: 0,
+      mastery: 0,
+      due: 0,
+      last: 0
+    };
+  }
+
+  function loadState() {
+    const defaults = defaultState();
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return defaults;
+      const parsed = JSON.parse(raw);
+      return {
+        ...defaults,
+        ...parsed,
+        cards: parsed.cards || {},
+        lastMistakes: parsed.lastMistakes || []
+      };
+    } catch (error) {
+      return defaults;
+    }
+  }
+
+  function defaultState() {
+    return {
+      xp: 0,
+      todayXp: 0,
+      hearts: MAX_HEARTS,
+      streak: 0,
+      activeDate: "",
+      combo: 0,
+      bestCombo: 0,
+      lessonsToday: 0,
+      cards: {},
+      lastMistakes: []
+    };
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(app.state));
+    } catch (error) {
+      showToast("Progress could not be saved on this browser.");
+    }
+  }
+
+  function ensureToday(markActive) {
+    const today = localDateString(new Date());
+    if (app.state.activeDate === today) return;
+
+    const previous = app.state.activeDate;
+    const wasYesterday = previous && previous === localDateString(addDays(new Date(), -1));
+
+    app.state.todayXp = 0;
+    app.state.lessonsToday = 0;
+    app.state.combo = 0;
+    app.state.hearts = MAX_HEARTS;
+
+    if (markActive) {
+      app.state.streak = wasYesterday ? app.state.streak + 1 : 1;
+      app.state.activeDate = today;
+      saveState();
+    } else if (!previous) {
+      app.state.activeDate = "";
+    }
+  }
+
+  function getLevel() {
+    return Math.floor(app.state.xp / LEVEL_SIZE_XP) + 1;
+  }
+
+  function getOverallSeenPercent() {
+    if (!app.cards.length) return 0;
+    const seen = app.cards.filter((card) => getCardProgress(card.id).seen > 0).length;
+    return Math.round((seen / app.cards.length) * 100);
+  }
+
+  function freshInteraction() {
+    return {
+      revealed: false,
+      submitted: false,
+      checked: false,
+      typeMatch: false,
+      typedValue: "",
+      result: ""
+    };
+  }
+
+  function emptySession() {
+    return {
+      queue: [],
+      index: 0,
+      results: [],
+      mistakes: [],
+      repeats: {},
+      completed: false,
+      startedAt: 0,
+      interaction: freshInteraction()
+    };
+  }
+
+  function showTab(tab) {
+    app.tab = tab;
+    const panels = {
+      lesson: app.els.lessonPanel,
+      decks: app.els.decksPanel,
+      cheat: app.els.cheatPanel
+    };
+
+    Object.entries(panels).forEach(([name, panel]) => {
+      const active = name === tab;
+      panel.hidden = !active;
+      panel.classList.toggle("is-active", active);
+    });
+
+    updateTabButtons();
+    if (tab === "decks") renderDecks();
+    if (tab === "cheat") renderCheatSheet();
+  }
+
+  function updateTabButtons() {
+    document.querySelectorAll("[data-action='show-tab']").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.tab === app.tab);
+    });
+  }
+
+  function updateFocusButtons() {
+    document.querySelectorAll("[data-action='set-focus']").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.focus === app.focus);
+    });
+  }
+
+  function showToast(message) {
+    clearTimeout(app.toastTimer);
+    app.els.toast.textContent = message;
+    app.els.toast.classList.add("is-visible");
+    app.toastTimer = window.setTimeout(() => {
+      app.els.toast.classList.remove("is-visible");
+    }, 1800);
+  }
+
+  function renderLoadError(error) {
+    app.els.lessonPanel.innerHTML = `
+      <div class="empty-state">
+        Could not start the quiz app. ${escapeHtml(error.message)}
+        Run it through a local web server so the JSON file can load.
+      </div>
+    `;
+  }
+
+  async function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) return;
+    try {
+      await navigator.serviceWorker.register("./service-worker.js");
+    } catch (error) {
+      // The app still works without offline caching, especially over local HTTP.
+    }
+  }
+
+  function answerLooksCorrect(input, card) {
+    const value = normalizeForCompare(input);
+    if (!value) return false;
+
+    const targets = [card.answer, card.fullText, card.latex]
+      .filter(Boolean)
+      .flatMap((answer) => answerVariants(answer));
+
+    return targets.some((target) => {
+      const normalized = normalizeForCompare(target);
+      if (!normalized) return false;
+      if (value === normalized) return true;
+      if (value.length >= 3 && normalized.includes(value)) return true;
+      if (normalized.length >= 3 && value.includes(normalized)) return true;
+      return false;
+    });
+  }
+
+  function answerVariants(answer) {
+    const text = String(answer);
+    const afterEquals = text.includes("=") ? text.split("=").slice(1).join("=") : "";
+    return [text, afterEquals];
+  }
+
+  function normalizeForCompare(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/\u2265/g, ">=")
+      .replace(/\u2264/g, "<=")
+      .replace(/\u2212/g, "-")
+      .replace(/\u00d7/g, "x")
+      .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "$1/$2")
+      .replace(/[^a-z0-9+\-*/=<>]/g, "");
+  }
+
+  function formatDeckName(deck) {
+    return String(deck || "")
+      .replace(/^\d+_/, "")
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value).replace(/`/g, "&#96;");
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function shuffle(items) {
+    const copy = [...items];
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function uniqueRecent(items, limit) {
+    const seen = new Set();
+    const output = [];
+    for (const item of items) {
+      const key = String(item);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      output.push(item);
+      if (output.length >= limit) break;
+    }
+    return output;
+  }
+
+  function localDateString(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function addDays(date, days) {
+    const copy = new Date(date);
+    copy.setDate(copy.getDate() + days);
+    return copy;
+  }
+
+  function softBuzz(duration) {
+    if ("vibrate" in navigator) {
+      navigator.vibrate(duration);
+    }
+  }
+})();
+
+</script>
+  </body>
+</html>

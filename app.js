@@ -50,6 +50,7 @@
       app.decks = getDeckNames(app.cards);
       renderDeckOptions();
       startLesson();
+      renderAll();
       await registerServiceWorker();
     } catch (error) {
       renderLoadError(error);
@@ -455,6 +456,7 @@
     renderDecks();
     renderCheatSheet();
     updateTabButtons();
+    typesetMath(document.querySelector("main"));
   }
 
   function renderShell() {
@@ -513,7 +515,7 @@
       return `
         <div class="prompt prompt-with-math">
           <span>${escapeHtml(card.prompt)}</span>
-          <div class="math-block">${renderLatex(card.promptLatex)}</div>
+          <div class="math-block">${renderLatex(card.promptLatex, true)}</div>
         </div>
       `;
     }
@@ -571,7 +573,7 @@
   function renderAnswer(card) {
     const answer = card.fullText || card.answer;
     const formula = card.latex || (card.type === "formula" && isFormulaText(answer) ? answer : "");
-    const formulaBlock = formula ? `<div class="math-block">${renderLatex(formula)}</div>` : "";
+    const formulaBlock = formula ? `<div class="math-block">${renderLatex(formula, true)}</div>` : "";
     const answerText =
       !formula || normalizeForCompare(formula) !== normalizeForCompare(answer)
         ? `<p class="answer-main">${renderAnswerContent(answer)}</p>`
@@ -616,68 +618,44 @@
     return /\\|[_^=<>≥≤≈∑Σ∫λΔσπ√]|\b(f_s|T_s|MSE|D_|A_|L=|BW|SF)\b/.test(String(value || ""));
   }
 
-  function renderLatex(value) {
-    const holds = [];
-    const hold = (html) => {
-      const id = holds.length;
-      holds.push(html);
-      return `@@H${id}@@`;
+  function renderLatex(value, display = false) {
+    const source = normalizeLatexSource(value);
+    const opener = display ? "\\[" : "\\(";
+    const closer = display ? "\\]" : "\\)";
+    return `${opener}${escapeHtml(source)}${closer}`;
+  }
+
+  function normalizeLatexSource(value) {
+    return String(value || "")
+      .replace(/≥/g, "\\ge ")
+      .replace(/≤/g, "\\le ")
+      .replace(/≈/g, "\\approx ")
+      .replace(/∑/g, "\\sum ")
+      .replace(/Σ/g, "\\sum ")
+      .replace(/∫/g, "\\int ")
+      .replace(/λ/g, "\\lambda ")
+      .replace(/Δ/g, "\\Delta ")
+      .replace(/σ/g, "\\sigma ")
+      .replace(/π/g, "\\pi ")
+      .replace(/√/g, "\\sqrt{}")
+      .replace(/∈/g, "\\in ")
+      .replace(/−/g, "-")
+      .trim();
+  }
+
+  function typesetMath(root) {
+    if (!root || !window.MathJax) return;
+
+    const run = () => {
+      window.MathJax.typesetClear?.([root]);
+      window.MathJax.typesetPromise?.([root])?.catch(() => {});
     };
 
-    const symbols = {
-      approx: "≈",
-      cdot: "·",
-      Delta: "Δ",
-      frac: "frac",
-      ge: "≥",
-      in: "∈",
-      infinity: "∞",
-      infty: "∞",
-      int: "∫",
-      lambda: "λ",
-      le: "≤",
-      Leftrightarrow: "⇔",
-      Longleftrightarrow: "⇔",
-      pi: "π",
-      quad: " ",
-      sigma: "σ",
-      sin: "sin",
-      sum: "∑",
-      times: "×"
-    };
-
-    const convert = (raw) => {
-      let text = String(raw || "")
-        .replace(/\\left/g, "")
-        .replace(/\\right/g, "")
-        .replace(/\\,/g, " ")
-        .replace(/\\operatorname\{([^{}]+)\}/g, "$1")
-        .replace(/\\hat\{([^{}]+)\}/g, "$1\u0302");
-
-      text = text.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, (_, top, bottom) =>
-        hold(`<span class="frac"><span>${convert(top)}</span><span>${convert(bottom)}</span></span>`)
-      );
-      text = text.replace(/\\sqrt\{([^{}]+)\}/g, (_, inner) =>
-        hold(`<span class="root">√<span>${convert(inner)}</span></span>`)
-      );
-
-      text = escapeHtml(text);
-      text = text.replace(/\\([A-Za-z]+)/g, (_, name) => symbols[name] || name);
-      text = text.replace(/\^\{([^{}]+)\}/g, "<sup>$1</sup>");
-      text = text.replace(/_\{([^{}]+)\}/g, "<sub>$1</sub>");
-      text = text.replace(/\^([A-Za-z0-9+\-]+)/g, "<sup>$1</sup>");
-      text = text.replace(/_([A-Za-z0-9+\-]+)/g, "<sub>$1</sub>");
-      text = text.replace(/\s+/g, " ");
-      return text;
-    };
-
-    let html = convert(value);
-    let previous = "";
-    while (html !== previous) {
-      previous = html;
-      html = html.replace(/@@H(\d+)@@/g, (_, index) => holds[Number(index)] || "");
+    if (window.MathJax.startup?.promise) {
+      window.MathJax.startup.promise.then(run).catch(() => {});
+    } else {
+      run();
     }
-    return html;
   }
 
   function renderTags(card) {
@@ -766,7 +744,7 @@
       (card) => `
         <div class="cheat-item">
           <strong>${escapeHtml(card.front || "Formula")}</strong>
-          ${card.latex ? `<div class="math-block">${renderLatex(card.latex)}</div>` : `<span>${renderAnswerContent(card.back || "")}</span>`}
+          ${card.latex ? `<div class="math-block">${renderLatex(card.latex, true)}</div>` : `<span>${renderAnswerContent(card.back || "")}</span>`}
           ${card.back && card.latex && normalizeForCompare(card.back) !== normalizeForCompare(card.latex)
             ? `<span>${escapeHtml(card.back)}</span>`
             : ""}
@@ -1069,6 +1047,7 @@
     updateTabButtons();
     if (tab === "decks") renderDecks();
     if (tab === "cheat") renderCheatSheet();
+    typesetMath(panels[tab]);
   }
 
   function updateTabButtons() {

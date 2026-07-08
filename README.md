@@ -14,8 +14,9 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 
 ## What It Does
 
-- Builds 10-question lessons from formulas, concepts, multiple choice, and cloze cards.
-- Shows priority 1 cards more often.
+- Builds 10-question multiple-choice lessons from formulas, concepts, existing multiple choice, cloze cards, and generated variants.
+- Generates reverse concept questions, formula-recognition questions, explanation questions, and exam-sentence completion questions from the base material.
+- Prioritizes formula cards and decks where your answers show weakness or low coverage.
 - Repeats missed cards inside the same lesson and schedules them sooner.
-- Saves XP, streak, hearts, weak cards, and card progress in browser storage.
-- Includes deck filters, formula drill, weak-card mode, and a cheat sheet.
+- Saves covered cards, answer history, weak cards, and deck progress in browser storage.
+- Includes deck filters, weak-deck reporting, rendered formulas, and a cheat sheet.

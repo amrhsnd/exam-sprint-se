@@ -22,40 +22,21 @@
         </div>
         <div class="stat-grid" aria-label="Study stats">
           <div class="stat">
-            <span>XP</span>
-            <strong id="xpValue">0</strong>
+            <span>Covered</span>
+            <strong id="coveredValue">0/0</strong>
           </div>
           <div class="stat">
-            <span>Streak</span>
-            <strong id="streakValue">0</strong>
+            <span>Answered</span>
+            <strong id="answeredValue">0</strong>
           </div>
           <div class="stat">
-            <span>Hearts</span>
-            <strong id="heartValue">5</strong>
+            <span>Weak decks</span>
+            <strong id="weakDeckValue">0</strong>
           </div>
         </div>
       </header>
 
-      <section class="goal-strip" aria-label="Daily goal">
-        <div>
-          <span class="small-label">Daily goal</span>
-          <strong id="dailyGoalText">0 / 50 XP</strong>
-        </div>
-        <div class="goal-track" aria-hidden="true">
-          <span id="dailyGoalBar"></span>
-        </div>
-        <div>
-          <span class="small-label">Level</span>
-          <strong id="levelValue">1</strong>
-        </div>
-      </section>
-
       <section class="control-row" aria-label="Study controls">
-        <div class="segmented" id="focusControls">
-          <button type="button" class="is-active" data-action="set-focus" data-focus="sprint">Sprint</button>
-          <button type="button" data-action="set-focus" data-focus="formulas">Formulas</button>
-          <button type="button" data-action="set-focus" data-focus="weak">Weak</button>
-        </div>
         <label class="deck-picker">
           <span>Deck</span>
           <select id="deckSelect" aria-label="Deck filter"></select>

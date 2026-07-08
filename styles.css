@@ -104,19 +104,6 @@ button {
   font-size: 1rem;
 }
 
-.goal-strip {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 12px;
-  align-items: center;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.goal-track,
 .lesson-track {
   overflow: hidden;
   width: 100%;
@@ -125,7 +112,6 @@ button {
   background: #deeadf;
 }
 
-.goal-track span,
 .lesson-track span {
   display: block;
   width: 0;
@@ -140,28 +126,6 @@ button {
   grid-template-columns: 1fr;
   gap: 10px;
   margin: 12px 0;
-}
-
-.segmented {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.segmented button {
-  min-height: 42px;
-  padding: 10px 8px;
-  color: var(--muted);
-  background: transparent;
-  font-weight: 850;
-}
-
-.segmented button.is-active {
-  color: #ffffff;
-  background: var(--green);
 }
 
 .deck-picker {
@@ -271,6 +235,11 @@ button {
   letter-spacing: 0;
 }
 
+.prompt-with-math {
+  display: grid;
+  gap: 12px;
+}
+
 .subprompt {
   margin: 0;
   color: var(--muted);
@@ -301,7 +270,7 @@ button {
   color: var(--ink);
   background: #ffffff;
   text-align: left;
-  line-height: 1.25;
+  line-height: 1.32;
 }
 
 .choice-btn:active,
@@ -374,6 +343,66 @@ button {
   margin: 0;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.math-block,
+.math-inline {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.math-block {
+  overflow-x: auto;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111c14;
+  font-size: clamp(1.15rem, 5.4vw, 1.65rem);
+  line-height: 1.55;
+}
+
+.math-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.12em;
+  align-items: center;
+  max-width: 100%;
+  font-size: 1.06em;
+  line-height: 1.35;
+}
+
+.choice-content {
+  display: grid;
+  gap: 6px;
+}
+
+.frac {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: center;
+  margin: 0 0.12em;
+  vertical-align: middle;
+}
+
+.frac > span:first-child {
+  min-width: 100%;
+  padding: 0 0.22em 0.08em;
+  border-bottom: 1.8px solid currentColor;
+  text-align: center;
+}
+
+.frac > span:last-child {
+  padding: 0.08em 0.22em 0;
+  text-align: center;
+}
+
+.root {
+  display: inline-flex;
+  gap: 0.08em;
+  align-items: baseline;
 }
 
 .button-row,
@@ -516,6 +545,46 @@ button {
   line-height: 1.36;
 }
 
+.deck-row.weak {
+  border-color: #f0c1bd;
+  background: #fff8f7;
+}
+
+.deck-row.unstarted {
+  border-color: #f3dfb8;
+  background: #fffdf7;
+}
+
+.deck-row.good {
+  border-color: #b9e8bf;
+}
+
+.deck-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #edf5ee;
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.deck-row.weak .deck-status {
+  color: #9f2f2a;
+  background: #ffe8e6;
+}
+
+.deck-row.unstarted .deck-status,
+.deck-row.partial .deck-status {
+  color: #805000;
+  background: #fff0d3;
+}
+
+.deck-row.good .deck-status {
+  color: var(--green-dark);
+  background: #e7f8e8;
+}
+
 .meter {
   overflow: hidden;
   height: 8px;
@@ -615,10 +684,6 @@ button {
     padding-left: 22px;
   }
 
-  .control-row {
-    grid-template-columns: 1fr minmax(220px, 0.72fr);
-  }
-
   .button-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -631,15 +696,6 @@ button {
 
   .stat-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .goal-strip {
-    grid-template-columns: 1fr auto;
-  }
-
-  .goal-track {
-    grid-column: 1 / -1;
-    grid-row: 2;
   }
 
   .grade-row {

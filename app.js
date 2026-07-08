@@ -3,20 +3,17 @@
 
   const DATA_URL = "./data/se_duolingo_quiz_data.json";
   const STORAGE_KEY = "exam-sprint-state-v1";
-  const DAILY_GOAL_XP = 50;
   const LESSON_SIZE = 10;
-  const MAX_HEARTS = 5;
-  const LEVEL_SIZE_XP = 120;
-  const TYPE_SEQUENCE = [
+  const SMART_TYPE_SEQUENCE = [
+    "formula",
+    "formula",
     "concept",
     "formula",
     "choice",
-    "concept",
     "formula",
-    "choice",
     "cloze",
     "concept",
-    "formula",
+    "sentence",
     "concept"
   ];
 
@@ -24,7 +21,8 @@
     concept: "Recall",
     formula: "Formula",
     choice: "Multiple choice",
-    cloze: "Fill blank"
+    cloze: "Fill blank",
+    sentence: "Exam sentence"
   };
 
   const app = {
@@ -34,7 +32,6 @@
     state: loadState(),
     session: emptySession(),
     tab: "lesson",
-    focus: "sprint",
     deck: "all",
     toastTimer: 0,
     els: {}
@@ -61,24 +58,18 @@
 
   function bindElements() {
     app.els.courseLabel = document.querySelector("#courseLabel");
-    app.els.xpValue = document.querySelector("#xpValue");
-    app.els.streakValue = document.querySelector("#streakValue");
-    app.els.heartValue = document.querySelector("#heartValue");
-    app.els.dailyGoalText = document.querySelector("#dailyGoalText");
-    app.els.dailyGoalBar = document.querySelector("#dailyGoalBar");
-    app.els.levelValue = document.querySelector("#levelValue");
+    app.els.coveredValue = document.querySelector("#coveredValue");
+    app.els.answeredValue = document.querySelector("#answeredValue");
+    app.els.weakDeckValue = document.querySelector("#weakDeckValue");
     app.els.deckSelect = document.querySelector("#deckSelect");
     app.els.lessonPanel = document.querySelector("#lessonPanel");
     app.els.decksPanel = document.querySelector("#decksPanel");
     app.els.cheatPanel = document.querySelector("#cheatPanel");
-    app.els.focusControls = document.querySelector("#focusControls");
     app.els.toast = document.querySelector("#toast");
   }
 
   function bindEvents() {
     document.body.addEventListener("click", handleClick);
-    document.body.addEventListener("input", handleInput);
-    document.body.addEventListener("keydown", handleKeydown);
 
     app.els.deckSelect.addEventListener("change", () => {
       app.deck = app.els.deckSelect.value;
@@ -92,14 +83,6 @@
     if (!target) return;
 
     const action = target.dataset.action;
-
-    if (action === "set-focus") {
-      app.focus = target.dataset.focus || "sprint";
-      updateFocusButtons();
-      startLesson();
-      renderAll();
-      return;
-    }
 
     if (action === "show-tab") {
       showTab(target.dataset.tab || "lesson");
@@ -118,24 +101,8 @@
       return;
     }
 
-    if (action === "reveal") {
-      app.session.interaction.revealed = true;
-      renderLesson();
-      return;
-    }
-
     if (action === "choice") {
       submitChoice(target.dataset.choice || "");
-      return;
-    }
-
-    if (action === "check-type") {
-      checkTypedAnswer();
-      return;
-    }
-
-    if (action === "grade") {
-      submitGrade(target.dataset.grade || "unsure");
       return;
     }
 
@@ -150,20 +117,6 @@
       showTab("lesson");
       startLesson();
       renderAll();
-    }
-  }
-
-  function handleInput(event) {
-    if (event.target.id === "typedAnswer") {
-      app.session.interaction.typedValue = event.target.value;
-    }
-  }
-
-  function handleKeydown(event) {
-    if (event.key !== "Enter") return;
-    if (event.target.id === "typedAnswer") {
-      event.preventDefault();
-      checkTypedAnswer();
     }
   }
 
@@ -187,6 +140,7 @@
       priority: card.priority || 2,
       prompt: card.front || "Formula",
       answer: card.back || "",
+      answerGroup: "formula-answer",
       latex: card.latex || "",
       explanation: card.explanation || "",
       tags: card.tags || []
@@ -199,6 +153,7 @@
       priority: card.priority || 2,
       prompt: card.front || "Concept",
       answer: card.back || "",
+      answerGroup: "concept-definition",
       explanation: card.explanation || "",
       tags: card.tags || []
     }));
@@ -210,6 +165,7 @@
       priority: card.priority || 2,
       prompt: card.question || "Question",
       answer: card.answer || "",
+      answerGroup: `choice-${card.deck || "multiple_choice"}`,
       choices: card.choices || [],
       explanation: card.explanation || "",
       tags: card.tags || []
@@ -225,19 +181,169 @@
         priority: card.priority || 2,
         prompt,
         answer: card.answer || "",
+        answerGroup: "cloze-answer",
         fullText,
         explanation: fullText,
         tags: card.tags || []
       };
     });
 
-    return [...formulaCards, ...conceptCards, ...choiceCards, ...clozeCards].filter(
+    const generatedFormulaNameCards = (data.formula_cards || []).map((card) => ({
+      id: `${card.id}_name`,
+      type: "formula",
+      deck: card.deck || "formulas",
+      priority: card.priority || 2,
+      prompt: "What does this formula represent?",
+      promptLatex: card.latex || card.back || "",
+      answer: card.front || "",
+      answerGroup: "formula-name",
+      explanation: card.explanation || "",
+      tags: [...(card.tags || []), "generated"]
+    }));
+
+    const generatedFormulaExplanationCards = (data.formula_cards || [])
+      .filter((card) => card.explanation)
+      .map((card) => ({
+        id: `${card.id}_why`,
+        type: "formula",
+        deck: card.deck || "formulas",
+        priority: card.priority || 2,
+        prompt: `Which explanation matches ${card.front || "this formula"}?`,
+        promptLatex: card.latex || card.back || "",
+        answer: card.explanation || "",
+        answerGroup: "formula-explanation",
+        explanation: card.back || "",
+        tags: [...(card.tags || []), "generated"]
+      }));
+
+    const generatedConceptTermCards = (data.concept_cards || []).map((card) => ({
+      id: `${card.id}_term`,
+      type: "concept",
+      deck: card.deck || "concepts",
+      priority: card.priority || 2,
+      prompt: `Which concept is described here? ${card.back || ""}`,
+      answer: conceptTermFromPrompt(card.front || ""),
+      answerGroup: "concept-term",
+      explanation: card.front || "",
+      tags: [...(card.tags || []), "generated"]
+    }));
+
+    const generatedConceptTopicCards = (data.concept_cards || [])
+      .filter((card) => card.tags && card.tags.length)
+      .map((card) => ({
+        id: `${card.id}_topic`,
+        type: "concept",
+        deck: card.deck || "concepts",
+        priority: Math.max(2, card.priority || 2),
+        prompt: `Which topic does this fact belong to? ${card.back || ""}`,
+        answer: formatTagLabel(card.tags[0]),
+        answerGroup: "topic-label",
+        explanation: card.front || "",
+        tags: [...(card.tags || []), "generated"]
+      }));
+
+    const generatedSentenceCards = (data.exam_sentences || [])
+      .map((sentence, index) => createSentenceQuestion(sentence, index))
+      .filter(Boolean);
+
+    return [
+      ...formulaCards,
+      ...conceptCards,
+      ...choiceCards,
+      ...clozeCards,
+      ...generatedFormulaNameCards,
+      ...generatedFormulaExplanationCards,
+      ...generatedConceptTermCards,
+      ...generatedConceptTopicCards,
+      ...generatedSentenceCards
+    ].filter(
       (card) => card.id && card.prompt && card.answer
     );
   }
 
   function getDeckNames(cards) {
     return [...new Set(cards.map((card) => card.deck))].sort((a, b) => a.localeCompare(b));
+  }
+
+  function conceptTermFromPrompt(prompt) {
+    return String(prompt || "")
+      .replace(/[?.]$/g, "")
+      .replace(/^define\s+/i, "")
+      .replace(/^what\s+(is|are|does|do)\s+/i, "")
+      .replace(/^explain\s+/i, "")
+      .replace(/^describe\s+/i, "")
+      .replace(/^name\s+/i, "")
+      .replace(/^list\s+/i, "")
+      .replace(/^give\s+an?\s+example\s+of\s+/i, "")
+      .replace(/^why\s+is\s+/i, "")
+      .replace(/\s+/g, " ")
+      .trim() || String(prompt || "Concept").trim();
+  }
+
+  function formatTagLabel(tag) {
+    return String(tag || "")
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function createSentenceQuestion(sentence, index) {
+    const phrase = findBlankPhrase(sentence);
+    if (!phrase) return null;
+
+    return {
+      id: `S${String(index + 1).padStart(3, "0")}`,
+      type: "sentence",
+      deck: "exam_sentences",
+      priority: 1,
+      prompt: `Complete the exam sentence: ${blankPhrase(sentence, phrase)}`,
+      answer: phrase,
+      answerGroup: "exam-sentence-term",
+      explanation: sentence,
+      tags: ["exam_sentence", "generated"]
+    };
+  }
+
+  function findBlankPhrase(sentence) {
+    const keyPhrases = [
+      "Graph Fourier transform",
+      "Fourier transform",
+      "Cloud computing",
+      "Data analytics",
+      "Broadcast storm",
+      "smart environment",
+      "local processing",
+      "CSMA/CA",
+      "LoRaWAN",
+      "VANETs",
+      "WebSockets",
+      "Quantization",
+      "Aliasing",
+      "actuators",
+      "sensors",
+      "MQTT",
+      "XMPP",
+      "DCT",
+      "JPEG",
+      "LPWAN",
+      "V2V",
+      "V2I",
+      "IaaS",
+      "PaaS",
+      "SaaS"
+    ];
+
+    const lower = sentence.toLowerCase();
+    const match = keyPhrases.find((phrase) => lower.includes(phrase.toLowerCase()));
+    if (match) {
+      return sentence.match(new RegExp(escapeRegExp(match), "i"))?.[0] || match;
+    }
+
+    const words = sentence.match(/\b[A-Z][A-Za-z0-9/+-]{2,}\b/g);
+    return words && words.length ? words[0] : null;
+  }
+
+  function blankPhrase(sentence, phrase) {
+    return sentence.replace(new RegExp(escapeRegExp(phrase), "i"), "____");
   }
 
   function renderDeckOptions() {
@@ -275,17 +381,6 @@
       source = source.filter((card) => mistakeIds.has(card.id));
     }
 
-    if (app.focus === "weak") {
-      source = source.filter((card) => {
-        const progress = getCardProgress(card.id);
-        return progress.wrong > 0 || progress.mastery < 1 || progress.seen === 0;
-      });
-    }
-
-    if (app.focus === "formulas") {
-      source = source.filter((card) => card.type === "formula" || card.type === "cloze");
-    }
-
     if (!source.length) {
       source = filteredCards();
     }
@@ -294,7 +389,7 @@
     const selectedIds = new Set();
 
     for (let i = 0; i < LESSON_SIZE; i += 1) {
-      const targetType = app.focus === "sprint" ? TYPE_SEQUENCE[i % TYPE_SEQUENCE.length] : null;
+      const targetType = SMART_TYPE_SEQUENCE[i % SMART_TYPE_SEQUENCE.length];
       const card = pickWeightedCard(source, targetType, selectedIds);
       if (!card) break;
       selected.push(card.id);
@@ -329,14 +424,19 @@
     if (!pool.length) return null;
 
     const now = Date.now();
+    const deckStatsByName = getDeckStatsMap();
     const weighted = pool.map((card) => {
       const progress = getCardProgress(card.id);
+      const deckStats = deckStatsByName.get(card.deck);
       const priorityWeight = card.priority === 1 ? 2.15 : 1.2;
+      const formulaWeight = card.type === "formula" || card.type === "cloze" ? 2.35 : 1;
       const unseenWeight = progress.seen ? 1 : 1.85;
       const dueWeight = !progress.due || progress.due <= now ? 1.65 : 0.3;
-      const weakWeight = progress.mastery < 0 ? 2.2 : 1 + Math.min(progress.wrong, 4) * 0.28;
+      const weakCardWeight = progress.mastery < 0 ? 2.4 : 1 + Math.min(progress.wrong, 4) * 0.34;
+      const weakDeckWeight = deckStats ? 1 + deckStats.weakness * 2.2 : 1;
       const recentPenalty = progress.last && now - progress.last < 3 * 60 * 1000 ? 0.45 : 1;
-      const score = priorityWeight * unseenWeight * dueWeight * weakWeight * recentPenalty;
+      const score =
+        priorityWeight * formulaWeight * unseenWeight * dueWeight * weakCardWeight * weakDeckWeight * recentPenalty;
       return { card, score: Math.max(0.05, score) };
     });
 
@@ -355,17 +455,13 @@
     renderDecks();
     renderCheatSheet();
     updateTabButtons();
-    updateFocusButtons();
   }
 
   function renderShell() {
-    ensureToday(false);
-    app.els.xpValue.textContent = String(app.state.xp);
-    app.els.streakValue.textContent = String(app.state.streak);
-    app.els.heartValue.textContent = String(app.state.hearts);
-    app.els.levelValue.textContent = String(getLevel());
-    app.els.dailyGoalText.textContent = `${app.state.todayXp} / ${DAILY_GOAL_XP} XP`;
-    app.els.dailyGoalBar.style.width = `${Math.min(100, (app.state.todayXp / DAILY_GOAL_XP) * 100)}%`;
+    const stats = getStudyStats();
+    app.els.coveredValue.textContent = `${stats.covered}/${stats.total}`;
+    app.els.answeredValue.textContent = String(stats.answered);
+    app.els.weakDeckValue.textContent = String(stats.weakDecks);
 
     if (app.data && app.data.metadata && app.data.metadata.title) {
       app.els.courseLabel.textContent = app.data.metadata.title.replace(" Exam Quiz Data", "");
@@ -389,8 +485,6 @@
 
     const progressPercent = ((app.session.index) / Math.max(1, app.session.queue.length)) * 100;
     const progress = getCardProgress(card.id);
-    const kind = getInteractionKind(card);
-
     app.els.lessonPanel.innerHTML = `
       <article class="lesson-card">
         <div class="lesson-head">
@@ -406,36 +500,33 @@
           </div>
         </div>
         <div class="card-body">
-          <p class="prompt">${escapeHtml(card.prompt)}</p>
-          ${renderKindBody(card, kind)}
+          ${renderPrompt(card)}
+          ${renderKindBody(card)}
           ${renderTags(card)}
         </div>
       </article>
     `;
-
-    const input = document.querySelector("#typedAnswer");
-    if (input && !app.session.interaction.checked && !app.session.interaction.submitted) {
-      input.focus({ preventScroll: true });
-      const value = app.session.interaction.typedValue || "";
-      input.value = value;
-      input.setSelectionRange(value.length, value.length);
-    }
   }
 
-  function renderKindBody(card, kind) {
+  function renderPrompt(card) {
+    if (card.promptLatex) {
+      return `
+        <div class="prompt prompt-with-math">
+          <span>${escapeHtml(card.prompt)}</span>
+          <div class="math-block">${renderLatex(card.promptLatex)}</div>
+        </div>
+      `;
+    }
+
+    return `<p class="prompt">${escapeHtml(card.prompt)}</p>`;
+  }
+
+  function renderKindBody(card) {
     if (app.session.interaction.submitted) {
       return renderSubmittedFeedback(card);
     }
 
-    if (kind === "choice") {
-      return renderChoiceBody(card);
-    }
-
-    if (kind === "type") {
-      return renderTypeBody(card);
-    }
-
-    return renderRecallBody(card);
+    return renderChoiceBody(card);
   }
 
   function renderChoiceBody(card) {
@@ -446,7 +537,7 @@
           .map(
             (choice) => `
               <button type="button" class="choice-btn" data-action="choice" data-choice="${escapeAttr(choice)}">
-                ${escapeHtml(choice)}
+                ${renderAnswerContent(choice)}
               </button>
             `
           )
@@ -455,69 +546,20 @@
     `;
   }
 
-  function renderTypeBody(card) {
-    const interaction = app.session.interaction;
-
-    if (interaction.checked) {
-      return `
-        <div class="answer-panel ${interaction.typeMatch ? "correct" : "wrong"}">
-          <p class="answer-main">${interaction.typeMatch ? "Correct." : "Check it against the answer."}</p>
-          ${renderAnswer(card)}
-          <div class="grade-row">
-            <button type="button" class="grade-btn" data-action="grade" data-grade="wrong">Missed</button>
-            <button type="button" class="grade-btn" data-action="grade" data-grade="unsure">Almost</button>
-            <button type="button" class="grade-btn" data-action="grade" data-grade="correct">I had it</button>
-          </div>
-        </div>
-      `;
-    }
-
-    return `
-      <div class="type-box">
-        <input
-          id="typedAnswer"
-          type="text"
-          inputmode="text"
-          autocomplete="off"
-          autocapitalize="none"
-          spellcheck="false"
-          placeholder="Type the missing term or formula"
-          value="${escapeAttr(interaction.typedValue || "")}"
-        >
-        <button type="button" class="primary-btn" data-action="check-type">Check</button>
-      </div>
-    `;
-  }
-
-  function renderRecallBody(card) {
-    if (!app.session.interaction.revealed) {
-      return `
-        <p class="subprompt">Answer out loud, then reveal.</p>
-        <button type="button" class="primary-btn" data-action="reveal">Reveal answer</button>
-      `;
-    }
-
-    return `
-      <div class="answer-panel">
-        ${renderAnswer(card)}
-        <div class="grade-row">
-          <button type="button" class="grade-btn" data-action="grade" data-grade="wrong">Forgot</button>
-          <button type="button" class="grade-btn" data-action="grade" data-grade="unsure">Hesitated</button>
-          <button type="button" class="grade-btn" data-action="grade" data-grade="correct">Knew it</button>
-        </div>
-      </div>
-    `;
-  }
-
   function renderSubmittedFeedback(card) {
     const result = app.session.interaction.result;
-    const label = result === "correct" ? "Correct" : result === "unsure" ? "Almost" : "Review soon";
+    const label = result === "correct" ? "Correct" : "Review soon";
     const panelClass = result === "correct" ? "correct" : result === "wrong" ? "wrong" : "";
-    const xp = app.session.interaction.xpAwarded || 0;
+    const selected = app.session.interaction.selected;
+    const selectedLine =
+      selected && result === "wrong"
+        ? `<p class="answer-explanation">Your choice: ${renderAnswerContent(selected)}</p>`
+        : "";
 
     return `
       <div class="answer-panel ${panelClass}">
-        <p class="answer-main">${label}. +${xp} XP</p>
+        <p class="answer-main">${label}.</p>
+        ${selectedLine}
         ${renderAnswer(card)}
         <button type="button" class="primary-btn" data-action="next">
           ${app.session.index + 1 >= app.session.queue.length ? "Finish lesson" : "Continue"}
@@ -528,17 +570,114 @@
 
   function renderAnswer(card) {
     const answer = card.fullText || card.answer;
-    const latex = card.latex ? `<p class="answer-explanation">Latex: ${escapeHtml(card.latex)}</p>` : "";
+    const formula = card.latex || (card.type === "formula" && isFormulaText(answer) ? answer : "");
+    const formulaBlock = formula ? `<div class="math-block">${renderLatex(formula)}</div>` : "";
+    const answerText =
+      !formula || normalizeForCompare(formula) !== normalizeForCompare(answer)
+        ? `<p class="answer-main">${renderAnswerContent(answer)}</p>`
+        : "";
     const explanation =
       card.explanation && card.explanation !== answer
         ? `<p class="answer-explanation">${escapeHtml(card.explanation)}</p>`
         : "";
 
     return `
-      <p class="answer-main">${escapeHtml(answer)}</p>
-      ${latex}
+      ${formulaBlock}
+      ${answerText}
       ${explanation}
     `;
+  }
+
+  function renderAnswerContent(value) {
+    const text = String(value || "");
+    const source = findCardByAnswer(text);
+
+    if (source && source.latex && source.type === "formula") {
+      const formula = `<span class="math-inline">${renderLatex(source.latex)}</span>`;
+      if (normalizeForCompare(source.latex) !== normalizeForCompare(text)) {
+        return `<span class="choice-content">${formula}<span>${escapeHtml(text)}</span></span>`;
+      }
+      return formula;
+    }
+
+    if (isFormulaText(text)) {
+      return `<span class="math-inline">${renderLatex(text)}</span>`;
+    }
+
+    return escapeHtml(text);
+  }
+
+  function findCardByAnswer(answer) {
+    const normalized = normalizeForCompare(answer);
+    return app.cards.find((card) => normalizeForCompare(card.answer) === normalized) || null;
+  }
+
+  function isFormulaText(value) {
+    return /\\|[_^=<>≥≤≈∑Σ∫λΔσπ√]|\b(f_s|T_s|MSE|D_|A_|L=|BW|SF)\b/.test(String(value || ""));
+  }
+
+  function renderLatex(value) {
+    const holds = [];
+    const hold = (html) => {
+      const id = holds.length;
+      holds.push(html);
+      return `@@H${id}@@`;
+    };
+
+    const symbols = {
+      approx: "≈",
+      cdot: "·",
+      Delta: "Δ",
+      frac: "frac",
+      ge: "≥",
+      in: "∈",
+      infinity: "∞",
+      infty: "∞",
+      int: "∫",
+      lambda: "λ",
+      le: "≤",
+      Leftrightarrow: "⇔",
+      Longleftrightarrow: "⇔",
+      pi: "π",
+      quad: " ",
+      sigma: "σ",
+      sin: "sin",
+      sum: "∑",
+      times: "×"
+    };
+
+    const convert = (raw) => {
+      let text = String(raw || "")
+        .replace(/\\left/g, "")
+        .replace(/\\right/g, "")
+        .replace(/\\,/g, " ")
+        .replace(/\\operatorname\{([^{}]+)\}/g, "$1")
+        .replace(/\\hat\{([^{}]+)\}/g, "$1\u0302");
+
+      text = text.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, (_, top, bottom) =>
+        hold(`<span class="frac"><span>${convert(top)}</span><span>${convert(bottom)}</span></span>`)
+      );
+      text = text.replace(/\\sqrt\{([^{}]+)\}/g, (_, inner) =>
+        hold(`<span class="root">√<span>${convert(inner)}</span></span>`)
+      );
+
+      text = escapeHtml(text);
+      text = text.replace(/\\([A-Za-z]+)/g, (_, name) => symbols[name] || name);
+      text = text.replace(/\^\{([^{}]+)\}/g, "<sup>$1</sup>");
+      text = text.replace(/_\{([^{}]+)\}/g, "<sub>$1</sub>");
+      text = text.replace(/\^([A-Za-z0-9+\-]+)/g, "<sup>$1</sup>");
+      text = text.replace(/_([A-Za-z0-9+\-]+)/g, "<sub>$1</sub>");
+      text = text.replace(/\s+/g, " ");
+      return text;
+    };
+
+    let html = convert(value);
+    let previous = "";
+    while (html !== previous) {
+      previous = html;
+      html = html.replace(/@@H(\d+)@@/g, (_, index) => holds[Number(index)] || "");
+    }
+    return html;
   }
 
   function renderTags(card) {
@@ -551,9 +690,8 @@
     const results = app.session.results;
     const total = Math.max(1, results.length);
     const correct = results.filter((item) => item.result === "correct").length;
-    const unsure = results.filter((item) => item.result === "unsure").length;
+    const review = results.filter((item) => item.result === "wrong").length;
     const accuracy = Math.round((correct / total) * 100);
-    const xp = results.reduce((sum, item) => sum + item.xp, 0);
     const mistakeButton =
       app.state.lastMistakes && app.state.lastMistakes.length
         ? `<button type="button" class="secondary-btn" data-action="review-mistakes">Review mistakes</button>`
@@ -564,8 +702,8 @@
         <h2>Lesson complete</h2>
         <div class="summary-grid">
           <div class="summary-tile"><span>Accuracy</span><strong>${accuracy}%</strong></div>
-          <div class="summary-tile"><span>XP</span><strong>${xp}</strong></div>
-          <div class="summary-tile"><span>Almost</span><strong>${unsure}</strong></div>
+          <div class="summary-tile"><span>Correct</span><strong>${correct}</strong></div>
+          <div class="summary-tile"><span>Review</span><strong>${review}</strong></div>
         </div>
         <div class="button-row">
           <button type="button" class="primary-btn" data-action="new-lesson">Next lesson</button>
@@ -578,29 +716,42 @@
   function renderDecks() {
     if (!app.cards.length) return;
 
-    const rows = app.decks.map((deck) => {
-      const cards = app.cards.filter((card) => card.deck === deck);
-      const seen = cards.filter((card) => getCardProgress(card.id).seen > 0).length;
-      const weak = cards.filter((card) => {
-        const progress = getCardProgress(card.id);
-        return progress.wrong > 0 || progress.mastery < 0;
-      }).length;
-      const pct = Math.round((seen / cards.length) * 100);
+    const deckStats = getDeckStats().sort((a, b) => {
+      if (a.status !== b.status) {
+        const rank = { weak: 0, unstarted: 1, partial: 2, good: 3 };
+        return rank[a.status] - rank[b.status];
+      }
+      return b.weakness - a.weakness || a.name.localeCompare(b.name);
+    });
+
+    const rows = deckStats.map((deck) => {
+      const accuracyText = deck.answered ? `${Math.round(deck.accuracy * 100)}% correct` : "not started";
+      const statusText =
+        deck.status === "weak"
+          ? "Needs attention"
+          : deck.status === "unstarted"
+            ? "Not started"
+            : deck.status === "partial"
+              ? "Keep going"
+              : "Good";
       return `
-        <button type="button" class="deck-row" data-action="select-deck" data-deck="${escapeAttr(deck)}">
-          <strong>${formatDeckName(deck)}</strong>
-          <span>${cards.length} cards - ${seen} seen - ${weak} weak</span>
-          <div class="meter" aria-hidden="true"><span style="width: ${pct}%"></span></div>
+        <button type="button" class="deck-row ${deck.status}" data-action="select-deck" data-deck="${escapeAttr(deck.name)}">
+          <strong>${formatDeckName(deck.name)}</strong>
+          <span>${deck.seen}/${deck.total} covered - ${deck.answered} answered - ${deck.weakCards} weak - ${accuracyText}</span>
+          <span class="deck-status">${statusText}</span>
+          <div class="meter" aria-hidden="true"><span style="width: ${Math.round(deck.coverage * 100)}%"></span></div>
         </button>
       `;
     });
 
+    const stats = getStudyStats();
     app.els.decksPanel.innerHTML = `
       <h2 class="section-title">Decks</h2>
       <div class="deck-list">
         <button type="button" class="deck-row" data-action="select-deck" data-deck="all">
           <strong>All decks</strong>
-          <span>${app.cards.length} cards total</span>
+          <span>${stats.covered}/${stats.total} cards covered - ${stats.answered} answers given</span>
+          <span class="deck-status">${stats.weakDecks} weak decks</span>
           <div class="meter" aria-hidden="true"><span style="width: ${getOverallSeenPercent()}%"></span></div>
         </button>
         ${rows.join("")}
@@ -615,7 +766,10 @@
       (card) => `
         <div class="cheat-item">
           <strong>${escapeHtml(card.front || "Formula")}</strong>
-          <span>${escapeHtml(card.back || "")}</span>
+          ${card.latex ? `<div class="math-block">${renderLatex(card.latex)}</div>` : `<span>${renderAnswerContent(card.back || "")}</span>`}
+          ${card.back && card.latex && normalizeForCompare(card.back) !== normalizeForCompare(card.latex)
+            ? `<span>${escapeHtml(card.back)}</span>`
+            : ""}
           ${card.explanation ? `<span>${escapeHtml(card.explanation)}</span>` : ""}
         </div>
       `
@@ -646,38 +800,10 @@
     submitResult(correct ? "correct" : "wrong", { selected: choice });
   }
 
-  function checkTypedAnswer() {
-    const card = getCurrentCard();
-    if (!card || app.session.interaction.submitted) return;
-
-    const input = document.querySelector("#typedAnswer");
-    const value = input ? input.value : app.session.interaction.typedValue;
-    const isMatch = answerLooksCorrect(value, card);
-
-    app.session.interaction.typedValue = value || "";
-    app.session.interaction.checked = true;
-    app.session.interaction.typeMatch = isMatch;
-
-    if (isMatch) {
-      submitResult("correct", { typed: value });
-      return;
-    }
-
-    renderLesson();
-  }
-
-  function submitGrade(grade) {
-    if (app.session.interaction.submitted) return;
-    const result = ["wrong", "unsure", "correct"].includes(grade) ? grade : "unsure";
-    submitResult(result, {});
-  }
-
   function submitResult(result, detail) {
     const card = getCurrentCard();
     if (!card || app.session.interaction.submitted) return;
 
-    ensureToday(true);
-    const xp = awardXp(result);
     updateCardProgress(card, result);
     maybeInsertRepeat(card, result);
 
@@ -685,14 +811,12 @@
       ...app.session.interaction,
       ...detail,
       submitted: true,
-      result,
-      xpAwarded: xp
+      result
     };
 
     app.session.results.push({
       id: card.id,
       result,
-      xp,
       at: Date.now()
     });
 
@@ -724,16 +848,9 @@
 
   function completeLesson() {
     app.session.completed = true;
-    app.state.lessonsToday += 1;
 
-    const results = app.session.results;
-    const correct = results.filter((item) => item.result === "correct").length;
-    const accuracy = results.length ? correct / results.length : 0;
-    if (accuracy >= 0.8 && app.state.hearts < MAX_HEARTS) {
-      app.state.hearts += 1;
-    }
     if (!app.session.mistakes.length) {
-      showToast("Clean lesson. Nice.");
+      showToast("Clean lesson.");
     } else {
       showToast("Mistakes are queued for review.");
     }
@@ -750,23 +867,14 @@
       progress.correct += 1;
       progress.mastery = clamp(progress.mastery + 1, -5, 8);
       progress.due = now + (30 + Math.random() * 30) * 60 * 1000;
-      app.state.combo += 1;
-      app.state.bestCombo = Math.max(app.state.bestCombo, app.state.combo);
-      if (app.state.combo > 0 && app.state.combo % 5 === 0 && app.state.hearts < MAX_HEARTS) {
-        app.state.hearts += 1;
-        showToast(`Combo ${app.state.combo}. Heart restored.`);
-      }
     } else if (result === "unsure") {
       progress.unsure += 1;
       progress.mastery = clamp(progress.mastery + 0.25, -5, 8);
       progress.due = now + 10 * 60 * 1000;
-      app.state.combo = 0;
     } else {
       progress.wrong += 1;
       progress.mastery = clamp(progress.mastery - 1.5, -5, 8);
       progress.due = now + 2 * 60 * 1000;
-      app.state.combo = 0;
-      app.state.hearts = Math.max(0, app.state.hearts - 1);
     }
 
     app.state.cards[card.id] = progress;
@@ -781,24 +889,8 @@
     app.session.queue.splice(insertAt, 0, card.id);
   }
 
-  function awardXp(result) {
-    let xp = result === "correct" ? 10 : result === "unsure" ? 4 : 1;
-    if (result === "correct" && app.state.combo > 0 && app.state.combo % 5 === 4) {
-      xp += 5;
-    }
-    app.state.xp += xp;
-    app.state.todayXp += xp;
-    return xp;
-  }
-
   function getCurrentCard() {
     return app.cards.find((card) => card.id === app.session.queue[app.session.index]) || null;
-  }
-
-  function getInteractionKind(card) {
-    if (card.type === "choice") return "choice";
-    if (card.type === "formula" || card.type === "cloze") return "type";
-    return "recall";
   }
 
   function buildChoices(card) {
@@ -807,8 +899,9 @@
       return shuffle(uniqueRecent(baseChoices, 5));
     }
 
+    const answerGroup = card.answerGroup || card.type;
     const distractors = app.cards
-      .filter((candidate) => candidate.id !== card.id && candidate.type === card.type)
+      .filter((candidate) => candidate.id !== card.id && (candidate.answerGroup || candidate.type) === answerGroup)
       .map((candidate) => candidate.answer)
       .filter(Boolean);
 
@@ -830,6 +923,74 @@
     };
   }
 
+  function getStudyStats() {
+    const deckStats = getDeckStats();
+    const covered = app.cards.filter((card) => getCardProgress(card.id).seen > 0).length;
+    const answered = app.cards.reduce((sum, card) => sum + getCardProgress(card.id).seen, 0);
+    const weakDecks = deckStats.filter((deck) => deck.status === "weak").length;
+
+    return {
+      total: app.cards.length,
+      covered,
+      answered,
+      weakDecks
+    };
+  }
+
+  function getDeckStatsMap() {
+    return new Map(getDeckStats().map((deck) => [deck.name, deck]));
+  }
+
+  function getDeckStats() {
+    return app.decks.map((deck) => {
+      const cards = app.cards.filter((card) => card.deck === deck);
+      const totals = cards.reduce(
+        (acc, card) => {
+          const progress = getCardProgress(card.id);
+          acc.seen += progress.seen > 0 ? 1 : 0;
+          acc.answered += progress.seen;
+          acc.correct += progress.correct;
+          acc.wrong += progress.wrong;
+          acc.unsure += progress.unsure;
+          acc.weakCards += progress.wrong > 0 || progress.mastery < 0 ? 1 : 0;
+          return acc;
+        },
+        { seen: 0, answered: 0, correct: 0, wrong: 0, unsure: 0, weakCards: 0 }
+      );
+
+      const total = Math.max(1, cards.length);
+      const coverage = totals.seen / total;
+      const weakRatio = totals.weakCards / total;
+      const accuracy = totals.answered ? totals.correct / totals.answered : 0;
+      const mistakeRate = totals.answered ? (totals.wrong + totals.unsure * 0.5) / totals.answered : 0;
+      const coverageGap = 1 - coverage;
+      const weakness = clamp(coverageGap * 0.35 + weakRatio * 0.45 + mistakeRate * 0.55, 0, 1);
+      const status =
+        totals.answered && (accuracy < 0.7 || weakRatio >= 0.25)
+          ? "weak"
+          : totals.answered === 0
+            ? "unstarted"
+            : coverage < 0.6
+              ? "partial"
+              : "good";
+
+      return {
+        name: deck,
+        total: cards.length,
+        seen: totals.seen,
+        answered: totals.answered,
+        correct: totals.correct,
+        wrong: totals.wrong,
+        unsure: totals.unsure,
+        weakCards: totals.weakCards,
+        coverage,
+        accuracy,
+        weakness,
+        status
+      };
+    });
+  }
+
   function loadState() {
     const defaults = defaultState();
     try {
@@ -849,14 +1010,7 @@
 
   function defaultState() {
     return {
-      xp: 0,
-      todayXp: 0,
-      hearts: MAX_HEARTS,
-      streak: 0,
       activeDate: "",
-      combo: 0,
-      bestCombo: 0,
-      lessonsToday: 0,
       cards: {},
       lastMistakes: []
     };
@@ -870,31 +1024,6 @@
     }
   }
 
-  function ensureToday(markActive) {
-    const today = localDateString(new Date());
-    if (app.state.activeDate === today) return;
-
-    const previous = app.state.activeDate;
-    const wasYesterday = previous && previous === localDateString(addDays(new Date(), -1));
-
-    app.state.todayXp = 0;
-    app.state.lessonsToday = 0;
-    app.state.combo = 0;
-    app.state.hearts = MAX_HEARTS;
-
-    if (markActive) {
-      app.state.streak = wasYesterday ? app.state.streak + 1 : 1;
-      app.state.activeDate = today;
-      saveState();
-    } else if (!previous) {
-      app.state.activeDate = "";
-    }
-  }
-
-  function getLevel() {
-    return Math.floor(app.state.xp / LEVEL_SIZE_XP) + 1;
-  }
-
   function getOverallSeenPercent() {
     if (!app.cards.length) return 0;
     const seen = app.cards.filter((card) => getCardProgress(card.id).seen > 0).length;
@@ -903,11 +1032,9 @@
 
   function freshInteraction() {
     return {
-      revealed: false,
       submitted: false,
       checked: false,
       typeMatch: false,
-      typedValue: "",
       result: ""
     };
   }
@@ -950,12 +1077,6 @@
     });
   }
 
-  function updateFocusButtons() {
-    document.querySelectorAll("[data-action='set-focus']").forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.focus === app.focus);
-    });
-  }
-
   function showToast(message) {
     clearTimeout(app.toastTimer);
     app.els.toast.textContent = message;
@@ -981,30 +1102,6 @@
     } catch (error) {
       // The app still works without offline caching, especially over local HTTP.
     }
-  }
-
-  function answerLooksCorrect(input, card) {
-    const value = normalizeForCompare(input);
-    if (!value) return false;
-
-    const targets = [card.answer, card.fullText, card.latex]
-      .filter(Boolean)
-      .flatMap((answer) => answerVariants(answer));
-
-    return targets.some((target) => {
-      const normalized = normalizeForCompare(target);
-      if (!normalized) return false;
-      if (value === normalized) return true;
-      if (value.length >= 3 && normalized.includes(value)) return true;
-      if (normalized.length >= 3 && value.includes(normalized)) return true;
-      return false;
-    });
-  }
-
-  function answerVariants(answer) {
-    const text = String(answer);
-    const afterEquals = text.includes("=") ? text.split("=").slice(1).join("=") : "";
-    return [text, afterEquals];
   }
 
   function normalizeForCompare(value) {
@@ -1038,6 +1135,10 @@
     return escapeHtml(value).replace(/`/g, "&#96;");
   }
 
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
@@ -1062,19 +1163,6 @@
       if (output.length >= limit) break;
     }
     return output;
-  }
-
-  function localDateString(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  }
-
-  function addDays(date, days) {
-    const copy = new Date(date);
-    copy.setDate(copy.getDate() + days);
-    return copy;
   }
 
   function softBuzz(duration) {

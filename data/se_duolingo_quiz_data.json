@@ -70,7 +70,7 @@
       "priority": 1,
       "front": "What is W in f_s ≥ 2W?",
       "back": "W is the highest frequency component in the signal.",
-      "latex": "W=f_{max}",
+      "latex": "W=f_{\\max}",
       "explanation": "If the fastest component is 5 kHz, then W = 5 kHz and minimum f_s = 10 kHz.",
       "tags": [
         "sampling",
@@ -83,7 +83,7 @@
       "priority": 1,
       "front": "Continuous-time Fourier transform",
       "back": "X(f) = ∫ x(t)e^{-j2πft} dt over all time",
-      "latex": "X(f)=\\int_{-\\infty}^{+\\infty}x(t)e^{-j2\\pi ft}\\,dt",
+      "latex": "X(f)=\\int_{-\\infty}^{+\\infty} x(t)e^{-j2\\pi f t}\\,dt",
       "explanation": "Represents a signal as a weighted sum of complex sinusoids.",
       "tags": [
         "fourier",
@@ -123,7 +123,7 @@
       "priority": 1,
       "front": "Ideal reconstruction formula using sinc(x)=sin(x)/x",
       "back": "x(t)=Σ x(nT_s) sinc((π/T_s)(t-nT_s))",
-      "latex": "x(t)=\\sum_{n=-\\infty}^{+\\infty}x(nT_s)\\operatorname{sinc}\\left(\\frac{\\pi}{T_s}(t-nT_s)\\right)",
+      "latex": "x(t)=\\sum_{n=-\\infty}^{+\\infty} x(nT_s)\\operatorname{sinc}\\!\\left(\\frac{\\pi}{T_s}(t-nT_s)\\right)",
       "explanation": "Continuous signal reconstructed as a sum of shifted sinc interpolation functions.",
       "tags": [
         "sampling",
@@ -179,7 +179,7 @@
       "priority": 1,
       "front": "Mean square quantization error",
       "back": "MSE = D ≈ Δ² / 12",
-      "latex": "MSE=D\\approx\\frac{\\Delta^2}{12}",
+      "latex": "\\mathrm{MSE}=D\\approx\\frac{\\Delta^2}{12}",
       "explanation": "For uniform quantization error, distortion is proportional to the square of the step size.",
       "tags": [
         "quantization",
@@ -208,7 +208,7 @@
       "priority": 1,
       "front": "Bits needed for distortion D",
       "back": "B ≈ 1/2 log₂(σ_x² / D)",
-      "latex": "B\\approx\\frac{1}{2}\\log_2\\left(\\frac{\\sigma_x^2}{D}\\right)",
+      "latex": "B\\approx\\frac{1}{2}\\log_2\\!\\left(\\frac{\\sigma_x^2}{D}\\right)",
       "explanation": "If desired distortion D decreases, required bits B increase.",
       "tags": [
         "rate_distortion",
@@ -249,7 +249,7 @@
       "priority": 1,
       "front": "Eigenvector equation",
       "back": "A v = λ v",
-      "latex": "Av=\\lambda v",
+      "latex": "A v=\\lambda v",
       "explanation": "When A acts on eigenvector v, it only scales it by eigenvalue λ.",
       "tags": [
         "eigenvectors",
@@ -264,7 +264,7 @@
       "priority": 1,
       "front": "Graph Fourier Transform",
       "back": "x_hat = U^T x",
-      "latex": "\\hat{x}=U^Tx",
+      "latex": "\\hat{x}=U^{T}x",
       "explanation": "Projects a graph signal onto the Laplacian eigenvector basis.",
       "tags": [
         "graph_fourier",
@@ -319,7 +319,7 @@
       "priority": 1,
       "front": "Discrete convolution",
       "back": "y[n] = Σ_k x[k]h[n−k]",
-      "latex": "y[n]=\\sum_k x[k]h[n-k]",
+      "latex": "y[n]=\\sum_k x[k]\\,h[n-k]",
       "explanation": "Convolution computes weighted sums of neighboring signal values.",
       "tags": [
         "convolution",
@@ -347,7 +347,7 @@
       "priority": 1,
       "front": "LoRa symbol time",
       "back": "T_s = 2^SF / BW",
-      "latex": "T_s=\\frac{2^{SF}}{BW}",
+      "latex": "T_s=\\frac{2^{\\mathrm{SF}}}{\\mathrm{BW}}",
       "explanation": "Higher spreading factor means longer symbol time and lower bitrate, but better sensitivity/range.",
       "tags": [
         "LoRa",

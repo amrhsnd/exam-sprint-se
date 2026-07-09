@@ -27,13 +27,10 @@ const offlineHtml = indexHtml
   .replace(/\s*<link rel="manifest" href="\.\/manifest\.webmanifest">\n/, "\n")
   .replace(/\s*<link rel="icon" href="\.\/icon\.svg" type="image\/svg\+xml">\n/, "\n")
   .replace(/\s*<link rel="apple-touch-icon" href="\.\/icon\.svg">\n/, "\n")
+  .replace(/<link rel="stylesheet" href="\.\/styles\.css(?:\?[^"]*)?">/, () => `<style>\n${safeCss}\n</style>`)
   .replace(
-    '<link rel="stylesheet" href="./styles.css">',
-    `<style>\n${safeCss}\n</style>`
-  )
-  .replace(
-    '<script src="./app.js" defer></script>',
-    `<script>window.EXAM_SPRINT_DATA=${safeJson};</script>\n    <script>\n${safeApp}\n</script>`
+    /<script src="\.\/app\.js(?:\?[^"]*)?" defer><\/script>/,
+    () => `<script>window.EXAM_SPRINT_DATA=${safeJson};</script>\n    <script>\n${safeApp}\n</script>`
   );
 
 fs.writeFileSync(outputPath, offlineHtml);

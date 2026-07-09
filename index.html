@@ -11,7 +11,7 @@
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="icon" href="./icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./icon.svg">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=20260709-qbank-v3">
   </head>
   <body>
     <div class="app-shell">
@@ -30,30 +30,15 @@
             <strong id="answeredValue">0</strong>
           </div>
           <div class="stat">
-            <span>Weak decks</span>
-            <strong id="weakDeckValue">0</strong>
+            <span>Review</span>
+            <strong id="reviewValue">0</strong>
           </div>
         </div>
       </header>
 
-      <section class="control-row" aria-label="Study controls">
-        <label class="deck-picker">
-          <span>Deck</span>
-          <select id="deckSelect" aria-label="Deck filter"></select>
-        </label>
-      </section>
-
       <main>
         <section id="lessonPanel" class="view-panel is-active" aria-live="polite"></section>
-        <section id="decksPanel" class="view-panel" hidden></section>
-        <section id="cheatPanel" class="view-panel" hidden></section>
       </main>
-
-      <nav class="tabbar" aria-label="App sections">
-        <button type="button" class="is-active" data-action="show-tab" data-tab="lesson">Lesson</button>
-        <button type="button" data-action="show-tab" data-tab="decks">Decks</button>
-        <button type="button" data-action="show-tab" data-tab="cheat">Cheat Sheet</button>
-      </nav>
     </div>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -70,6 +55,6 @@
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
-    <script src="./app.js" defer></script>
+    <script src="./app.js?v=20260709-qbank-v3" defer></script>
   </body>
 </html>

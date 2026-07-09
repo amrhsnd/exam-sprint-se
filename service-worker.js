@@ -1,12 +1,13 @@
-const CACHE_NAME = "exam-sprint-v4";
+const APP_VERSION = "20260709-qbank-v3";
+const CACHE_NAME = "exam-sprint-v8";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
+  `./styles.css?v=${APP_VERSION}`,
+  `./app.js?v=${APP_VERSION}`,
   "./manifest.webmanifest",
   "./icon.svg",
-  "./data/se_duolingo_quiz_data.json"
+  `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`
 ];
 
 self.addEventListener("install", (event) => {

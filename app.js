@@ -1,38 +1,30 @@
 (() => {
   "use strict";
 
-  const DATA_URL = "./data/se_duolingo_quiz_data.json";
+  const APP_VERSION = "20260709-qbank-v3";
+  const DATA_URL = `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`;
   const STORAGE_KEY = "exam-sprint-state-v1";
   const LESSON_SIZE = 10;
-  const SMART_TYPE_SEQUENCE = [
-    "formula",
-    "formula",
-    "concept",
-    "formula",
-    "choice",
-    "formula",
-    "cloze",
-    "concept",
-    "sentence",
-    "concept"
-  ];
-
   const TYPE_LABELS = {
+    calculation: "Calculation",
     concept: "Recall",
     formula: "Formula",
+    fill_blank: "Fill blank",
+    identify_mistake: "Find mistake",
     choice: "Multiple choice",
     cloze: "Fill blank",
-    sentence: "Exam sentence"
+    multiple_choice: "Multiple choice",
+    order: "Order",
+    sentence: "Exam sentence",
+    short_answer: "Short answer",
+    true_false: "True / false"
   };
 
   const app = {
     data: null,
     cards: [],
-    decks: [],
     state: loadState(),
     session: emptySession(),
-    tab: "lesson",
-    deck: "all",
     toastTimer: 0,
     els: {}
   };
@@ -47,8 +39,6 @@
     try {
       app.data = await loadQuizData();
       app.cards = normalizeCards(app.data);
-      app.decks = getDeckNames(app.cards);
-      renderDeckOptions();
       startLesson();
       renderAll();
       await registerServiceWorker();
@@ -61,22 +51,13 @@
     app.els.courseLabel = document.querySelector("#courseLabel");
     app.els.coveredValue = document.querySelector("#coveredValue");
     app.els.answeredValue = document.querySelector("#answeredValue");
-    app.els.weakDeckValue = document.querySelector("#weakDeckValue");
-    app.els.deckSelect = document.querySelector("#deckSelect");
+    app.els.reviewValue = document.querySelector("#reviewValue");
     app.els.lessonPanel = document.querySelector("#lessonPanel");
-    app.els.decksPanel = document.querySelector("#decksPanel");
-    app.els.cheatPanel = document.querySelector("#cheatPanel");
     app.els.toast = document.querySelector("#toast");
   }
 
   function bindEvents() {
     document.body.addEventListener("click", handleClick);
-
-    app.els.deckSelect.addEventListener("change", () => {
-      app.deck = app.els.deckSelect.value;
-      startLesson();
-      renderAll();
-    });
   }
 
   function handleClick(event) {
@@ -84,11 +65,6 @@
     if (!target) return;
 
     const action = target.dataset.action;
-
-    if (action === "show-tab") {
-      showTab(target.dataset.tab || "lesson");
-      return;
-    }
 
     if (action === "new-lesson") {
       startLesson();
@@ -110,14 +86,6 @@
     if (action === "next") {
       advanceCard();
       return;
-    }
-
-    if (action === "select-deck") {
-      app.deck = target.dataset.deck || "all";
-      app.els.deckSelect.value = app.deck;
-      showTab("lesson");
-      startLesson();
-      renderAll();
     }
   }
 
@@ -247,7 +215,22 @@
       .map((sentence, index) => createSentenceQuestion(sentence, index))
       .filter(Boolean);
 
+    const flatQuestionCards = (data.questions || []).map((question) => ({
+      id: question.id,
+      type: question.type || "short_answer",
+      deck: question.deck || "questions",
+      priority: question.priority || 2,
+      difficulty: question.difficulty || "",
+      prompt: question.prompt || "Question",
+      answer: formatQuestionAnswer(question.answer),
+      answerGroup: `question-${question.type || "short_answer"}`,
+      choices: (question.choices || question.options || []).map(formatQuestionAnswer),
+      explanation: question.explanation || "",
+      tags: question.tags || []
+    }));
+
     return [
+      ...flatQuestionCards,
       ...formulaCards,
       ...conceptCards,
       ...choiceCards,
@@ -260,10 +243,6 @@
     ].filter(
       (card) => card.id && card.prompt && card.answer
     );
-  }
-
-  function getDeckNames(cards) {
-    return [...new Set(cards.map((card) => card.deck))].sort((a, b) => a.localeCompare(b));
   }
 
   function conceptTermFromPrompt(prompt) {
@@ -279,6 +258,10 @@
       .replace(/^why\s+is\s+/i, "")
       .replace(/\s+/g, " ")
       .trim() || String(prompt || "Concept").trim();
+  }
+
+  function formatQuestionAnswer(answer) {
+    return Array.isArray(answer) ? answer.join(" -> ") : String(answer || "");
   }
 
   function formatTagLabel(tag) {
@@ -347,15 +330,6 @@
     return sentence.replace(new RegExp(escapeRegExp(phrase), "i"), "____");
   }
 
-  function renderDeckOptions() {
-    const options = [
-      `<option value="all">All decks</option>`,
-      ...app.decks.map((deck) => `<option value="${escapeAttr(deck)}">${formatDeckName(deck)}</option>`)
-    ];
-    app.els.deckSelect.innerHTML = options.join("");
-    app.els.deckSelect.value = app.deck;
-  }
-
   function startLesson(options = {}) {
     const queue = buildLessonQueue(options);
     app.session = {
@@ -370,12 +344,12 @@
     };
 
     if (app.session.completed) {
-      showToast("No cards match this filter yet.");
+      showToast("No questions are available yet.");
     }
   }
 
   function buildLessonQueue(options = {}) {
-    let source = filteredCards();
+    let source = app.cards;
 
     if (options.mistakesOnly) {
       const mistakeIds = new Set(app.state.lastMistakes || []);
@@ -383,36 +357,21 @@
     }
 
     if (!source.length) {
-      source = filteredCards();
+      source = app.cards;
     }
 
     const selected = [];
     const selectedIds = new Set();
+    const lessonLength = Math.min(LESSON_SIZE, source.length);
 
-    for (let i = 0; i < LESSON_SIZE; i += 1) {
-      const targetType = SMART_TYPE_SEQUENCE[i % SMART_TYPE_SEQUENCE.length];
-      const card = pickWeightedCard(source, targetType, selectedIds);
+    while (selected.length < lessonLength) {
+      const card = pickWeightedCard(source, null, selectedIds);
       if (!card) break;
       selected.push(card.id);
       selectedIds.add(card.id);
     }
 
-    if (selected.length < Math.min(LESSON_SIZE, source.length)) {
-      const fallbackIds = new Set(selected);
-      while (selected.length < Math.min(LESSON_SIZE, source.length)) {
-        const card = pickWeightedCard(source, null, fallbackIds);
-        if (!card) break;
-        selected.push(card.id);
-        fallbackIds.add(card.id);
-      }
-    }
-
-    return selected;
-  }
-
-  function filteredCards() {
-    if (app.deck === "all") return app.cards;
-    return app.cards.filter((card) => card.deck === app.deck);
+    return shuffle(selected);
   }
 
   function pickWeightedCard(source, targetType, excludedIds) {
@@ -425,19 +384,15 @@
     if (!pool.length) return null;
 
     const now = Date.now();
-    const deckStatsByName = getDeckStatsMap();
     const weighted = pool.map((card) => {
       const progress = getCardProgress(card.id);
-      const deckStats = deckStatsByName.get(card.deck);
       const priorityWeight = card.priority === 1 ? 2.15 : 1.2;
       const formulaWeight = card.type === "formula" || card.type === "cloze" ? 2.35 : 1;
       const unseenWeight = progress.seen ? 1 : 1.85;
       const dueWeight = !progress.due || progress.due <= now ? 1.65 : 0.3;
       const weakCardWeight = progress.mastery < 0 ? 2.4 : 1 + Math.min(progress.wrong, 4) * 0.34;
-      const weakDeckWeight = deckStats ? 1 + deckStats.weakness * 2.2 : 1;
       const recentPenalty = progress.last && now - progress.last < 3 * 60 * 1000 ? 0.45 : 1;
-      const score =
-        priorityWeight * formulaWeight * unseenWeight * dueWeight * weakCardWeight * weakDeckWeight * recentPenalty;
+      const score = priorityWeight * formulaWeight * unseenWeight * dueWeight * weakCardWeight * recentPenalty;
       return { card, score: Math.max(0.05, score) };
     });
 
@@ -453,9 +408,6 @@
   function renderAll() {
     renderShell();
     renderLesson();
-    renderDecks();
-    renderCheatSheet();
-    updateTabButtons();
     typesetMath(document.querySelector("main"));
   }
 
@@ -463,7 +415,7 @@
     const stats = getStudyStats();
     app.els.coveredValue.textContent = `${stats.covered}/${stats.total}`;
     app.els.answeredValue.textContent = String(stats.answered);
-    app.els.weakDeckValue.textContent = String(stats.weakDecks);
+    app.els.reviewValue.textContent = String(stats.review);
 
     if (app.data && app.data.metadata && app.data.metadata.title) {
       app.els.courseLabel.textContent = app.data.metadata.title.replace(" Exam Quiz Data", "");
@@ -495,16 +447,14 @@
             <span>${app.session.index + 1} / ${app.session.queue.length}</span>
           </div>
           <div class="lesson-meta">
-            <span class="pill">${TYPE_LABELS[card.type]}</span>
+            <span class="pill">${TYPE_LABELS[card.type] || formatTagLabel(card.type || "question")}</span>
             <span class="pill priority">Priority ${card.priority}</span>
             ${progress.mastery < 0 ? `<span class="pill weak">Needs review</span>` : ""}
-            <span class="pill">${formatDeckName(card.deck)}</span>
           </div>
         </div>
         <div class="card-body">
           ${renderPrompt(card)}
           ${renderKindBody(card)}
-          ${renderTags(card)}
         </div>
       </article>
     `;
@@ -572,7 +522,7 @@
 
   function renderAnswer(card) {
     const answer = card.fullText || card.answer;
-    const formula = card.latex || (card.type === "formula" && isFormulaText(answer) ? answer : "");
+    const formula = card.latex || (card.type === "formula" && isStandaloneFormulaText(answer) ? answer : "");
     const formulaBlock = formula ? `<div class="math-block">${renderLatex(formula, true)}</div>` : "";
     const answerText =
       !formula || normalizeForCompare(formula) !== normalizeForCompare(answer)
@@ -602,7 +552,7 @@
       return formula;
     }
 
-    if (isFormulaText(text)) {
+    if (isStandaloneFormulaText(text)) {
       return `<span class="math-inline">${renderLatex(text)}</span>`;
     }
 
@@ -614,8 +564,46 @@
     return app.cards.find((card) => normalizeForCompare(card.answer) === normalized) || null;
   }
 
-  function isFormulaText(value) {
-    return /\\|[_^=<>≥≤≈∑Σ∫λΔσπ√]|\b(f_s|T_s|MSE|D_|A_|L=|BW|SF)\b/.test(String(value || ""));
+  function isStandaloneFormulaText(value) {
+    const text = String(value || "").trim();
+    if (!text || !hasFormulaSyntax(text)) return false;
+
+    const words = text.match(/[A-Za-z]{2,}/g) || [];
+    const proseWords = words.filter((word) => !isFormulaWord(word));
+    const endsLikeSentence = /[.!?]$/.test(text);
+
+    return proseWords.length < 3 && !(endsLikeSentence && proseWords.length > 1);
+  }
+
+  function hasFormulaSyntax(text) {
+    return /\\|[_^=<>≥≤≈∑Σ∫λΔσπ√∈]|\b(f_s|T_s|MSE|D_|A_|L=|BW|SF)\b/.test(text);
+  }
+
+  function isFormulaWord(word) {
+    return [
+      "ber",
+      "bw",
+      "cos",
+      "ct",
+      "dct",
+      "dt",
+      "fft",
+      "frac",
+      "int",
+      "left",
+      "ln",
+      "log",
+      "mse",
+      "operatorname",
+      "right",
+      "sf",
+      "sin",
+      "sinc",
+      "snr",
+      "sqrt",
+      "sum",
+      "tan"
+    ].includes(String(word || "").toLowerCase());
   }
 
   function renderLatex(value, display = false) {
@@ -658,12 +646,6 @@
     }
   }
 
-  function renderTags(card) {
-    const tags = (card.tags || []).slice(0, 5);
-    if (!tags.length) return "";
-    return `<div class="tags">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>`;
-  }
-
   function renderSummary() {
     const results = app.session.results;
     const total = Math.max(1, results.length);
@@ -688,85 +670,6 @@
           ${mistakeButton}
         </div>
       </section>
-    `;
-  }
-
-  function renderDecks() {
-    if (!app.cards.length) return;
-
-    const deckStats = getDeckStats().sort((a, b) => {
-      if (a.status !== b.status) {
-        const rank = { weak: 0, unstarted: 1, partial: 2, good: 3 };
-        return rank[a.status] - rank[b.status];
-      }
-      return b.weakness - a.weakness || a.name.localeCompare(b.name);
-    });
-
-    const rows = deckStats.map((deck) => {
-      const accuracyText = deck.answered ? `${Math.round(deck.accuracy * 100)}% correct` : "not started";
-      const statusText =
-        deck.status === "weak"
-          ? "Needs attention"
-          : deck.status === "unstarted"
-            ? "Not started"
-            : deck.status === "partial"
-              ? "Keep going"
-              : "Good";
-      return `
-        <button type="button" class="deck-row ${deck.status}" data-action="select-deck" data-deck="${escapeAttr(deck.name)}">
-          <strong>${formatDeckName(deck.name)}</strong>
-          <span>${deck.seen}/${deck.total} covered - ${deck.answered} answered - ${deck.weakCards} weak - ${accuracyText}</span>
-          <span class="deck-status">${statusText}</span>
-          <div class="meter" aria-hidden="true"><span style="width: ${Math.round(deck.coverage * 100)}%"></span></div>
-        </button>
-      `;
-    });
-
-    const stats = getStudyStats();
-    app.els.decksPanel.innerHTML = `
-      <h2 class="section-title">Decks</h2>
-      <div class="deck-list">
-        <button type="button" class="deck-row" data-action="select-deck" data-deck="all">
-          <strong>All decks</strong>
-          <span>${stats.covered}/${stats.total} cards covered - ${stats.answered} answers given</span>
-          <span class="deck-status">${stats.weakDecks} weak decks</span>
-          <div class="meter" aria-hidden="true"><span style="width: ${getOverallSeenPercent()}%"></span></div>
-        </button>
-        ${rows.join("")}
-      </div>
-    `;
-  }
-
-  function renderCheatSheet() {
-    if (!app.data) return;
-
-    const formulas = (app.data.formula_cards || []).map(
-      (card) => `
-        <div class="cheat-item">
-          <strong>${escapeHtml(card.front || "Formula")}</strong>
-          ${card.latex ? `<div class="math-block">${renderLatex(card.latex, true)}</div>` : `<span>${renderAnswerContent(card.back || "")}</span>`}
-          ${card.back && card.latex && normalizeForCompare(card.back) !== normalizeForCompare(card.latex)
-            ? `<span>${escapeHtml(card.back)}</span>`
-            : ""}
-          ${card.explanation ? `<span>${escapeHtml(card.explanation)}</span>` : ""}
-        </div>
-      `
-    );
-
-    const sentences = (app.data.exam_sentences || []).map(
-      (sentence, index) => `
-        <div class="cheat-item">
-          <strong>Exam sentence ${index + 1}</strong>
-          <span>${escapeHtml(sentence)}</span>
-        </div>
-      `
-    );
-
-    app.els.cheatPanel.innerHTML = `
-      <h2 class="section-title">Must Memorize Formulas</h2>
-      <div class="cheat-list">${formulas.join("")}</div>
-      <h2 class="section-title">Exam Sentences</h2>
-      <div class="cheat-list">${sentences.join("")}</div>
     `;
   }
 
@@ -860,11 +763,35 @@
 
   function maybeInsertRepeat(card, result) {
     if (result !== "wrong") return;
-    const count = app.session.repeats[card.id] || 0;
-    if (count >= 2) return;
-    app.session.repeats[card.id] = count + 1;
-    const insertAt = Math.min(app.session.index + 3, app.session.queue.length);
-    app.session.queue.splice(insertAt, 0, card.id);
+    const missCount = (app.session.repeats[card.id] || 0) + 1;
+    app.session.repeats[card.id] = missCount;
+
+    const spacing = 2 ** missCount;
+    const insertAt = app.session.index + spacing + 1;
+    fillQueueToLength(insertAt, card.id);
+    app.session.queue.splice(Math.min(insertAt, app.session.queue.length), 0, card.id);
+  }
+
+  function fillQueueToLength(targetLength, currentCardId) {
+    let guard = 0;
+
+    while (app.session.queue.length < targetLength && guard < app.cards.length + targetLength) {
+      guard += 1;
+
+      const excludedIds = new Set(app.session.queue.slice(app.session.index + 1));
+      excludedIds.add(currentCardId);
+
+      const filler =
+        pickWeightedCard(app.cards, null, excludedIds) ||
+        pickWeightedCard(
+          app.cards.filter((candidate) => candidate.id !== currentCardId),
+          null,
+          new Set()
+        );
+
+      if (!filler) return;
+      app.session.queue.push(filler.id);
+    }
   }
 
   function getCurrentCard() {
@@ -902,71 +829,19 @@
   }
 
   function getStudyStats() {
-    const deckStats = getDeckStats();
     const covered = app.cards.filter((card) => getCardProgress(card.id).seen > 0).length;
     const answered = app.cards.reduce((sum, card) => sum + getCardProgress(card.id).seen, 0);
-    const weakDecks = deckStats.filter((deck) => deck.status === "weak").length;
+    const review = app.cards.filter((card) => {
+      const progress = getCardProgress(card.id);
+      return progress.wrong > 0 || progress.mastery < 0;
+    }).length;
 
     return {
       total: app.cards.length,
       covered,
       answered,
-      weakDecks
+      review
     };
-  }
-
-  function getDeckStatsMap() {
-    return new Map(getDeckStats().map((deck) => [deck.name, deck]));
-  }
-
-  function getDeckStats() {
-    return app.decks.map((deck) => {
-      const cards = app.cards.filter((card) => card.deck === deck);
-      const totals = cards.reduce(
-        (acc, card) => {
-          const progress = getCardProgress(card.id);
-          acc.seen += progress.seen > 0 ? 1 : 0;
-          acc.answered += progress.seen;
-          acc.correct += progress.correct;
-          acc.wrong += progress.wrong;
-          acc.unsure += progress.unsure;
-          acc.weakCards += progress.wrong > 0 || progress.mastery < 0 ? 1 : 0;
-          return acc;
-        },
-        { seen: 0, answered: 0, correct: 0, wrong: 0, unsure: 0, weakCards: 0 }
-      );
-
-      const total = Math.max(1, cards.length);
-      const coverage = totals.seen / total;
-      const weakRatio = totals.weakCards / total;
-      const accuracy = totals.answered ? totals.correct / totals.answered : 0;
-      const mistakeRate = totals.answered ? (totals.wrong + totals.unsure * 0.5) / totals.answered : 0;
-      const coverageGap = 1 - coverage;
-      const weakness = clamp(coverageGap * 0.35 + weakRatio * 0.45 + mistakeRate * 0.55, 0, 1);
-      const status =
-        totals.answered && (accuracy < 0.7 || weakRatio >= 0.25)
-          ? "weak"
-          : totals.answered === 0
-            ? "unstarted"
-            : coverage < 0.6
-              ? "partial"
-              : "good";
-
-      return {
-        name: deck,
-        total: cards.length,
-        seen: totals.seen,
-        answered: totals.answered,
-        correct: totals.correct,
-        wrong: totals.wrong,
-        unsure: totals.unsure,
-        weakCards: totals.weakCards,
-        coverage,
-        accuracy,
-        weakness,
-        status
-      };
-    });
   }
 
   function loadState() {
@@ -1002,12 +877,6 @@
     }
   }
 
-  function getOverallSeenPercent() {
-    if (!app.cards.length) return 0;
-    const seen = app.cards.filter((card) => getCardProgress(card.id).seen > 0).length;
-    return Math.round((seen / app.cards.length) * 100);
-  }
-
   function freshInteraction() {
     return {
       submitted: false,
@@ -1028,32 +897,6 @@
       startedAt: 0,
       interaction: freshInteraction()
     };
-  }
-
-  function showTab(tab) {
-    app.tab = tab;
-    const panels = {
-      lesson: app.els.lessonPanel,
-      decks: app.els.decksPanel,
-      cheat: app.els.cheatPanel
-    };
-
-    Object.entries(panels).forEach(([name, panel]) => {
-      const active = name === tab;
-      panel.hidden = !active;
-      panel.classList.toggle("is-active", active);
-    });
-
-    updateTabButtons();
-    if (tab === "decks") renderDecks();
-    if (tab === "cheat") renderCheatSheet();
-    typesetMath(panels[tab]);
-  }
-
-  function updateTabButtons() {
-    document.querySelectorAll("[data-action='show-tab']").forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.tab === app.tab);
-    });
   }
 
   function showToast(message) {
@@ -1092,13 +935,6 @@
       .replace(/\u00d7/g, "x")
       .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "$1/$2")
       .replace(/[^a-z0-9+\-*/=<>]/g, "");
-  }
-
-  function formatDeckName(deck) {
-    return String(deck || "")
-      .replace(/^\d+_/, "")
-      .replace(/_/g, " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
   function escapeHtml(value) {

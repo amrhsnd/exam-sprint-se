@@ -529,19 +529,15 @@ button {
   min-height: 44px;
 }
 
-.setup-note {
-  padding: 12px;
-  border: 1px dashed #b9d7bc;
+.google-placeholder {
+  min-height: 44px;
+  border: 1px solid #d7e2d8;
   border-radius: 8px;
-  color: var(--muted);
-  background: #f8fff8;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.setup-note code {
-  color: var(--ink);
+  color: #5f6c63;
+  background: #ffffff;
   font-weight: 850;
+  opacity: 0.72;
+  cursor: not-allowed;
 }
 
 .exam-picker {

@@ -14,7 +14,7 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 
 ## What It Does
 
-- Starts with a sign-in screen. Google sign-in works after you add a Google OAuth client ID to `index.html`; local study mode works immediately.
+- Starts with a Google sign-in screen and keeps guest mode available for studying before OAuth is configured.
 - Lets you choose between configured exams without deleting older exam files or progress.
 - Builds 10-question multiple-choice lessons from formulas, concepts, existing multiple choice, cloze cards, and generated variants.
 - Includes the imported 1000-question exam sprint bank.
@@ -26,7 +26,7 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 - Saves progress separately per exam.
 - Opens straight into the question flow with rendered formulas and no deck filtering.
 
-## Add Google Login
+## Google Login
 
 1. Create an OAuth 2.0 Web client in Google Cloud.
 2. Add these authorized JavaScript origins:
@@ -38,12 +38,12 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 ```
 
-This static app uses Google Identity Services on the client and stores the signed-in profile in browser storage.
+The app uses Google Identity Services on the client. Google requires the OAuth client ID to be registered for this exact GitHub Pages origin.
 
 ## Security Notes
 
 - GitHub Pages is public. Do not include private exam banks, secret notes, API keys, or anything that should not be downloadable.
-- Google sign-in is only for local progress separation. It is not server-side authentication and should not be used to protect private content.
+- Google sign-in separates local progress by account. It is not server-side authorization and should not be used to protect private content on GitHub Pages.
 - Progress and the local profile label are stored in browser `localStorage`, so avoid using it for sensitive personal data on shared devices.
 - The app loads MathJax from jsDelivr. Google Identity Services is loaded only if a Google OAuth client ID is configured.
 

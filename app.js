@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const APP_VERSION = "20260716-multi-exam-login-v2";
+  const APP_VERSION = "20260716-multi-exam-login-v3";
   const EXAM_CATALOG_URL = `./data/exams.json?v=${APP_VERSION}`;
   const AUTH_STORAGE_KEY = "exam-sprint-user-v1";
   const LEGACY_STORAGE_KEY = "exam-sprint-state-v1";
@@ -548,8 +548,10 @@
 
     if (!app.user) {
       app.els.courseLabel.textContent = "Sign in";
+      renderEmptyStats();
     } else if (!app.activeExam) {
       app.els.courseLabel.textContent = "Choose exam";
+      renderEmptyStats();
     }
   }
 
@@ -561,6 +563,12 @@
 
     const label = app.activeExam?.title || app.data?.metadata?.title || "Exam Sprint";
     app.els.courseLabel.textContent = label.replace(" Exam Quiz Data", "");
+  }
+
+  function renderEmptyStats() {
+    app.els.coveredValue.textContent = "0/0";
+    app.els.answeredValue.textContent = "0";
+    app.els.reviewValue.textContent = "0";
   }
 
   function renderLesson() {
@@ -620,22 +628,18 @@
   }
 
   function renderSignIn() {
-    const googleSetup = GOOGLE_CLIENT_ID
+    const googleControl = GOOGLE_CLIENT_ID
       ? `<div id="googleSignInButton" class="google-button"></div>`
-      : `
-        <div class="setup-note">
-          Add your Google OAuth client ID in <code>index.html</code> to enable the Google button.
-        </div>
-      `;
+      : `<button type="button" class="google-placeholder" disabled>Sign in with Google</button>`;
 
     return `
       <section class="auth-card">
         <span class="panel-icon">G</span>
-        <h2>Sign in to study</h2>
-        <p>Your progress stays separate by account and by exam on this device.</p>
+        <h2>Sign in with Google</h2>
+        <p>Use your Google account to keep progress separate by exam on this device.</p>
         <div class="auth-actions">
-          ${googleSetup}
-          <button type="button" class="secondary-btn" data-action="local-sign-in">Continue on this device</button>
+          ${googleControl}
+          <button type="button" class="secondary-btn" data-action="local-sign-in">Continue as guest</button>
         </div>
       </section>
     `;
@@ -1169,8 +1173,13 @@
 
   function handleGoogleCredential(response) {
     const profile = decodeJwtPayload(response.credential);
+    if (!isValidGoogleProfile(profile)) {
+      showToast("Google sign-in could not be verified.");
+      return;
+    }
+
     setUser({
-      id: profile.sub || profile.email || "google-user",
+      id: profile.sub,
       name: profile.name || profile.given_name || "Google user",
       email: "",
       picture: profile.picture || "",
@@ -1192,6 +1201,17 @@
     } catch (error) {
       return {};
     }
+  }
+
+  function isValidGoogleProfile(profile) {
+    const issuer = profile.iss || "";
+    const expiresAt = Number(profile.exp || 0) * 1000;
+    return (
+      profile.sub &&
+      profile.aud === GOOGLE_CLIENT_ID &&
+      (issuer === "https://accounts.google.com" || issuer === "accounts.google.com") &&
+      expiresAt > Date.now()
+    );
   }
 
   function migrateLegacyState() {

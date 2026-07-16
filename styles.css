@@ -144,7 +144,8 @@ button {
   justify-content: flex-end;
 }
 
-.theme-toggle {
+.theme-toggle,
+.topbar-btn {
   min-height: 32px;
   padding: 0 9px;
   border: 1px solid var(--line);
@@ -153,6 +154,11 @@ button {
   background: var(--control-bg);
   font-size: 0.74rem;
   font-weight: 850;
+}
+
+.topbar-btn {
+  color: var(--green-dark);
+  background: var(--success-bg);
 }
 
 .stat {

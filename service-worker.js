@@ -1,5 +1,5 @@
-const APP_VERSION = "20260716-econ-computation-v1";
-const CACHE_NAME = "exam-sprint-v13";
+const APP_VERSION = "20260716-exam-switcher-v1";
+const CACHE_NAME = "exam-sprint-v14";
 const ASSETS = [
   "./",
   "./index.html",

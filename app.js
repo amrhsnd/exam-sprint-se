@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const APP_VERSION = "20260716-econ-computation-v1";
+  const APP_VERSION = "20260716-exam-switcher-v1";
   const EXAM_CATALOG_URL = `./data/exams.json?v=${APP_VERSION}`;
   const LEGACY_STORAGE_KEY = "exam-sprint-state-v1";
   const STATE_KEY_PREFIX = "exam-sprint-state";
@@ -506,7 +506,12 @@
 
   function renderAppFrame() {
     const nextTheme = app.theme === "dark" ? "Light" : "Dark";
+    const switchButton =
+      app.activeExam && app.exams.filter((exam) => exam.status === "ready").length > 1
+        ? `<button type="button" class="topbar-btn" data-action="switch-exam">Change exam</button>`
+        : "";
     app.els.userArea.innerHTML = `
+      ${switchButton}
       <button type="button" class="theme-toggle" data-action="toggle-theme" aria-label="Switch to ${nextTheme.toLowerCase()} mode">
         ${nextTheme} mode
       </button>

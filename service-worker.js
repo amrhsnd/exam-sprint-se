@@ -1,5 +1,5 @@
-const APP_VERSION = "20260709-qbank-v3";
-const CACHE_NAME = "exam-sprint-v8";
+const APP_VERSION = "20260716-multi-exam-login-v2";
+const CACHE_NAME = "exam-sprint-v10";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,7 @@ const ASSETS = [
   `./app.js?v=${APP_VERSION}`,
   "./manifest.webmanifest",
   "./icon.svg",
+  `./data/exams.json?v=${APP_VERSION}`,
   `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`
 ];
 

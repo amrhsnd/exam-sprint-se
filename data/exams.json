@@ -1,0 +1,18 @@
+{
+  "exams": [
+    {
+      "id": "smart-environments",
+      "title": "Smart Environments",
+      "description": "Original exam sprint bank from the last exam.",
+      "dataUrl": "./data/se_duolingo_quiz_data.json",
+      "status": "ready"
+    },
+    {
+      "id": "new-exam",
+      "title": "New Exam",
+      "description": "Add this exam's question JSON when the material is ready.",
+      "dataUrl": "./data/new_exam_quiz_data.json",
+      "status": "draft"
+    }
+  ]
+}

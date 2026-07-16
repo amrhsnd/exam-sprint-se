@@ -54,7 +54,7 @@ button {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
-  align-items: center;
+  align-items: start;
   margin-bottom: 12px;
 }
 
@@ -79,6 +79,67 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(52px, 1fr));
   gap: 6px;
+}
+
+.topbar-actions {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.user-area {
+  display: flex;
+  min-height: 32px;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.account-chip {
+  display: inline-flex;
+  max-width: 190px;
+  min-height: 32px;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px 3px 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.account-chip img,
+.account-chip span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.account-chip span {
+  display: inline-grid;
+  place-items: center;
+  color: #ffffff;
+  background: var(--green-dark);
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.account-chip strong {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  min-height: 32px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.74rem;
+  font-weight: 850;
 }
 
 .stat {
@@ -126,7 +187,8 @@ button {
 }
 
 .lesson-card,
-.summary-card {
+.summary-card,
+.auth-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
@@ -429,9 +491,115 @@ button {
   padding: 18px 16px;
 }
 
-.summary-card h2 {
+.summary-card h2,
+.auth-card h2 {
   margin: 0;
   font-size: 1.65rem;
+}
+
+.auth-card {
+  display: grid;
+  gap: 14px;
+  padding: 22px 16px;
+}
+
+.auth-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.panel-icon {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--green);
+  font-weight: 900;
+}
+
+.auth-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.google-button {
+  min-height: 44px;
+}
+
+.setup-note {
+  padding: 12px;
+  border: 1px dashed #b9d7bc;
+  border-radius: 8px;
+  color: var(--muted);
+  background: #f8fff8;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.setup-note code {
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.exam-picker {
+  gap: 12px;
+}
+
+.exam-list {
+  display: grid;
+  gap: 10px;
+}
+
+.exam-option {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 76px;
+  padding: 13px 12px;
+  border: 2px solid #cfe3d0;
+  border-radius: 8px;
+  color: var(--ink);
+  background: #ffffff;
+  text-align: left;
+}
+
+.exam-option:not(:disabled):active {
+  transform: scale(0.99);
+}
+
+.exam-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.exam-option strong,
+.exam-option small {
+  display: block;
+}
+
+.exam-option strong {
+  font-size: 1rem;
+}
+
+.exam-option small {
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.32;
+}
+
+.exam-option em {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--green-dark);
+  background: #e7f8e8;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 850;
+  white-space: nowrap;
 }
 
 .summary-grid {
@@ -522,8 +690,18 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .topbar-actions,
+  .user-area {
+    justify-items: stretch;
+    justify-content: stretch;
+  }
+
   .stat-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .account-chip {
+    max-width: 100%;
   }
 
   .grade-row {

@@ -5,13 +5,22 @@ const root = process.cwd();
 const indexPath = path.join(root, "index.html");
 const cssPath = path.join(root, "styles.css");
 const appPath = path.join(root, "app.js");
+const examsPath = path.join(root, "data", "exams.json");
 const dataPath = path.join(root, "data", "se_duolingo_quiz_data.json");
 const outputPath = path.join(root, "exam-sprint-offline.html");
 
 const indexHtml = fs.readFileSync(indexPath, "utf8");
 const css = fs.readFileSync(cssPath, "utf8");
 const app = fs.readFileSync(appPath, "utf8");
+const exams = JSON.parse(fs.readFileSync(examsPath, "utf8"));
 const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+
+const safeExamsJson = JSON.stringify(exams.exams || [])
+  .replace(/</g, "\\u003c")
+  .replace(/>/g, "\\u003e")
+  .replace(/&/g, "\\u0026")
+  .replace(/\u2028/g, "\\u2028")
+  .replace(/\u2029/g, "\\u2029");
 
 const safeJson = JSON.stringify(data)
   .replace(/</g, "\\u003c")
@@ -30,7 +39,8 @@ const offlineHtml = indexHtml
   .replace(/<link rel="stylesheet" href="\.\/styles\.css(?:\?[^"]*)?">/, () => `<style>\n${safeCss}\n</style>`)
   .replace(
     /<script src="\.\/app\.js(?:\?[^"]*)?" defer><\/script>/,
-    () => `<script>window.EXAM_SPRINT_DATA=${safeJson};</script>\n    <script>\n${safeApp}\n</script>`
+    () =>
+      `<script>window.EXAM_SPRINT_EXAMS=${safeExamsJson};window.EXAM_SPRINT_DATA=${safeJson};</script>\n    <script>\n${safeApp}\n</script>`
   );
 
 fs.writeFileSync(outputPath, offlineHtml);

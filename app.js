@@ -1,9 +1,15 @@
 (() => {
   "use strict";
 
-  const APP_VERSION = "20260709-qbank-v3";
-  const DATA_URL = `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`;
-  const STORAGE_KEY = "exam-sprint-state-v1";
+  const APP_VERSION = "20260716-multi-exam-login-v2";
+  const EXAM_CATALOG_URL = `./data/exams.json?v=${APP_VERSION}`;
+  const AUTH_STORAGE_KEY = "exam-sprint-user-v1";
+  const LEGACY_STORAGE_KEY = "exam-sprint-state-v1";
+  const STATE_KEY_PREFIX = "exam-sprint-state";
+  const GOOGLE_CLIENT_ID =
+    document.querySelector('meta[name="google-signin-client_id"]')?.content.trim() ||
+    window.EXAM_SPRINT_GOOGLE_CLIENT_ID ||
+    "";
   const LESSON_SIZE = 10;
   const TYPE_LABELS = {
     calculation: "Calculation",
@@ -21,9 +27,12 @@
   };
 
   const app = {
+    exams: [],
+    activeExam: null,
     data: null,
     cards: [],
-    state: loadState(),
+    user: loadUser(),
+    state: defaultState(),
     session: emptySession(),
     toastTimer: 0,
     els: {}
@@ -34,13 +43,13 @@
   async function init() {
     bindElements();
     bindEvents();
-    renderShell();
+    renderApp();
+    initializeGoogleLogin();
 
     try {
-      app.data = await loadQuizData();
-      app.cards = normalizeCards(app.data);
-      startLesson();
-      renderAll();
+      app.exams = await loadExamCatalog();
+      migrateLegacyState();
+      await hydrateFromUserChoice();
       await registerServiceWorker();
     } catch (error) {
       renderLoadError(error);
@@ -52,6 +61,7 @@
     app.els.coveredValue = document.querySelector("#coveredValue");
     app.els.answeredValue = document.querySelector("#answeredValue");
     app.els.reviewValue = document.querySelector("#reviewValue");
+    app.els.userArea = document.querySelector("#userArea");
     app.els.lessonPanel = document.querySelector("#lessonPanel");
     app.els.toast = document.querySelector("#toast");
   }
@@ -72,6 +82,38 @@
       return;
     }
 
+    if (action === "local-sign-in") {
+      setUser({
+        id: "local-device",
+        name: "Study mode",
+        email: "",
+        picture: "",
+        provider: "local"
+      });
+      return;
+    }
+
+    if (action === "sign-out") {
+      signOut();
+      return;
+    }
+
+    if (action === "switch-exam") {
+      app.data = null;
+      app.cards = [];
+      app.activeExam = null;
+      app.session = emptySession();
+      app.user.activeExamId = "";
+      saveUser();
+      renderApp();
+      return;
+    }
+
+    if (action === "select-exam") {
+      selectExam(target.dataset.examId || "");
+      return;
+    }
+
     if (action === "review-mistakes") {
       startLesson({ mistakesOnly: true });
       renderAll();
@@ -89,12 +131,65 @@
     }
   }
 
-  async function loadQuizData() {
+  async function loadExamCatalog() {
+    if (window.EXAM_SPRINT_EXAMS) {
+      return window.EXAM_SPRINT_EXAMS;
+    }
+
+    const response = await fetch(EXAM_CATALOG_URL, { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`Could not load exam catalog: ${response.status}`);
+    }
+
+    const catalog = await response.json();
+    return Array.isArray(catalog.exams) ? catalog.exams : [];
+  }
+
+  async function hydrateFromUserChoice() {
+    if (!app.user) {
+      renderApp();
+      return;
+    }
+
+    const initialExamId = app.user.activeExamId || "";
+    if (!initialExamId) {
+      renderApp();
+      return;
+    }
+
+    await selectExam(initialExamId, { quiet: true });
+  }
+
+  async function selectExam(examId, options = {}) {
+    const exam = app.exams.find((item) => item.id === examId);
+    if (!exam) {
+      renderApp();
+      if (!options.quiet) showToast("That exam is not available yet.");
+      return;
+    }
+
+    app.activeExam = exam;
+    app.user.activeExamId = exam.id;
+    saveUser();
+    app.state = loadState(exam.id);
+    app.session = emptySession();
+
+    try {
+      app.data = await loadQuizData(exam);
+      app.cards = normalizeCards(app.data);
+      startLesson();
+      renderAll();
+    } catch (error) {
+      renderLoadError(error);
+    }
+  }
+
+  async function loadQuizData(exam) {
     if (window.EXAM_SPRINT_DATA) {
       return window.EXAM_SPRINT_DATA;
     }
 
-    const response = await fetch(DATA_URL, { cache: "no-cache" });
+    const response = await fetch(`${exam.dataUrl}?v=${APP_VERSION}`, { cache: "no-cache" });
     if (!response.ok) {
       throw new Error(`Could not load quiz data: ${response.status}`);
     }
@@ -406,9 +501,56 @@
   }
 
   function renderAll() {
+    renderAppFrame();
     renderShell();
     renderLesson();
     typesetMath(document.querySelector("main"));
+  }
+
+  function renderApp() {
+    renderAppFrame();
+
+    if (!app.user) {
+      app.els.lessonPanel.innerHTML = renderSignIn();
+      renderGoogleButton();
+      return;
+    }
+
+    if (!app.activeExam) {
+      app.els.lessonPanel.innerHTML = renderExamPicker();
+      return;
+    }
+
+    renderShell();
+    renderLesson();
+  }
+
+  function renderAppFrame() {
+    const displayName = app.user?.name || "";
+    const picture = app.user?.picture || "";
+    const avatar = picture
+      ? `<img src="${escapeAttr(picture)}" alt="">`
+      : `<span>${escapeHtml(initials(displayName || "Study"))}</span>`;
+    const signOut =
+      app.user
+        ? `<button type="button" class="icon-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">Sign out</button>`
+        : "";
+
+    app.els.userArea.innerHTML = app.user
+      ? `
+        <div class="account-chip" title="${escapeAttr(displayName)}">
+          ${avatar}
+          <strong>${escapeHtml(displayName || "Study mode")}</strong>
+        </div>
+        ${signOut}
+      `
+      : "";
+
+    if (!app.user) {
+      app.els.courseLabel.textContent = "Sign in";
+    } else if (!app.activeExam) {
+      app.els.courseLabel.textContent = "Choose exam";
+    }
   }
 
   function renderShell() {
@@ -417,13 +559,30 @@
     app.els.answeredValue.textContent = String(stats.answered);
     app.els.reviewValue.textContent = String(stats.review);
 
-    if (app.data && app.data.metadata && app.data.metadata.title) {
-      app.els.courseLabel.textContent = app.data.metadata.title.replace(" Exam Quiz Data", "");
-    }
+    const label = app.activeExam?.title || app.data?.metadata?.title || "Exam Sprint";
+    app.els.courseLabel.textContent = label.replace(" Exam Quiz Data", "");
   }
 
   function renderLesson() {
-    if (!app.cards.length) return;
+    if (!app.user) {
+      app.els.lessonPanel.innerHTML = renderSignIn();
+      renderGoogleButton();
+      return;
+    }
+
+    if (!app.activeExam) {
+      app.els.lessonPanel.innerHTML = renderExamPicker();
+      return;
+    }
+
+    if (!app.cards.length) {
+      app.els.lessonPanel.innerHTML = `
+        <div class="empty-state">
+          This exam does not have question data yet. Add a JSON file for it in the data folder.
+        </div>
+      `;
+      return;
+    }
 
     if (app.session.completed) {
       app.els.lessonPanel.innerHTML = renderSummary();
@@ -457,6 +616,57 @@
           ${renderKindBody(card)}
         </div>
       </article>
+    `;
+  }
+
+  function renderSignIn() {
+    const googleSetup = GOOGLE_CLIENT_ID
+      ? `<div id="googleSignInButton" class="google-button"></div>`
+      : `
+        <div class="setup-note">
+          Add your Google OAuth client ID in <code>index.html</code> to enable the Google button.
+        </div>
+      `;
+
+    return `
+      <section class="auth-card">
+        <span class="panel-icon">G</span>
+        <h2>Sign in to study</h2>
+        <p>Your progress stays separate by account and by exam on this device.</p>
+        <div class="auth-actions">
+          ${googleSetup}
+          <button type="button" class="secondary-btn" data-action="local-sign-in">Continue on this device</button>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderExamPicker() {
+    const cards = app.exams
+      .map((exam) => {
+        const badge = exam.status === "ready" ? "Ready" : "Needs data";
+        const disabled = exam.status === "ready" ? "" : " disabled";
+        const action = exam.status === "ready" ? `data-action="select-exam" data-exam-id="${escapeAttr(exam.id)}"` : "";
+
+        return `
+          <button type="button" class="exam-option"${disabled} ${action}>
+            <span>
+              <strong>${escapeHtml(exam.title)}</strong>
+              <small>${escapeHtml(exam.description || "Exam practice")}</small>
+            </span>
+            <em>${escapeHtml(badge)}</em>
+          </button>
+        `;
+      })
+      .join("");
+
+    return `
+      <section class="summary-card exam-picker">
+        <h2>Choose your exam</h2>
+        <div class="exam-list">
+          ${cards || `<div class="empty-state">No exams are configured yet.</div>`}
+        </div>
+      </section>
     `;
   }
 
@@ -668,6 +878,7 @@
         <div class="button-row">
           <button type="button" class="primary-btn" data-action="new-lesson">Next lesson</button>
           ${mistakeButton}
+          <button type="button" class="plain-btn" data-action="switch-exam">Switch exam</button>
         </div>
       </section>
     `;
@@ -844,10 +1055,10 @@
     };
   }
 
-  function loadState() {
+  function loadState(examId) {
     const defaults = defaultState();
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(stateStorageKey(examId));
       if (!raw) return defaults;
       const parsed = JSON.parse(raw);
       return {
@@ -861,6 +1072,147 @@
     }
   }
 
+  function loadUser() {
+    try {
+      const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function setUser(user) {
+    app.user = {
+      ...user,
+      activeExamId: app.user?.activeExamId || user.activeExamId || ""
+    };
+    saveUser();
+    hydrateFromUserChoice();
+  }
+
+  function saveUser() {
+    try {
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(app.user));
+    } catch (error) {
+      showToast("Sign-in could not be saved on this browser.");
+    }
+  }
+
+  function signOut() {
+    app.user = null;
+    app.activeExam = null;
+    app.data = null;
+    app.cards = [];
+    app.session = emptySession();
+    try {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    } catch (error) {
+      // Ignore storage failures while signing out.
+    }
+    if (window.google?.accounts?.id) {
+      window.google.accounts.id.disableAutoSelect();
+    }
+    renderApp();
+  }
+
+  function initializeGoogleLogin() {
+    if (!GOOGLE_CLIENT_ID) return;
+
+    loadGoogleIdentityScript()
+      .then(() => {
+      window.google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleCredential
+      });
+      renderGoogleButton();
+      })
+      .catch(() => {
+        showToast("Google sign-in could not load.");
+      });
+  }
+
+  function loadGoogleIdentityScript() {
+    if (window.google?.accounts?.id) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector("[data-google-identity-script]");
+      if (existing) {
+        existing.addEventListener("load", resolve, { once: true });
+        existing.addEventListener("error", reject, { once: true });
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://accounts.google.com/gsi/client";
+      script.async = true;
+      script.defer = true;
+      script.dataset.googleIdentityScript = "true";
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.head.append(script);
+    });
+  }
+
+  function renderGoogleButton() {
+    if (!GOOGLE_CLIENT_ID || !window.google?.accounts?.id || app.user) return;
+    const container = document.querySelector("#googleSignInButton");
+    if (!container) return;
+
+    window.google.accounts.id.renderButton(container, {
+      theme: "outline",
+      size: "large",
+      width: Math.min(360, container.getBoundingClientRect().width || 320)
+    });
+  }
+
+  function handleGoogleCredential(response) {
+    const profile = decodeJwtPayload(response.credential);
+    setUser({
+      id: profile.sub || profile.email || "google-user",
+      name: profile.name || profile.given_name || "Google user",
+      email: "",
+      picture: profile.picture || "",
+      provider: "google"
+    });
+  }
+
+  function decodeJwtPayload(token) {
+    try {
+      const [, payload] = String(token || "").split(".");
+      const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+      const decoded = decodeURIComponent(
+        atob(normalized)
+          .split("")
+          .map((char) => `%${`00${char.charCodeAt(0).toString(16)}`.slice(-2)}`)
+          .join("")
+      );
+      return JSON.parse(decoded);
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function migrateLegacyState() {
+    const firstExamId = app.exams[0]?.id;
+    if (!firstExamId) return;
+
+    try {
+      const targetKey = stateStorageKey(firstExamId);
+      if (localStorage.getItem(targetKey)) return;
+      const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (!legacy) return;
+      localStorage.setItem(targetKey, legacy);
+    } catch (error) {
+      // Migration is best-effort; the app can still create fresh progress.
+    }
+  }
+
+  function stateStorageKey(examId) {
+    return `${STATE_KEY_PREFIX}-${examId || "default"}-v1`;
+  }
+
   function defaultState() {
     return {
       activeDate: "",
@@ -871,7 +1223,7 @@
 
   function saveState() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(app.state));
+      localStorage.setItem(stateStorageKey(app.activeExam?.id), JSON.stringify(app.state));
     } catch (error) {
       showToast("Progress could not be saved on this browser.");
     }
@@ -978,6 +1330,16 @@
       if (output.length >= limit) break;
     }
     return output;
+  }
+
+  function initials(name) {
+    return String(name || "")
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part[0] || "")
+      .join("")
+      .toUpperCase() || "ES";
   }
 
   function softBuzz(duration) {

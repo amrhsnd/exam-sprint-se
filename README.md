@@ -1,6 +1,6 @@
 # Exam Sprint
 
-A phone-friendly Duolingo-style quiz app with Google sign-in support and selectable exam banks.
+A phone-friendly Duolingo-style quiz app with selectable exam banks.
 
 ## Run
 
@@ -14,7 +14,8 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 
 ## What It Does
 
-- Starts with a Google sign-in screen and keeps guest mode available for studying before OAuth is configured.
+- Opens directly into the ready exam and keeps progress locally on the device.
+- Includes light and dark modes.
 - Lets you choose between configured exams without deleting older exam files or progress.
 - Builds 10-question multiple-choice lessons from formulas, concepts, existing multiple choice, cloze cards, and generated variants.
 - Includes the imported 1000-question exam sprint bank.
@@ -26,26 +27,11 @@ Then open the shown address on your phone. If the phone is on the same Wi-Fi as 
 - Saves progress separately per exam.
 - Opens straight into the question flow with rendered formulas and no deck filtering.
 
-## Google Login
-
-1. Create an OAuth 2.0 Web client in Google Cloud.
-2. Add these authorized JavaScript origins:
-   - `https://amrhsnd.github.io`
-   - `http://localhost:8080`
-3. Paste the client ID into `index.html`:
-
-```html
-<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-```
-
-The app uses Google Identity Services on the client. Google requires the OAuth client ID to be registered for this exact GitHub Pages origin.
-
 ## Security Notes
 
 - GitHub Pages is public. Do not include private exam banks, secret notes, API keys, or anything that should not be downloadable.
-- Google sign-in separates local progress by account. It is not server-side authorization and should not be used to protect private content on GitHub Pages.
-- Progress and the local profile label are stored in browser `localStorage`, so avoid using it for sensitive personal data on shared devices.
-- The app loads MathJax from jsDelivr. Google Identity Services is loaded only if a Google OAuth client ID is configured.
+- Progress and theme preferences are stored in browser `localStorage`, so avoid sensitive personal data on shared devices.
+- The app loads MathJax from jsDelivr.
 
 ## Add Another Exam
 

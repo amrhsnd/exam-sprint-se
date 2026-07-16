@@ -1,5 +1,5 @@
-const APP_VERSION = "20260716-multi-exam-login-v3";
-const CACHE_NAME = "exam-sprint-v11";
+const APP_VERSION = "20260716-no-signin-dark-v1";
+const CACHE_NAME = "exam-sprint-v12";
 const ASSETS = [
   "./",
   "./index.html",

@@ -9,9 +9,60 @@
   --blue: #1d7fd6;
   --orange: #f49b29;
   --red: #d94b45;
+  --body-bg:
+    radial-gradient(circle at top left, rgba(57, 181, 74, 0.16), transparent 34rem),
+    linear-gradient(180deg, #f7fff5 0%, #eef8ee 100%);
+  --soft-panel: #fbfffa;
+  --control-bg: #ffffff;
+  --track-bg: #deeadf;
+  --choice-border: #cfe3d0;
+  --math-bg: #ffffff;
+  --math-ink: #111c14;
+  --soft-button: #edf5ee;
+  --success-bg: #e7f8e8;
+  --success-panel: #ecfaed;
+  --success-border: #b9e8bf;
+  --warning-bg: #fff0d3;
+  --warning-ink: #7b4b00;
+  --danger-bg: #ffe8e6;
+  --danger-panel: #fff0ee;
+  --danger-border: #f0c1bd;
   --shadow: 0 12px 30px rgba(27, 71, 34, 0.12);
   color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --bg: #07110b;
+  --panel: #111d15;
+  --ink: #edf7ee;
+  --muted: #a9b8ad;
+  --line: #26382b;
+  --green: #47c75a;
+  --green-dark: #8fe69b;
+  --blue: #6db7ff;
+  --orange: #f6bd62;
+  --red: #ff746e;
+  --body-bg:
+    radial-gradient(circle at top left, rgba(71, 199, 90, 0.13), transparent 30rem),
+    linear-gradient(180deg, #08150c 0%, #050b07 100%);
+  --soft-panel: #15251a;
+  --control-bg: #0d1711;
+  --track-bg: #243426;
+  --choice-border: #31503a;
+  --math-bg: #0a140e;
+  --math-ink: #edf7ee;
+  --soft-button: #1a2a1f;
+  --success-bg: #17351d;
+  --success-panel: #122b18;
+  --success-border: #2f6e39;
+  --warning-bg: #382916;
+  --warning-ink: #ffd28a;
+  --danger-bg: #3a1d1b;
+  --danger-panel: #2d1715;
+  --danger-border: #74342f;
+  --shadow: 0 16px 34px rgba(0, 0, 0, 0.34);
+  color-scheme: dark;
 }
 
 * {
@@ -27,9 +78,7 @@ body {
   min-height: 100%;
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at top left, rgba(57, 181, 74, 0.16), transparent 34rem),
-    linear-gradient(180deg, #f7fff5 0%, #eef8ee 100%);
+  background: var(--body-bg);
 }
 
 button,
@@ -95,49 +144,13 @@ button {
   justify-content: flex-end;
 }
 
-.account-chip {
-  display: inline-flex;
-  max-width: 190px;
-  min-height: 32px;
-  align-items: center;
-  gap: 7px;
-  padding: 3px 8px 3px 4px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.account-chip img,
-.account-chip span {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-}
-
-.account-chip span {
-  display: inline-grid;
-  place-items: center;
-  color: #ffffff;
-  background: var(--green-dark);
-  font-size: 0.68rem;
-  font-weight: 900;
-}
-
-.account-chip strong {
-  overflow: hidden;
-  color: var(--muted);
-  font-size: 0.76rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.icon-btn {
+.theme-toggle {
   min-height: 32px;
   padding: 0 9px;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--control-bg);
   font-size: 0.74rem;
   font-weight: 850;
 }
@@ -147,7 +160,7 @@ button {
   padding: 8px 7px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.86);
+  background: color-mix(in srgb, var(--control-bg) 88%, transparent);
   text-align: center;
 }
 
@@ -170,7 +183,7 @@ button {
   width: 100%;
   height: 12px;
   border-radius: 999px;
-  background: #deeadf;
+  background: var(--track-bg);
 }
 
 .lesson-track span {
@@ -187,8 +200,7 @@ button {
 }
 
 .lesson-card,
-.summary-card,
-.auth-card {
+.summary-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
@@ -204,7 +216,7 @@ button {
   gap: 10px;
   padding: 14px;
   border-bottom: 1px solid var(--line);
-  background: #fbfffa;
+  background: var(--soft-panel);
 }
 
 .lesson-meta {
@@ -221,19 +233,19 @@ button {
   padding: 5px 9px;
   border-radius: 999px;
   color: var(--green-dark);
-  background: #e7f8e8;
+  background: var(--success-bg);
   font-size: 0.76rem;
   font-weight: 850;
 }
 
 .pill.priority {
-  color: #7b4b00;
-  background: #fff0d3;
+  color: var(--warning-ink);
+  background: var(--warning-bg);
 }
 
 .pill.weak {
-  color: #a3312c;
-  background: #ffe3e1;
+  color: var(--red);
+  background: var(--danger-bg);
 }
 
 .lesson-progress {
@@ -294,9 +306,9 @@ button {
 
 .choice-btn {
   padding: 13px 14px;
-  border: 2px solid #cfe3d0;
+  border: 2px solid var(--choice-border);
   color: var(--ink);
-  background: #ffffff;
+  background: var(--control-bg);
   text-align: left;
   line-height: 1.32;
 }
@@ -312,12 +324,12 @@ button {
 
 .choice-btn.is-correct {
   border-color: var(--green);
-  background: #e7f8e8;
+  background: var(--success-bg);
 }
 
 .choice-btn.is-wrong {
   border-color: var(--red);
-  background: #ffe8e6;
+  background: var(--danger-bg);
 }
 
 .type-box {
@@ -328,11 +340,11 @@ button {
 .type-box input {
   min-height: 52px;
   width: 100%;
-  border: 2px solid #cfe3d0;
+  border: 2px solid var(--choice-border);
   border-radius: 8px;
   padding: 12px 14px;
   color: var(--ink);
-  background: #ffffff;
+  background: var(--control-bg);
   font-weight: 800;
 }
 
@@ -346,18 +358,18 @@ button {
   gap: 10px;
   padding: 13px;
   border-radius: 8px;
-  background: #f4faf4;
+  background: var(--soft-panel);
   border: 1px solid var(--line);
 }
 
 .answer-panel.correct {
-  border-color: #b9e8bf;
-  background: #ecfaed;
+  border-color: var(--success-border);
+  background: var(--success-panel);
 }
 
 .answer-panel.wrong {
-  border-color: #f0c1bd;
-  background: #fff0ee;
+  border-color: var(--danger-border);
+  background: var(--danger-panel);
 }
 
 .answer-main {
@@ -385,8 +397,8 @@ button {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #ffffff;
-  color: #111c14;
+  background: var(--math-bg);
+  color: var(--math-ink);
   font-size: clamp(1.15rem, 5.4vw, 1.65rem);
   line-height: 1.55;
 }
@@ -451,7 +463,7 @@ button {
 
 .secondary-btn {
   color: var(--green-dark);
-  background: #e7f8e8;
+  background: var(--success-bg);
 }
 
 .danger-btn {
@@ -461,28 +473,28 @@ button {
 
 .plain-btn {
   color: var(--muted);
-  background: #edf5ee;
+  background: var(--soft-button);
 }
 
 .grade-btn {
   padding: 10px 8px;
   color: var(--ink);
-  background: #edf5ee;
+  background: var(--soft-button);
 }
 
 .grade-btn[data-grade="wrong"] {
-  color: #9f2f2a;
-  background: #ffe8e6;
+  color: var(--red);
+  background: var(--danger-bg);
 }
 
 .grade-btn[data-grade="unsure"] {
-  color: #805000;
-  background: #fff0d3;
+  color: var(--warning-ink);
+  background: var(--warning-bg);
 }
 
 .grade-btn[data-grade="correct"] {
   color: var(--green-dark);
-  background: #e7f8e8;
+  background: var(--success-bg);
 }
 
 .summary-card {
@@ -491,53 +503,9 @@ button {
   padding: 18px 16px;
 }
 
-.summary-card h2,
-.auth-card h2 {
+.summary-card h2 {
   margin: 0;
   font-size: 1.65rem;
-}
-
-.auth-card {
-  display: grid;
-  gap: 14px;
-  padding: 22px 16px;
-}
-
-.auth-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-.panel-icon {
-  display: inline-grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  color: #ffffff;
-  background: var(--green);
-  font-weight: 900;
-}
-
-.auth-actions {
-  display: grid;
-  gap: 10px;
-}
-
-.google-button {
-  min-height: 44px;
-}
-
-.google-placeholder {
-  min-height: 44px;
-  border: 1px solid #d7e2d8;
-  border-radius: 8px;
-  color: #5f6c63;
-  background: #ffffff;
-  font-weight: 850;
-  opacity: 0.72;
-  cursor: not-allowed;
 }
 
 .exam-picker {
@@ -556,10 +524,10 @@ button {
   align-items: center;
   min-height: 76px;
   padding: 13px 12px;
-  border: 2px solid #cfe3d0;
+  border: 2px solid var(--choice-border);
   border-radius: 8px;
   color: var(--ink);
-  background: #ffffff;
+  background: var(--control-bg);
   text-align: left;
 }
 
@@ -591,7 +559,7 @@ button {
   padding: 5px 8px;
   border-radius: 999px;
   color: var(--green-dark);
-  background: #e7f8e8;
+  background: var(--success-bg);
   font-size: 0.72rem;
   font-style: normal;
   font-weight: 850;
@@ -608,7 +576,7 @@ button {
   padding: 12px 8px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fbfffa;
+  background: var(--soft-panel);
   text-align: center;
 }
 
@@ -630,7 +598,7 @@ button {
   padding: 22px 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--control-bg);
   color: var(--muted);
   line-height: 1.45;
 }
@@ -694,10 +662,6 @@ button {
 
   .stat-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .account-chip {
-    max-width: 100%;
   }
 
   .grade-row {

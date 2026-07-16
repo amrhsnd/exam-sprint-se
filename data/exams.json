@@ -8,6 +8,13 @@
       "status": "ready"
     },
     {
+      "id": "economics-computation",
+      "title": "Economics and Computation",
+      "description": "Mechanism design, computational game theory, selfish routing, and no-regret learning review bank.",
+      "dataUrl": "./data/economics_computation_exam_questions.json",
+      "status": "ready"
+    },
+    {
       "id": "new-exam",
       "title": "New Exam",
       "description": "Add this exam's question JSON when the material is ready.",

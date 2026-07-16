@@ -1,5 +1,5 @@
-const APP_VERSION = "20260716-no-signin-dark-v1";
-const CACHE_NAME = "exam-sprint-v12";
+const APP_VERSION = "20260716-econ-computation-v1";
+const CACHE_NAME = "exam-sprint-v13";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,7 +8,8 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./icon.svg",
   `./data/exams.json?v=${APP_VERSION}`,
-  `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`
+  `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`,
+  `./data/economics_computation_exam_questions.json?v=${APP_VERSION}`
 ];
 
 self.addEventListener("install", (event) => {

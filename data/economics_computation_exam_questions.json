@@ -1,0 +1,2983 @@
+{
+  "metadata": {
+    "title": "Economics and Computation Exam Quiz Data",
+    "version": "1.0",
+    "created_for": "Exam Sprint",
+    "study_mode": "challenging active recall and exam-style discrimination",
+    "sources": [
+      "EC0506-Intro.pdf",
+      "Mechanism Design Basics.pdf",
+      "Algorithmic Mechanism Design.pdf",
+      "MultiParameter.pdf",
+      "Mechanism Design Without Money.pdf",
+      "Computational Game Theory.pdf",
+      "cgt1.pdf",
+      "Selfish Routing.pdf",
+      "l5.pdf",
+      "l6.pdf",
+      "l12.pdf",
+      "l13.pdf",
+      "l17.pdf",
+      "l18.pdf",
+      "Exercises.pdf",
+      "Exercises2.pdf"
+    ],
+    "card_priority_meaning": {
+      "1": "must know",
+      "2": "high-yield",
+      "3": "supporting detail"
+    },
+    "counts": {
+      "questions": 157,
+      "by_deck": {
+        "algorithmic_mechanism_design": 12,
+        "computational_game_theory": 16,
+        "mechanism_design_basics": 16,
+        "mechanism_design_without_money": 21,
+        "multi_parameter_vcg": 16,
+        "no_regret_learning": 16,
+        "potential_games_equilibria": 13,
+        "revenue_maximization": 16,
+        "selfish_routing_poa": 16,
+        "synthesis_exam_style": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "id": "ECQ001",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A direct-revelation mechanism is written as \\(M=(x,p)\\). Which interpretation is correct?",
+      "choices": [
+        "\\(x\\) maps reported types to feasible outcomes, while \\(p_i\\) maps the whole report profile to agent \\(i\\)'s payment.",
+        "\\(x\\) maps true types to payments, while \\(p\\) maps bids to utilities.",
+        "\\(x\\) is a feasible outcome and \\(p\\) is a scalar reserve price.",
+        "\\(x\\) maps each agent's report independently to an allocation, while \\(p_i\\) depends only on \\(b_i\\)."
+      ],
+      "answer": "\\(x\\) maps reported types to feasible outcomes, while \\(p_i\\) maps the whole report profile to agent \\(i\\)'s payment.",
+      "explanation": "Both allocation and payment rules can depend on the full report profile.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ002",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In \\(x(\\mathbf b)\\in\\arg\\max_{y\\in X}\\sum_i b_i(y)\\), what is \\(X\\)?",
+      "choices": [
+        "The set of feasible outcomes or allocations.",
+        "The set of allocation rules.",
+        "The set of truthful bid profiles.",
+        "The set of payment vectors."
+      ],
+      "answer": "The set of feasible outcomes or allocations.",
+      "explanation": "The rule \\(x(\\cdot)\\) is a function; \\(x(\\mathbf b)\\) is one selected element of \\(X\\).",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ003",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For quasi-linear utility \\(u_i(\\mathbf b;v_i)=v_i(x(\\mathbf b))-p_i(\\mathbf b)\\), which quantity is private?",
+      "choices": [
+        "The true valuation function \\(v_i\\).",
+        "The feasible set \\(X\\).",
+        "The payment rule \\(p_i\\).",
+        "The number of agents \\(n\\)."
+      ],
+      "answer": "The true valuation function \\(v_i\\).",
+      "explanation": "The mechanism rules are public; agents' valuations are private information.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ004",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which inequality is the DSIC condition for agent \\(i\\)?",
+      "choices": [
+        "\\(v_i(x(v_i,b_{-i}))-p_i(v_i,b_{-i})\\ge v_i(x(b_i',b_{-i}))-p_i(b_i',b_{-i})\\) for all \\(b_i',b_{-i}\\).",
+        "\\(\\sum_j v_j(x(v))\\ge\\sum_j v_j(x(b))\\) for all \\(b\\).",
+        "\\(p_i(v_i,b_{-i})\\ge p_i(b_i',b_{-i})\\) for all \\(b_i'\\).",
+        "\\(x_i(v_i,b_{-i})\\ge x_i(b_i',b_{-i})\\) for all \\(b_i'\\)."
+      ],
+      "answer": "\\(v_i(x(v_i,b_{-i}))-p_i(v_i,b_{-i})\\ge v_i(x(b_i',b_{-i}))-p_i(b_i',b_{-i})\\) for all \\(b_i',b_{-i}\\).",
+      "explanation": "Truthful reporting must maximize utility for every fixed report profile of the other agents.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ005",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In a single-item second-price auction with bids \\((12,9,4)\\), what are the winner's payment and utility if her value is \\(12\\)?",
+      "choices": [
+        "Payment \\(9\\), utility \\(3\\).",
+        "Payment \\(12\\), utility \\(0\\).",
+        "Payment \\(4\\), utility \\(8\\).",
+        "Payment \\(9\\), utility \\(12\\)."
+      ],
+      "answer": "Payment \\(9\\), utility \\(3\\).",
+      "explanation": "The highest bidder wins and pays the second-highest bid.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ006",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why is bidding above one's value weakly dominated in a second-price auction?",
+      "choices": [
+        "It can turn a loss into a win at a price above value, while it cannot create a beneficial outcome unavailable under truthful bidding.",
+        "It always increases the payment even when the bidder loses.",
+        "It causes the bidder to pay her own bid.",
+        "It changes the second-highest bid into the reserve price."
+      ],
+      "answer": "It can turn a loss into a win at a price above value, while it cannot create a beneficial outcome unavailable under truthful bidding.",
+      "explanation": "The dangerous case is when the rival's highest bid lies strictly between the true value and the overbid.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ007",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a \\(k\\)-unit auction with unit-demand bidders and identical units, which DSIC rule generalizes the Vickrey auction?",
+      "choices": [
+        "Allocate to the \\(k\\) highest bidders and charge each winner the \\((k+1)\\)-st highest bid.",
+        "Allocate to the \\(k\\) highest bidders and charge each her own bid.",
+        "Allocate to the \\((k+1)\\) highest bidders and charge the \\(k\\)-th bid.",
+        "Allocate randomly among the top \\(k+1\\) bidders and charge zero."
+      ],
+      "answer": "Allocate to the \\(k\\) highest bidders and charge each winner the \\((k+1)\\)-st highest bid.",
+      "explanation": "Each winner faces the same critical threshold: the highest losing bid.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ008",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A seller has production cost \\(c\\). Which modification of the second-price auction is efficient and DSIC?",
+      "choices": [
+        "Sell only if the highest bid is at least \\(c\\), and charge the winner \\(\\max\\{c,b_{(2)}\\}\\).",
+        "Always sell and charge \\(b_{(2)}-c\\).",
+        "Sell only if the second-highest bid is at least \\(c\\), and charge \\(b_{(1)}\\).",
+        "Sell only if the highest bid is at least \\(c\\), and charge \\(c+b_{(2)}\\)."
+      ],
+      "answer": "Sell only if the highest bid is at least \\(c\\), and charge the winner \\(\\max\\{c,b_{(2)}\\}\\).",
+      "explanation": "The winner pays the critical value needed both to beat competitors and to cover production cost.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ009",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In a procurement auction where contractor \\(i\\) has private cost \\(c_i\\), which rule is the reverse-Vickrey analogue?",
+      "choices": [
+        "Choose the lowest reported cost and pay the second-lowest reported cost.",
+        "Choose the lowest reported cost and pay that report.",
+        "Choose the second-lowest reported cost and pay the lowest report.",
+        "Choose the highest reported cost and pay the second-highest report."
+      ],
+      "answer": "Choose the lowest reported cost and pay the second-lowest reported cost.",
+      "explanation": "The winner is paid her critical cost threshold.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ010",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a single-parameter allocation rule \\(x_i(b_i,b_{-i})\\in\\{0,1\\}\\), monotonicity means:",
+      "choices": [
+        "If \\(i\\) wins at \\(b_i\\), then she also wins at every \\(b_i'>b_i\\), holding \\(b_{-i}\\) fixed.",
+        "If \\(i\\) wins at \\(b_i\\), her payment strictly increases with every larger bid.",
+        "If \\(i\\) loses at \\(b_i\\), she also loses at every larger bid.",
+        "The total number of winners is nondecreasing in every bid."
+      ],
+      "answer": "If \\(i\\) wins at \\(b_i\\), then she also wins at every \\(b_i'>b_i\\), holding \\(b_{-i}\\) fixed.",
+      "explanation": "This is the implementability condition in deterministic single-parameter environments.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ011",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a monotone binary allocation rule, the DSIC payment of a winning agent is:",
+      "choices": [
+        "Her critical bid, i.e. the smallest bid at which she would still win.",
+        "Her reported bid.",
+        "The largest losing bid among all agents, regardless of feasibility.",
+        "Any payment independent of her own report."
+      ],
+      "answer": "Her critical bid, i.e. the smallest bid at which she would still win.",
+      "explanation": "Critical-value payments make truthful bidding a dominant strategy.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ012",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which statement best captures Myerson's lemma in a single-parameter environment?",
+      "choices": [
+        "An allocation rule is implementable in DSIC iff it is monotone; when implementable, the normalized payment rule is essentially unique.",
+        "Every welfare-maximizing allocation is polynomial-time computable.",
+        "Every monotone allocation maximizes revenue.",
+        "DSIC is equivalent to budget balance."
+      ],
+      "answer": "An allocation rule is implementable in DSIC iff it is monotone; when implementable, the normalized payment rule is essentially unique.",
+      "explanation": "The payment identity converts monotonicity into truthfulness.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ013",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For fractional single-parameter allocation \\(x_i(z,b_{-i})\\in[0,1]\\), the normalized payment identity is:",
+      "choices": [
+        "\\(p_i(b_i,b_{-i})=b_ix_i(b_i,b_{-i})-\\int_0^{b_i}x_i(z,b_{-i})\\,dz\\).",
+        "\\(p_i(b_i,b_{-i})=\\int_0^{b_i}z\\,x_i(z,b_{-i})\\,dz\\).",
+        "\\(p_i(b_i,b_{-i})=b_i-\\int_0^{b_i}x_i(z,b_{-i})\\,dz\\).",
+        "\\(p_i(b_i,b_{-i})=b_ix_i(b_i,b_{-i})+\\int_0^{b_i}x_i(z,b_{-i})\\,dz\\)."
+      ],
+      "answer": "\\(p_i(b_i,b_{-i})=b_ix_i(b_i,b_{-i})-\\int_0^{b_i}x_i(z,b_{-i})\\,dz\\).",
+      "explanation": "This is the standard payment formula with zero payment at bid zero.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ014",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which claim about a first-price auction is correct?",
+      "choices": [
+        "Truthful bidding is generally not a dominant strategy because a winner can often shade her bid and still win.",
+        "It is DSIC because the highest value always wins.",
+        "It is equivalent to the second-price auction pointwise in payments.",
+        "Overbidding is always optimal."
+      ],
+      "answer": "Truthful bidding is generally not a dominant strategy because a winner can often shade her bid and still win.",
+      "explanation": "Efficiency of an outcome under truthful bids does not imply truthful bidding is optimal.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ015",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In an English ascending auction with sufficiently small increments, the final price approximates:",
+      "choices": [
+        "The second-highest valuation.",
+        "The highest valuation.",
+        "The average valuation.",
+        "The seller's value plus the highest valuation."
+      ],
+      "answer": "The second-highest valuation.",
+      "explanation": "The highest-value bidder remains after the second-highest bidder drops out.",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ016",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In the knapsack auction, bidder \\(i\\) has public size \\(w_i\\) and private value \\(v_i\\). Which feasibility constraint is correct?",
+      "choices": [
+        "\\(\\sum_i w_i x_i\\le W\\), with \\(x_i\\in\\{0,1\\}\\).",
+        "\\(\\sum_i v_i x_i\\le W\\).",
+        "\\(\\sum_i x_i=W\\) for every instance.",
+        "\\(w_ix_i\\le v_i\\) for every \\(i\\)."
+      ],
+      "answer": "\\(\\sum_i w_i x_i\\le W\\), with \\(x_i\\in\\{0,1\\}\\).",
+      "explanation": "The public sizes consume the shared capacity \\(W\\).",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ017",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why can exact welfare maximization be unsuitable as an allocation rule in a knapsack auction?",
+      "choices": [
+        "Computing the welfare-maximizing feasible subset is NP-hard.",
+        "It is never monotone.",
+        "It cannot be paired with payments.",
+        "It necessarily violates individual rationality."
+      ],
+      "answer": "Computing the welfare-maximizing feasible subset is NP-hard.",
+      "explanation": "The mechanism-design challenge is to combine truthfulness, approximation, and polynomial running time.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ018",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which compromise is central to algorithmic mechanism design for NP-hard welfare problems?",
+      "choices": [
+        "Replace exact welfare maximization by a polynomial-time monotone approximation algorithm.",
+        "Keep exact welfare maximization but drop all payments.",
+        "Use any approximation algorithm and assume it is truthful.",
+        "Maximize revenue instead of welfare."
+      ],
+      "answer": "Replace exact welfare maximization by a polynomial-time monotone approximation algorithm.",
+      "explanation": "Monotonicity is essential for DSIC in single-parameter settings.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ019",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A greedy knapsack rule orders bidders by decreasing \\(b_i/w_i\\) and packs while feasible. Why is a comparison with the highest-value single item often added?",
+      "choices": [
+        "To obtain a constant-factor guarantee when one large item carries much of the optimum value.",
+        "To make the rule randomized.",
+        "To eliminate the need for payments.",
+        "To convert private sizes into public sizes."
+      ],
+      "answer": "To obtain a constant-factor guarantee when one large item carries much of the optimum value.",
+      "explanation": "Density-greedy alone can miss a single very valuable item.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ020",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The standard greedy-plus-best-single-item knapsack heuristic guarantees at least:",
+      "choices": [
+        "\\(\\frac12\\) of optimal welfare.",
+        "\\(\\frac13\\) of optimal welfare.",
+        "\\(1-1/e\\) of optimal welfare.",
+        "The exact optimum."
+      ],
+      "answer": "\\(\\frac12\\) of optimal welfare.",
+      "explanation": "The fractional optimum is bounded by the greedy prefix plus at most one additional item.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ021",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which argument proves monotonicity of density-based greedy knapsack when sizes are public?",
+      "choices": [
+        "Increasing \\(b_i\\) only moves item \\(i\\) earlier in the density order, so it cannot lose solely because of the increase, with fixed tie-breaking.",
+        "Increasing \\(b_i\\) decreases \\(w_i\\).",
+        "Every approximation algorithm is monotone.",
+        "The critical payment forces the allocation to be monotone."
+      ],
+      "answer": "Increasing \\(b_i\\) only moves item \\(i\\) earlier in the density order, so it cannot lose solely because of the increase, with fixed tie-breaking.",
+      "explanation": "Fixed, bid-independent tie-breaking is important.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ022",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why does applying a generic knapsack FPTAS not automatically yield a truthful mechanism?",
+      "choices": [
+        "Its allocation rule may fail monotonicity as a bid changes.",
+        "FPTAS algorithms cannot run in polynomial time.",
+        "Approximation is incompatible with DSIC.",
+        "Payments cannot be computed for exact algorithms."
+      ],
+      "answer": "Its allocation rule may fail monotonicity as a bid changes.",
+      "explanation": "Approximation quality alone says nothing about strategic implementability.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ023",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "For a selected bidder under a monotone knapsack allocation, the DSIC payment is best described as:",
+      "choices": [
+        "The infimum bid at which that bidder remains selected, fixing the others' bids.",
+        "The bidder's value-to-size ratio.",
+        "The highest selected bid.",
+        "The bidder's reported bid minus the approximation error."
+      ],
+      "answer": "The infimum bid at which that bidder remains selected, fixing the others' bids.",
+      "explanation": "This is the critical bid induced by the allocation algorithm.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ024",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which statement is the Revelation Principle for dominant strategies?",
+      "choices": [
+        "Any mechanism in which every agent has a dominant strategy has an outcome-equivalent direct-revelation DSIC mechanism.",
+        "Every indirect mechanism is DSIC.",
+        "Every Bayesian mechanism has a dominant-strategy implementation.",
+        "Every direct mechanism maximizes welfare."
+      ],
+      "answer": "Any mechanism in which every agent has a dominant strategy has an outcome-equivalent direct-revelation DSIC mechanism.",
+      "explanation": "The direct mechanism simulates the dominant strategies agents would have played in the original mechanism.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ025",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In the proof of the Revelation Principle, the direct mechanism receiving type report \\(\\hat v_i\\) submits what to the original mechanism?",
+      "choices": [
+        "The dominant strategy \\(s_i(\\hat v_i)\\) associated with that reported type.",
+        "The payment \\(p_i(\\hat v_i)\\).",
+        "The welfare-maximizing allocation.",
+        "A uniformly random strategy."
+      ],
+      "answer": "The dominant strategy \\(s_i(\\hat v_i)\\) associated with that reported type.",
+      "explanation": "Truthful reporting is optimal because it triggers the original dominant strategy for the true type.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ026",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Suppose an approximation rule has excellent welfare but is nonmonotone. What follows in a deterministic single-parameter environment?",
+      "choices": [
+        "No payment rule can make that allocation rule DSIC.",
+        "VCG payments always repair it.",
+        "It is DSIC if the approximation ratio exceeds \\(1/2\\).",
+        "It becomes DSIC after adding a reserve price."
+      ],
+      "answer": "No payment rule can make that allocation rule DSIC.",
+      "explanation": "This is the necessity direction of Myerson's lemma.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ027",
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why must tie-breaking in a monotone allocation algorithm be fixed independently of bids?",
+      "choices": [
+        "Bid-dependent tie-breaking can make a bidder lose after increasing her bid.",
+        "It is required for polynomial running time.",
+        "It guarantees exact optimality.",
+        "It makes all payments zero."
+      ],
+      "answer": "Bid-dependent tie-breaking can make a bidder lose after increasing her bid.",
+      "explanation": "Strategic monotonicity can be destroyed by seemingly harmless tie-breaking.",
+      "tags": [
+        "algorithmic_mechanism_design"
+      ]
+    },
+    {
+      "id": "ECQ028",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "What distinguishes a multi-parameter environment from a single-parameter one?",
+      "choices": [
+        "An agent may have different private values for many outcomes or bundles, not merely one scalar value multiplying a public allocation quantity.",
+        "There are multiple agents.",
+        "The mechanism has multiple payments.",
+        "The feasible set contains multiple outcomes."
+      ],
+      "answer": "An agent may have different private values for many outcomes or bundles, not merely one scalar value multiplying a public allocation quantity.",
+      "explanation": "Combinatorial auctions are the canonical example.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ029",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In a combinatorial auction with item set \\(M\\), bidder \\(i\\) reports:",
+      "choices": [
+        "A valuation function \\(b_i:2^M\\to\\mathbb R_{\\ge0}\\).",
+        "A single bid \\(b_i\\in\\mathbb R\\) only.",
+        "A permutation of the bidders.",
+        "A cost function on edges of a network."
+      ],
+      "answer": "A valuation function \\(b_i:2^M\\to\\mathbb R_{\\ge0}\\).",
+      "explanation": "Each subset of items can have a distinct reported value.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ030",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The VCG allocation rule chooses:",
+      "choices": [
+        "\\(x(\\mathbf b)\\in\\arg\\max_{x\\in X}\\sum_i b_i(x)\\).",
+        "\\(x(\\mathbf b)\\in\\arg\\max_{x\\in X}\\sum_i p_i(x)\\).",
+        "\\(x(\\mathbf b)\\in\\arg\\min_{x\\in X}\\sum_i b_i(x)\\).",
+        "The lexicographically first report profile."
+      ],
+      "answer": "\\(x(\\mathbf b)\\in\\arg\\max_{x\\in X}\\sum_i b_i(x)\\).",
+      "explanation": "VCG chooses an outcome maximizing reported social welfare.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ031",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Under Clarke pivot payments, agent \\(i\\) pays:",
+      "choices": [
+        "\\(p_i(\\mathbf b)=\\max_{x\\in X}\\sum_{j\\ne i}b_j(x)-\\sum_{j\\ne i}b_j(x(\\mathbf b))\\).",
+        "\\(p_i(\\mathbf b)=b_i(x(\\mathbf b))\\).",
+        "\\(p_i(\\mathbf b)=\\sum_jb_j(x(\\mathbf b))-\\max_x\\sum_jb_j(x)\\).",
+        "\\(p_i(\\mathbf b)=\\max_x b_i(x)-b_i(x(\\mathbf b))\\)."
+      ],
+      "answer": "\\(p_i(\\mathbf b)=\\max_{x\\in X}\\sum_{j\\ne i}b_j(x)-\\sum_{j\\ne i}b_j(x(\\mathbf b))\\).",
+      "explanation": "The payment is the externality agent \\(i\\) imposes on the others.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ032",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "What is the 'externality' in a VCG mechanism?",
+      "choices": [
+        "The decrease in maximum achievable welfare of the other agents caused by agent \\(i\\)'s presence and selected allocation.",
+        "Agent \\(i\\)'s reported value.",
+        "The total revenue collected from all agents.",
+        "The difference between first and second price in every environment."
+      ],
+      "answer": "The decrease in maximum achievable welfare of the other agents caused by agent \\(i\\)'s presence and selected allocation.",
+      "explanation": "Second-price payments are a special case of this general expression.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ033",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why is truthful reporting dominant in VCG?",
+      "choices": [
+        "Agent \\(i\\)'s utility equals total reported welfare of the chosen outcome, with \\(i\\) evaluated at her true value, minus a term independent of her report.",
+        "The payment always equals zero.",
+        "The mechanism ignores agent \\(i\\)'s report.",
+        "Every outcome gives the same utility."
+      ],
+      "answer": "Agent \\(i\\)'s utility equals total reported welfare of the chosen outcome, with \\(i\\) evaluated at her true value, minus a term independent of her report.",
+      "explanation": "Truthful reporting aligns the allocation objective with the agent's utility objective.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ034",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which statement about VCG computational efficiency is correct?",
+      "choices": [
+        "VCG is computationally efficient only when the welfare-maximization problem and required counterfactual optimizations can be solved efficiently.",
+        "VCG is always polynomial time because it is DSIC.",
+        "VCG avoids solving any optimization problem.",
+        "VCG is efficient only in single-item auctions."
+      ],
+      "answer": "VCG is computationally efficient only when the welfare-maximization problem and required counterfactual optimizations can be solved efficiently.",
+      "explanation": "Truthfulness does not remove computational hardness.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ035",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which is a genuine practical limitation of combinatorial VCG auctions?",
+      "choices": [
+        "Preference elicitation may require reporting values for exponentially many bundles.",
+        "They cannot maximize welfare.",
+        "They are never individually rational.",
+        "They require identical bidders."
+      ],
+      "answer": "Preference elicitation may require reporting values for exponentially many bundles.",
+      "explanation": "There are \\(2^{|M|}\\) possible bundles.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ036",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "VCG revenue can be low because:",
+      "choices": [
+        "Payments reflect externalities, which can be small even when winners have high values.",
+        "VCG charges every winner her full value.",
+        "VCG maximizes revenue rather than welfare.",
+        "VCG never charges any payment."
+      ],
+      "answer": "Payments reflect externalities, which can be small even when winners have high values.",
+      "explanation": "VCG optimizes welfare, not seller revenue.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ037",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a single-item auction, the VCG payment of the winner reduces to:",
+      "choices": [
+        "The highest bid among the other bidders.",
+        "The winner's own bid.",
+        "Zero.",
+        "The sum of all losing bids."
+      ],
+      "answer": "The highest bid among the other bidders.",
+      "explanation": "Removing the winner lets the best losing bidder obtain the item.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ038",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "For a bipartite assignment problem, computing VCG payments generally requires:",
+      "choices": [
+        "The optimal matching with all agents and counterfactual optimal matchings with each paying agent removed.",
+        "Only the greedy matching.",
+        "Only the second-highest edge weight.",
+        "No optimization after the allocation."
+      ],
+      "answer": "The optimal matching with all agents and counterfactual optimal matchings with each paying agent removed.",
+      "explanation": "Each externality is a difference between two optimal welfare values.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ039",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "If an agent's presence does not change the welfare attainable by the other agents, her Clarke pivot payment is:",
+      "choices": [
+        "Zero.",
+        "Her full reported value.",
+        "Negative.",
+        "The average payment of others."
+      ],
+      "answer": "Zero.",
+      "explanation": "The agent imposes no externality.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ040",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which property is not guaranteed by VCG in general?",
+      "choices": [
+        "High or optimal revenue.",
+        "DSIC.",
+        "Welfare maximization.",
+        "Quasi-linear incentive compatibility."
+      ],
+      "answer": "High or optimal revenue.",
+      "explanation": "VCG is a welfare mechanism, and revenue can be arbitrarily poor.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ041",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In a combinatorial auction, why can a bidder's VCG payment differ sharply from any single losing bid?",
+      "choices": [
+        "The relevant counterfactual is the best reallocation of all items among all other bidders, not one runner-up bid.",
+        "VCG uses random payments.",
+        "The payment equals the average losing bid.",
+        "The payment ignores complementarities."
+      ],
+      "answer": "The relevant counterfactual is the best reallocation of all items among all other bidders, not one runner-up bid.",
+      "explanation": "Externalities are global in multi-item allocation problems.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ042",
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Let \\(W_{-i}^*\\) be the maximum welfare achievable by agents other than \\(i\\), and let \\(W_{-i}(x^*)\\) be their welfare in the chosen allocation. The pivot payment is:",
+      "choices": [
+        "\\(W_{-i}^*-W_{-i}(x^*)\\).",
+        "\\(W_{-i}(x^*)-W_{-i}^*\\).",
+        "\\(v_i(x^*)-W_{-i}^*\\).",
+        "\\(W^*-W_{-i}^*\\)."
+      ],
+      "answer": "\\(W_{-i}^*-W_{-i}(x^*)\\).",
+      "explanation": "It is the harm to others due to accommodating agent \\(i\\).",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ043",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For one bidder with value \\(v\\) and posted price \\(r\\), seller revenue is:",
+      "choices": [
+        "\\(r\\) if \\(v\\ge r\\), and \\(0\\) otherwise.",
+        "\\(v\\) if \\(v\\ge r\\), and \\(r\\) otherwise.",
+        "\\(v-r\\) if \\(v\\ge r\\), and \\(0\\) otherwise.",
+        "Always \\(r\\)."
+      ],
+      "answer": "\\(r\\) if \\(v\\ge r\\), and \\(0\\) otherwise.",
+      "explanation": "A posted price is a take-it-or-leave-it DSIC mechanism.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ044",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why is a Bayesian model introduced for revenue maximization?",
+      "choices": [
+        "Different auctions perform best on different valuation profiles, so distributions provide a criterion for comparing expected revenue.",
+        "Welfare cannot be defined ex post.",
+        "DSIC requires bidders to know each other's values.",
+        "Bayesian analysis eliminates private information."
+      ],
+      "answer": "Different auctions perform best on different valuation profiles, so distributions provide a criterion for comparing expected revenue.",
+      "explanation": "Unlike welfare maximization, there is generally no input-independent ex-post optimal DSIC auction for revenue.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ045",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The virtual valuation for bidder \\(i\\) is:",
+      "choices": [
+        "\\(\\phi_i(v)=v-\\frac{1-F_i(v)}{f_i(v)}\\).",
+        "\\(\\phi_i(v)=v+\\frac{1-F_i(v)}{f_i(v)}\\).",
+        "\\(\\phi_i(v)=\\frac{F_i(v)}{f_i(v)}\\).",
+        "\\(\\phi_i(v)=v-F_i(v)f_i(v)\\)."
+      ],
+      "answer": "\\(\\phi_i(v)=v-\\frac{1-F_i(v)}{f_i(v)}\\).",
+      "explanation": "Virtual values transform expected payments into expected virtual surplus.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ046",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Myerson's revenue identity states, for a DSIC single-parameter auction under standard normalization:",
+      "choices": [
+        "\\(\\mathbb E[\\sum_i p_i(v)]=\\mathbb E[\\sum_i \\phi_i(v_i)x_i(v)]\\).",
+        "\\(\\mathbb E[\\sum_i p_i(v)]=\\mathbb E[\\max_i v_i]\\) for every auction.",
+        "\\(\\sum_i p_i(v)=\\sum_i v_ix_i(v)\\) pointwise.",
+        "\\(\\mathbb E[\\sum_i p_i(v)]=0\\)."
+      ],
+      "answer": "\\(\\mathbb E[\\sum_i p_i(v)]=\\mathbb E[\\sum_i \\phi_i(v_i)x_i(v)]\\).",
+      "explanation": "Expected revenue equals expected virtual welfare, not necessarily pointwise.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ047",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A distribution is regular when:",
+      "choices": [
+        "Its virtual valuation function is nondecreasing.",
+        "Its density is constant.",
+        "Its support is finite.",
+        "Its hazard rate is zero."
+      ],
+      "answer": "Its virtual valuation function is nondecreasing.",
+      "explanation": "Regularity makes virtual-welfare maximization monotone and hence implementable.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ048",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For i.i.d. regular bidders in a single-item auction, the optimal auction is:",
+      "choices": [
+        "A Vickrey auction with reserve price \\(r=\\phi^{-1}(0)\\).",
+        "A first-price auction without reserve.",
+        "A random allocation with posted prices.",
+        "A Vickrey auction with reserve equal to the mean value."
+      ],
+      "answer": "A Vickrey auction with reserve price \\(r=\\phi^{-1}(0)\\).",
+      "explanation": "The item is allocated only when the highest nonnegative virtual value is positive.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ049",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "For non-identically distributed regular bidders, the revenue-optimal allocation can award the item to someone other than the highest-value bidder because:",
+      "choices": [
+        "Bidders are ranked by virtual values, which use bidder-specific distributions.",
+        "The auction is not DSIC.",
+        "Payments determine the allocation after bids are submitted.",
+        "The highest bid is ignored whenever there is a reserve."
+      ],
+      "answer": "Bidders are ranked by virtual values, which use bidder-specific distributions.",
+      "explanation": "A lower value from a favorable distribution can have a higher virtual value.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ050",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "For \\(V\\sim U[0,1]\\), the virtual valuation is:",
+      "choices": [
+        "\\(\\phi(v)=2v-1\\).",
+        "\\(\\phi(v)=v-1\\).",
+        "\\(\\phi(v)=1-v\\).",
+        "\\(\\phi(v)=v^2\\)."
+      ],
+      "answer": "\\(\\phi(v)=2v-1\\).",
+      "explanation": "Here \\(F(v)=v\\) and \\(f(v)=1\\).",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ051",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For \\(V\\sim U[0,1]\\), the monopoly reserve is:",
+      "choices": [
+        "\\(1/2\\).",
+        "\\(1/3\\).",
+        "\\(2/3\\).",
+        "\\(1\\)."
+      ],
+      "answer": "\\(1/2\\).",
+      "explanation": "Solve \\(\\phi(r)=2r-1=0\\).",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ052",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The prophet inequality in the lecture guarantees a threshold strategy with expected reward at least:",
+      "choices": [
+        "\\(\\frac12\\,\\mathbb E[\\max_i \\pi_i]\\).",
+        "\\(\\frac1e\\,\\mathbb E[\\max_i \\pi_i]\\).",
+        "\\(\\mathbb E[\\max_i \\pi_i]\\).",
+        "\\(\\frac14\\,\\mathbb E[\\sum_i\\pi_i]\\)."
+      ],
+      "answer": "\\(\\frac12\\,\\mathbb E[\\max_i \\pi_i]\\).",
+      "explanation": "The decision maker sees prizes sequentially and accepts at most one.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ053",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A key feature of the prophet-inequality strategy used in simple auctions is:",
+      "choices": [
+        "A single threshold chosen from the known distributions before observing realizations.",
+        "Choosing the largest realized prize after seeing all of them.",
+        "A bidder-specific payment equal to her virtual value.",
+        "Randomly accepting the first prize."
+      ],
+      "answer": "A single threshold chosen from the known distributions before observing realizations.",
+      "explanation": "The threshold trades off the probability of accepting against the value conditional on acceptance.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ054",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The Bulow-Klemperer theorem compares which two auctions for i.i.d. regular bidders?",
+      "choices": [
+        "The Vickrey auction with \\(n+1\\) bidders earns at least the optimal auction with \\(n\\) bidders.",
+        "The first-price auction with \\(n\\) bidders earns exactly the Vickrey auction with \\(n\\) bidders.",
+        "The optimal auction with \\(n+1\\) bidders earns less than Vickrey with \\(n\\) bidders.",
+        "A posted price with one bidder dominates every auction with two bidders."
+      ],
+      "answer": "The Vickrey auction with \\(n+1\\) bidders earns at least the optimal auction with \\(n\\) bidders.",
+      "explanation": "Competition can substitute for detailed distributional optimization.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ055",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "What design lesson is suggested by Bulow-Klemperer?",
+      "choices": [
+        "Increasing competition may be more valuable and robust than fine-tuning a complicated optimal auction.",
+        "Reserve prices are always harmful.",
+        "Optimal auctions never use distributions.",
+        "Revenue maximization and welfare maximization coincide pointwise."
+      ],
+      "answer": "Increasing competition may be more valuable and robust than fine-tuning a complicated optimal auction.",
+      "explanation": "One extra bidder can beat optimal design with one fewer bidder.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ056",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why are simple near-optimal auctions studied after Myerson's exact characterization?",
+      "choices": [
+        "Exact optimal auctions can be complex, distribution-sensitive, and difficult to explain or implement.",
+        "Myerson's auction is not DSIC.",
+        "Exact optimization never uses reserve prices.",
+        "Simple auctions always maximize revenue exactly."
+      ],
+      "answer": "Exact optimal auctions can be complex, distribution-sensitive, and difficult to explain or implement.",
+      "explanation": "Approximation is used here to recover simplicity and robustness.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ057",
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which statement correctly distinguishes welfare and revenue objectives?",
+      "choices": [
+        "Welfare-maximizing DSIC mechanisms can often be optimal ex post, whereas revenue optimization generally requires a distributional criterion.",
+        "Revenue always equals welfare in DSIC mechanisms.",
+        "Welfare maximization requires Bayesian priors, but revenue does not.",
+        "VCG maximizes expected revenue for all distributions."
+      ],
+      "answer": "Welfare-maximizing DSIC mechanisms can often be optimal ex post, whereas revenue optimization generally requires a distributional criterion.",
+      "explanation": "This is why welfare is unusually tractable from an incentive perspective.",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ058",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A normal-form game consists of:",
+      "choices": [
+        "Players \\(N\\), strategy sets \\(S_i\\), and payoff functions \\(u_i:\\prod_jS_j\\to\\mathbb R\\).",
+        "Only a payoff matrix and one strategy set.",
+        "A feasible allocation set and payment rules.",
+        "A graph and edge latency functions only."
+      ],
+      "answer": "Players \\(N\\), strategy sets \\(S_i\\), and payoff functions \\(u_i:\\prod_jS_j\\to\\mathbb R\\).",
+      "explanation": "A state is a complete strategy profile.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ059",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A strategy \\(s_i\\) is dominant for player \\(i\\) if:",
+      "choices": [
+        "For every \\(s_{-i}\\) and every alternative \\(s_i'\\), \\(u_i(s_i,s_{-i})\\ge u_i(s_i',s_{-i})\\).",
+        "It is a best response to at least one profile \\(s_{-i}\\).",
+        "Every other player uses the same strategy.",
+        "It appears in some Nash equilibrium."
+      ],
+      "answer": "For every \\(s_{-i}\\) and every alternative \\(s_i'\\), \\(u_i(s_i,s_{-i})\\ge u_i(s_i',s_{-i})\\).",
+      "explanation": "Dominance is uniform over all opponents' actions.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ060",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A pure Nash equilibrium \\(s\\) satisfies:",
+      "choices": [
+        "\\(u_i(s_i,s_{-i})\\ge u_i(s_i',s_{-i})\\) for every player \\(i\\) and every \\(s_i'\\).",
+        "Every player uses a dominant strategy.",
+        "The sum of utilities is maximal.",
+        "All players receive equal utility."
+      ],
+      "answer": "\\(u_i(s_i,s_{-i})\\ge u_i(s_i',s_{-i})\\) for every player \\(i\\) and every \\(s_i'\\).",
+      "explanation": "No player can profitably deviate unilaterally.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ061",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which implication is valid?",
+      "choices": [
+        "Every dominant-strategy equilibrium is a Nash equilibrium, but not every Nash equilibrium is a dominant-strategy equilibrium.",
+        "Every Nash equilibrium is dominant-strategy.",
+        "A game with a Nash equilibrium must have a dominant strategy for every player.",
+        "Dominant strategies exist only in zero-sum games."
+      ],
+      "answer": "Every dominant-strategy equilibrium is a Nash equilibrium, but not every Nash equilibrium is a dominant-strategy equilibrium.",
+      "explanation": "Dominance is a stronger requirement than best response at one profile.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ062",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Nash's theorem guarantees that every finite game has:",
+      "choices": [
+        "At least one mixed Nash equilibrium.",
+        "At least one pure Nash equilibrium.",
+        "A unique equilibrium.",
+        "A dominant-strategy equilibrium."
+      ],
+      "answer": "At least one mixed Nash equilibrium.",
+      "explanation": "Pure equilibria need not exist, as Rock-Paper-Scissors shows.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ063",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "The support of a mixed strategy \\(p_i\\) is:",
+      "choices": [
+        "The set of pure strategies assigned positive probability.",
+        "The set of best responses of the opponents.",
+        "The set of all pure strategies in the game.",
+        "The expected payoff vector."
+      ],
+      "answer": "The set of pure strategies assigned positive probability.",
+      "explanation": "Strategies outside the support have probability zero.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ064",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In a mixed Nash equilibrium, every pure strategy in a player's support must:",
+      "choices": [
+        "Yield the same maximal expected payoff against the opponents' mixed strategies.",
+        "Be strictly dominant.",
+        "Have probability one.",
+        "Minimize the opponent's payoff in every game."
+      ],
+      "answer": "Yield the same maximal expected payoff against the opponents' mixed strategies.",
+      "explanation": "Otherwise probability could be shifted from a worse supported action to a better one.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ065",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A strictly dominated pure strategy:",
+      "choices": [
+        "Cannot receive positive probability in any Nash equilibrium.",
+        "Must be played in every mixed equilibrium.",
+        "Can be a best response to every profile.",
+        "Can be removed only in zero-sum games."
+      ],
+      "answer": "Cannot receive positive probability in any Nash equilibrium.",
+      "explanation": "A strictly better alternative exists against every opponents' profile.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ066",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A zero-sum game satisfies:",
+      "choices": [
+        "\\(u_1(s)+u_2(s)=0\\) (or another fixed constant after normalization) for every state \\(s\\).",
+        "Both players always receive zero.",
+        "There is always a pure equilibrium.",
+        "Both players have identical utilities."
+      ],
+      "answer": "\\(u_1(s)+u_2(s)=0\\) (or another fixed constant after normalization) for every state \\(s\\).",
+      "explanation": "One player's gain is the other's loss.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ067",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a two-player zero-sum matrix game with row payoff matrix \\(A\\), mixed strategies \\(x,y\\) give row expected payoff:",
+      "choices": [
+        "\\(x^TAy\\).",
+        "\\(x+y+A\\).",
+        "\\(\\max_{i,j}A_{ij}\\).",
+        "\\(x^Ty\\)."
+      ],
+      "answer": "\\(x^TAy\\).",
+      "explanation": "This is the bilinear expectation over independently sampled actions.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ068",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The minimax theorem states:",
+      "choices": [
+        "\\(\\max_x\\min_y x^TAy=\\min_y\\max_x x^TAy\\).",
+        "\\(\\max_x\\max_y x^TAy=\\min_x\\min_y x^TAy\\).",
+        "Every zero-sum game has a pure saddle point.",
+        "The value depends on who commits first."
+      ],
+      "answer": "\\(\\max_x\\min_y x^TAy=\\min_y\\max_x x^TAy\\).",
+      "explanation": "Randomization eliminates the first-mover disadvantage in finite zero-sum games.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ069",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In Prisoner's Dilemma, the socially optimal outcome can differ from the Nash equilibrium because:",
+      "choices": [
+        "Individual incentives under unilateral deviations need not align with maximizing total welfare.",
+        "Nash equilibrium always minimizes total utility.",
+        "The game is zero-sum.",
+        "Players cannot observe their own payoffs."
+      ],
+      "answer": "Individual incentives under unilateral deviations need not align with maximizing total welfare.",
+      "explanation": "Equilibrium is a stability concept, not an efficiency guarantee.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ070",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A best response of player \\(i\\) to \\(s_{-i}\\) is:",
+      "choices": [
+        "Any \\(s_i\\in\\arg\\max_{a_i\\in S_i}u_i(a_i,s_{-i})\\).",
+        "A strategy maximizing total welfare.",
+        "A strategy independent of \\(s_{-i}\\).",
+        "Any strategy in the support of the opponent."
+      ],
+      "answer": "Any \\(s_i\\in\\arg\\max_{a_i\\in S_i}u_i(a_i,s_{-i})\\).",
+      "explanation": "Best responses depend on what the others do.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ071",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why can computing a Nash equilibrium be challenging despite Nash's existence theorem?",
+      "choices": [
+        "Existence is nonconstructive with respect to efficient computation; equilibrium computation can be computationally hard.",
+        "Finite games have infinitely many states.",
+        "Payoffs cannot be represented computationally.",
+        "Mixed strategies are not finite objects."
+      ],
+      "answer": "Existence is nonconstructive with respect to efficient computation; equilibrium computation can be computationally hard.",
+      "explanation": "Existence and polynomial-time computability are distinct questions.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ072",
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In a symmetric bandwidth-sharing game, a player's best response is found by:",
+      "choices": [
+        "Maximizing her utility with respect to her own action while holding all other actions fixed.",
+        "Maximizing the sum of all utilities.",
+        "Assuming all opponents copy her action after she moves.",
+        "Ignoring congestion caused by others."
+      ],
+      "answer": "Maximizing her utility with respect to her own action while holding all other actions fixed.",
+      "explanation": "This is the unilateral-deviation viewpoint underlying Nash equilibrium.",
+      "tags": [
+        "computational_game_theory"
+      ]
+    },
+    {
+      "id": "ECQ073",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In nonatomic selfish routing, a feasible flow is at Wardrop equilibrium when:",
+      "choices": [
+        "Every used path has minimum latency among all paths available to the same commodity.",
+        "All paths carry equal flow.",
+        "Total latency is minimized.",
+        "Every edge has equal latency."
+      ],
+      "answer": "Every used path has minimum latency among all paths available to the same commodity.",
+      "explanation": "An infinitesimal user cannot improve by switching paths.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ074",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The social cost of a flow \\(f\\) with edge latency functions \\(c_e\\) is:",
+      "choices": [
+        "\\(C(f)=\\sum_e f_ec_e(f_e)\\).",
+        "\\(C(f)=\\sum_e c_e(f_e)\\).",
+        "\\(C(f)=\\max_e f_e\\).",
+        "\\(C(f)=\\sum_e f_e/c_e(f_e)\\)."
+      ],
+      "answer": "\\(C(f)=\\sum_e f_ec_e(f_e)\\).",
+      "explanation": "Each edge's latency is incurred by all flow using that edge.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ075",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The Price of Anarchy for a cost-minimization game is typically:",
+      "choices": [
+        "\\(\\frac{\\text{cost of worst equilibrium}}{\\text{cost of optimum}}\\).",
+        "\\(\\frac{\\text{cost of optimum}}{\\text{cost of best equilibrium}}\\).",
+        "\\(\\text{cost of equilibrium}-\\text{cost of optimum}\\) only.",
+        "The number of equilibria."
+      ],
+      "answer": "\\(\\frac{\\text{cost of worst equilibrium}}{\\text{cost of optimum}}\\).",
+      "explanation": "PoA measures inefficiency caused by decentralized selfish behavior.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ076",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In Pigou's network with one unit of demand, one edge of constant latency \\(1\\), and one edge of latency \\(x\\), the Wardrop equilibrium sends:",
+      "choices": [
+        "All flow on the \\(x\\) edge.",
+        "Half the flow on each edge.",
+        "All flow on the constant edge.",
+        "One third on the \\(x\\) edge."
+      ],
+      "answer": "All flow on the \\(x\\) edge.",
+      "explanation": "At full load the variable edge has latency \\(1\\), so no infinitesimal user can strictly improve.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ077",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "For the same Pigou network, the socially optimal split is:",
+      "choices": [
+        "\\(1/2\\) on each edge.",
+        "All flow on the \\(x\\) edge.",
+        "All flow on the constant edge.",
+        "\\(2/3\\) on the \\(x\\) edge and \\(1/3\\) on the constant edge."
+      ],
+      "answer": "\\(1/2\\) on each edge.",
+      "explanation": "Minimize \\(x^2+(1-x)\\) over the variable-edge flow \\(x\\).",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ078",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The Price of Anarchy in the linear Pigou example is:",
+      "choices": [
+        "\\(4/3\\).",
+        "\\(3/2\\).",
+        "\\(2\\).",
+        "\\(1\\)."
+      ],
+      "answer": "\\(4/3\\).",
+      "explanation": "Equilibrium cost is \\(1\\); optimum cost is \\(3/4\\).",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ079",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Braess's paradox shows that:",
+      "choices": [
+        "Adding an edge can worsen equilibrium travel time even though the feasible set expands.",
+        "Removing an edge always worsens every user's travel time.",
+        "Every equilibrium is socially optimal in series-parallel networks.",
+        "More capacity always lowers equilibrium cost."
+      ],
+      "answer": "Adding an edge can worsen equilibrium travel time even though the feasible set expands.",
+      "explanation": "Strategic route choices can turn extra capacity into a harmful option.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ080",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why can nonlinear latency functions lead to unbounded PoA over unrestricted classes?",
+      "choices": [
+        "They can create arbitrarily large gaps between marginal social cost and private latency.",
+        "Nonlinear functions are always decreasing.",
+        "Wardrop equilibria cease to exist.",
+        "The optimum uses infeasible paths."
+      ],
+      "answer": "They can create arbitrarily large gaps between marginal social cost and private latency.",
+      "explanation": "The Pigou construction can be amplified using steep cost functions.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ081",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A system-optimal flow for separable latency functions can be characterized as a Wardrop equilibrium under which modified edge costs?",
+      "choices": [
+        "Marginal costs \\(c_e(x)+x c_e'(x)\\).",
+        "Average costs \\(c_e(x)/x\\).",
+        "Constant costs \\(c_e(0)\\).",
+        "Negative costs \\(-c_e(x)\\)."
+      ],
+      "answer": "Marginal costs \\(c_e(x)+x c_e'(x)\\).",
+      "explanation": "Each additional unit creates congestion externality \\(x c_e'(x)\\).",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ082",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Pigouvian tolls that induce the system optimum are:",
+      "choices": [
+        "\\(\\tau_e(x)=x c_e'(x)\\).",
+        "\\(\\tau_e(x)=c_e(x)\\).",
+        "\\(\\tau_e(x)=1/c_e(x)\\).",
+        "\\(\\tau_e(x)=c_e'(0)\\)."
+      ],
+      "answer": "\\(\\tau_e(x)=x c_e'(x)\\).",
+      "explanation": "Users then perceive marginal social cost.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ083",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A smoothness proof for a cost game typically establishes an inequality of the form:",
+      "choices": [
+        "\\(\\sum_i C_i(s_i^*,s_{-i})\\le \\lambda C(s^*)+\\mu C(s)\\).",
+        "\\(C(s)=C(s^*)\\) for all \\(s\\).",
+        "\\(\\sum_iC_i(s)\\le0\\).",
+        "\\(C(s^*)\\le \\mu C(s^*)\\)."
+      ],
+      "answer": "\\(\\sum_i C_i(s_i^*,s_{-i})\\le \\lambda C(s^*)+\\mu C(s)\\).",
+      "explanation": "Combined with equilibrium inequalities, this yields \\(C(s)\\le\\lambda/(1-\\mu)C(s^*)\\).",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ084",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "If a cost-minimization game is \\((\\lambda,\\mu)\\)-smooth with \\(\\mu<1\\), the standard PoA bound is:",
+      "choices": [
+        "\\(\\lambda/(1-\\mu)\\).",
+        "\\((1-\\mu)/\\lambda\\).",
+        "\\(\\lambda+\\mu\\).",
+        "\\(1/(\\lambda-\\mu)\\)."
+      ],
+      "answer": "\\(\\lambda/(1-\\mu)\\).",
+      "explanation": "Rearrange \\((1-\\mu)C(s)\\le\\lambda C(s^*)\\).",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ085",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A major robustness advantage of smoothness bounds is that they extend beyond pure Nash equilibria to:",
+      "choices": [
+        "Coarse correlated equilibria and outcomes of no-regret learning.",
+        "Only dominant-strategy equilibria.",
+        "Only socially optimal flows.",
+        "Only zero-sum games."
+      ],
+      "answer": "Coarse correlated equilibria and outcomes of no-regret learning.",
+      "explanation": "Smoothness uses inequalities preserved under expectation.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ086",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In atomic selfish routing, the main difference from nonatomic routing is:",
+      "choices": [
+        "Each player controls a non-negligible packet or demand and can affect edge loads by a unilateral deviation.",
+        "Latencies cannot depend on flow.",
+        "Only one path is feasible.",
+        "Nash equilibria never exist."
+      ],
+      "answer": "Each player controls a non-negligible packet or demand and can affect edge loads by a unilateral deviation.",
+      "explanation": "The infinitesimal-user Wardrop condition no longer directly applies.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ087",
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which statement about equilibrium and optimum is correct?",
+      "choices": [
+        "An equilibrium minimizes each user's unilateral incentive, while an optimum minimizes aggregate cost; they need not coincide.",
+        "Every equilibrium globally minimizes aggregate cost.",
+        "Every optimum is necessarily a dominant-strategy equilibrium.",
+        "PoA compares two equilibria only."
+      ],
+      "answer": "An equilibrium minimizes each user's unilateral incentive, while an optimum minimizes aggregate cost; they need not coincide.",
+      "explanation": "The distinction drives the study of PoA.",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ088",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "An exact potential function \\(\\Phi\\) for a cost game satisfies:",
+      "choices": [
+        "\\(C_i(s_i',s_{-i})-C_i(s)=\\Phi(s_i',s_{-i})-\\Phi(s)\\) for every unilateral deviation.",
+        "\\(C_i(s)=\\Phi(s)\\) for every player.",
+        "\\(\\Phi\\) equals social cost in every game.",
+        "\\(\\Phi\\) decreases under every joint deviation."
+      ],
+      "answer": "\\(C_i(s_i',s_{-i})-C_i(s)=\\Phi(s_i',s_{-i})-\\Phi(s)\\) for every unilateral deviation.",
+      "explanation": "Individual improvement is exactly tracked by potential change.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ089",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why does every finite exact potential game have a pure Nash equilibrium?",
+      "choices": [
+        "A global minimum of the potential admits no unilateral cost-decreasing deviation.",
+        "Nash's mixed-equilibrium theorem directly implies a pure equilibrium.",
+        "Every strategy is dominant.",
+        "The social optimum always minimizes every player's cost."
+      ],
+      "answer": "A global minimum of the potential admits no unilateral cost-decreasing deviation.",
+      "explanation": "Finiteness ensures the potential attains a minimum.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ090",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Best-response dynamics in a finite potential game terminates when:",
+      "choices": [
+        "Every improving move strictly decreases a finite-valued potential over a finite state space.",
+        "Players update simultaneously.",
+        "The potential equals zero initially.",
+        "The game is zero-sum."
+      ],
+      "answer": "Every improving move strictly decreases a finite-valued potential over a finite state space.",
+      "explanation": "No state can repeat along a strict potential descent path.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ091",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Rosenthal's potential for an atomic congestion game is:",
+      "choices": [
+        "\\(\\Phi(s)=\\sum_e\\sum_{j=1}^{n_e(s)}c_e(j)\\).",
+        "\\(\\Phi(s)=\\sum_e n_e(s)c_e(n_e(s))\\) only.",
+        "\\(\\Phi(s)=\\max_e c_e(n_e(s))\\).",
+        "\\(\\Phi(s)=\\sum_iC_i(s)^2\\)."
+      ],
+      "answer": "\\(\\Phi(s)=\\sum_e\\sum_{j=1}^{n_e(s)}c_e(j)\\).",
+      "explanation": "Adding one user to an edge increases potential by exactly that user's new edge cost.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ092",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which inclusion among equilibrium concepts is correct?",
+      "choices": [
+        "Pure NE \\(\\subseteq\\) mixed NE \\(\\subseteq\\) correlated equilibrium \\(\\subseteq\\) coarse correlated equilibrium.",
+        "CCE \\(\\subseteq\\) CE \\(\\subseteq\\) mixed NE \\(\\subseteq\\) pure NE.",
+        "Mixed NE \\(\\subseteq\\) pure NE \\(\\subseteq\\) CCE.",
+        "CE and CCE are unrelated."
+      ],
+      "answer": "Pure NE \\(\\subseteq\\) mixed NE \\(\\subseteq\\) correlated equilibrium \\(\\subseteq\\) coarse correlated equilibrium.",
+      "explanation": "Each successive concept permits a wider class of outcome distributions.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ093",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A correlated equilibrium allows a mediator to:",
+      "choices": [
+        "Draw a joint action profile and privately recommend each player's component, with no profitable deviation conditional on the recommendation.",
+        "Force players to obey recommendations.",
+        "Reveal all private recommendations publicly before play.",
+        "Choose only product distributions."
+      ],
+      "answer": "Draw a joint action profile and privately recommend each player's component, with no profitable deviation conditional on the recommendation.",
+      "explanation": "Players may condition deviations on the recommendation they receive.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ094",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A coarse correlated equilibrium differs from a correlated equilibrium because deviations in CCE are:",
+      "choices": [
+        "Chosen unconditionally before seeing any recommendation or realized action.",
+        "Allowed to depend on the recommendation.",
+        "Joint deviations by coalitions.",
+        "Restricted to dominant strategies."
+      ],
+      "answer": "Chosen unconditionally before seeing any recommendation or realized action.",
+      "explanation": "CCE protects against fixed unilateral deviations.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ095",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For a cost game, distribution \\(\\sigma\\) is a CCE if for all \\(i\\) and fixed deviations \\(s_i'\\):",
+      "choices": [
+        "\\(\\mathbb E_{s\\sim\\sigma}[C_i(s)]\\le \\mathbb E_{s\\sim\\sigma}[C_i(s_i',s_{-i})]\\).",
+        "\\(\\mathbb E[C_i(s)]\\ge\\mathbb E[C_i(s_i',s_{-i})]\\).",
+        "\\(C_i(s)=C_i(s_i',s_{-i})\\) pointwise.",
+        "\\(\\sigma\\) is a product distribution."
+      ],
+      "answer": "\\(\\mathbb E_{s\\sim\\sigma}[C_i(s)]\\le \\mathbb E_{s\\sim\\sigma}[C_i(s_i',s_{-i})]\\).",
+      "explanation": "No fixed action would have reduced expected cost.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ096",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which distributions correspond exactly to mixed Nash equilibria within the set of correlated equilibria?",
+      "choices": [
+        "Product distributions satisfying the equilibrium inequalities.",
+        "All correlated distributions.",
+        "Uniform distributions only.",
+        "Distributions supported on one outcome only."
+      ],
+      "answer": "Product distributions satisfying the equilibrium inequalities.",
+      "explanation": "Mixed Nash assumes independent randomization across players.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ097",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why are CE and CCE often considered computationally easier than Nash equilibrium?",
+      "choices": [
+        "Their defining incentive constraints are linear in the joint distribution, enabling linear programming or learning-based computation.",
+        "They always consist of one pure outcome.",
+        "They require dominant strategies.",
+        "They maximize welfare by definition."
+      ],
+      "answer": "Their defining incentive constraints are linear in the joint distribution, enabling linear programming or learning-based computation.",
+      "explanation": "Nash equilibrium imposes nonconvex product constraints.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ098",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A local minimum of an exact potential function corresponds to:",
+      "choices": [
+        "A pure Nash equilibrium.",
+        "Necessarily the social optimum.",
+        "A strictly dominated strategy profile.",
+        "A unique mixed equilibrium."
+      ],
+      "answer": "A pure Nash equilibrium.",
+      "explanation": "No unilateral move lowers the potential, hence none lowers the deviator's cost.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ099",
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which claim is false?",
+      "choices": [
+        "Every pure Nash equilibrium minimizes the potential globally.",
+        "Every global potential minimum is a pure Nash equilibrium.",
+        "Finite potential games admit pure Nash equilibria.",
+        "Improvement paths cannot cycle when the potential strictly improves."
+      ],
+      "answer": "Every pure Nash equilibrium minimizes the potential globally.",
+      "explanation": "A pure equilibrium can be only a local minimum of the potential.",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ100",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "External regret after \\(T\\) rounds compares the algorithm's cumulative cost with:",
+      "choices": [
+        "The cumulative cost of the best fixed action in hindsight.",
+        "The best action chosen separately on every round.",
+        "The social optimum of a game.",
+        "The worst fixed action in hindsight."
+      ],
+      "answer": "The cumulative cost of the best fixed action in hindsight.",
+      "explanation": "The comparator is one constant action used on all rounds.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ101",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "An online algorithm has no external regret if:",
+      "choices": [
+        "\\(R_T/T\\to0\\) as \\(T\\to\\infty\\).",
+        "\\(R_T=0\\) on every finite sequence.",
+        "\\(R_T/T\\to1\\).",
+        "Its loss is always below every action's loss on every round."
+      ],
+      "answer": "\\(R_T/T\\to0\\) as \\(T\\to\\infty\\).",
+      "explanation": "Average performance approaches that of the best fixed action.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ102",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "The multiplicative weights algorithm chooses action \\(a\\) with probability proportional to:",
+      "choices": [
+        "Its current weight.",
+        "Its current cost.",
+        "The inverse of the number of actions.",
+        "Its worst historical cost only."
+      ],
+      "answer": "Its current weight.",
+      "explanation": "Weights encode action credibility based on past performance.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ103",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Under multiplicative weights for costs, an action with high observed cost should have its weight:",
+      "choices": [
+        "Reduced multiplicatively more than an action with low cost.",
+        "Increased multiplicatively.",
+        "Set permanently to zero after one loss.",
+        "Left unchanged."
+      ],
+      "answer": "Reduced multiplicatively more than an action with low cost.",
+      "explanation": "Poor actions become less likely in future rounds.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ104",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A typical multiplicative-weights regret bound has order:",
+      "choices": [
+        "\\(O(\\sqrt{T\\ln n})\\) for \\(n\\) actions.",
+        "\\(O(T^2)\\).",
+        "\\(O(\\ln T/T)\\) cumulative regret.",
+        "\\(O(nT)\\) necessarily."
+      ],
+      "answer": "\\(O(\\sqrt{T\\ln n})\\) for \\(n\\) actions.",
+      "explanation": "Thus average regret is \\(O(\\sqrt{\\ln n/T})\\).",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ105",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "If every player in a repeated game has vanishing external regret, the empirical distribution of play converges toward:",
+      "choices": [
+        "The set of coarse correlated equilibria.",
+        "The set of pure Nash equilibria only.",
+        "The social optimum necessarily.",
+        "Dominant-strategy equilibria."
+      ],
+      "answer": "The set of coarse correlated equilibria.",
+      "explanation": "External-regret inequalities become the CCE inequalities for empirical play.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ106",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "If every player has vanishing swap regret, the empirical distribution of play converges toward:",
+      "choices": [
+        "The set of correlated equilibria.",
+        "Only mixed Nash equilibria.",
+        "The set of dominant-strategy equilibria.",
+        "Arbitrary distributions."
+      ],
+      "answer": "The set of correlated equilibria.",
+      "explanation": "Swap regret allows deviations that replace each recommended action by another action.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ107",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Swap regret compares actual play against:",
+      "choices": [
+        "Every switching function mapping each played action to an alternative action.",
+        "Only the best single fixed action.",
+        "The best joint strategy profile.",
+        "Only deviations used once."
+      ],
+      "answer": "Every switching function mapping each played action to an alternative action.",
+      "explanation": "It is stronger than external regret.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ108",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which implication is correct?",
+      "choices": [
+        "No swap regret implies no external regret, but not conversely in general.",
+        "No external regret implies no swap regret.",
+        "They are identical for every action set.",
+        "Neither has any relation to equilibrium."
+      ],
+      "answer": "No swap regret implies no external regret, but not conversely in general.",
+      "explanation": "Constant switching functions are special cases of swap deviations.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ109",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "The standard reduction from swap regret to external regret runs:",
+      "choices": [
+        "One external-regret algorithm for each source action and combines their recommendations through a stationary distribution.",
+        "One algorithm for each player profile.",
+        "A VCG mechanism on every round.",
+        "Only one deterministic best-response algorithm."
+      ],
+      "answer": "One external-regret algorithm for each source action and combines their recommendations through a stationary distribution.",
+      "explanation": "The internal algorithms learn where to switch from each action.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ110",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "How can no-regret learning prove the minimax theorem?",
+      "choices": [
+        "Running no-regret algorithms for both players yields time-average strategies whose saddle-point gap vanishes.",
+        "No-regret guarantees a pure equilibrium in every zero-sum game.",
+        "The row player learns the opponent's private randomness exactly.",
+        "Regret makes payoffs identical on every round."
+      ],
+      "answer": "Running no-regret algorithms for both players yields time-average strategies whose saddle-point gap vanishes.",
+      "explanation": "Average play simultaneously approaches max-min and min-max guarantees.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ111",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In a zero-sum game, if row and column each have average regret at most \\(\\epsilon\\), their empirical mixed strategies form approximately:",
+      "choices": [
+        "A \\(2\\epsilon\\)-saddle point (up to convention-dependent constants).",
+        "An exact pure saddle point.",
+        "A dominant-strategy profile.",
+        "A correlated equilibrium with zero value necessarily."
+      ],
+      "answer": "A \\(2\\epsilon\\)-saddle point (up to convention-dependent constants).",
+      "explanation": "Each regret term contributes to the primal-dual gap.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ112",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "An adaptive adversary in online learning may choose the next cost vector based on:",
+      "choices": [
+        "The algorithm's past behavior and current mixed strategy, but not the current random action before committing the cost vector under the standard non-anticipating model.",
+        "Future random bits of the learner.",
+        "Only a fixed sequence chosen before round one.",
+        "The best fixed action in hindsight."
+      ],
+      "answer": "The algorithm's past behavior and current mixed strategy, but not the current random action before committing the cost vector under the standard non-anticipating model.",
+      "explanation": "This preserves meaningful regret guarantees.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ113",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why does a no-regret guarantee not imply that the last action profile is a Nash equilibrium?",
+      "choices": [
+        "Regret controls time averages, while individual rounds can keep cycling.",
+        "Nash equilibria do not exist in finite games.",
+        "Regret is defined only for cooperative games.",
+        "No-regret algorithms always converge to dominant strategies."
+      ],
+      "answer": "Regret controls time averages, while individual rounds can keep cycling.",
+      "explanation": "Rock-Paper-Scissors can cycle while empirical frequencies converge.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ114",
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Smoothness plus no-regret learning implies:",
+      "choices": [
+        "The time-average social cost is bounded by the same robust PoA guarantee, up to vanishing regret terms.",
+        "Every round is socially optimal.",
+        "All players eventually use pure dominant strategies.",
+        "Revenue is maximized."
+      ],
+      "answer": "The time-average social cost is bounded by the same robust PoA guarantee, up to vanishing regret terms.",
+      "explanation": "Empirical play approaches CCE, and smoothness bounds CCE inefficiency.",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ115",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In the house-allocation problem studied with Top Trading Cycles, each agent initially:",
+      "choices": [
+        "Owns one house and has a strict preference ordering over houses.",
+        "Has money but no house.",
+        "Owns several divisible houses.",
+        "Reports a single scalar value only."
+      ],
+      "answer": "Owns one house and has a strict preference ordering over houses.",
+      "explanation": "The initial endowment defines property rights and trading cycles.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ116",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In each round of Top Trading Cycles (TTC):",
+      "choices": [
+        "Each remaining agent points to her favorite remaining house, each remaining house points to its owner, and every directed cycle is executed.",
+        "Agents propose to houses that choose their favorite applicant.",
+        "The auctioneer maximizes reported monetary welfare.",
+        "Only 2-cycles are allowed."
+      ],
+      "answer": "Each remaining agent points to her favorite remaining house, each remaining house points to its owner, and every directed cycle is executed.",
+      "explanation": "At least one cycle exists in every finite directed graph with outdegree one.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ117",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why does TTC terminate?",
+      "choices": [
+        "Every round removes at least one agent-house cycle, hence at least one agent and one house.",
+        "Preferences become cardinal after each round.",
+        "Payments strictly decrease.",
+        "The number of blocking coalitions increases."
+      ],
+      "answer": "Every round removes at least one agent-house cycle, hence at least one agent and one house.",
+      "explanation": "With \\(n\\) agents, there are at most \\(n\\) elimination rounds.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ118",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "A blocking coalition in house allocation is a set of agents that can:",
+      "choices": [
+        "Reallocate their initially owned houses among themselves so everyone is weakly better off and at least one member is strictly better off.",
+        "Buy houses from outsiders using transfers.",
+        "Make every outsider worse off.",
+        "Change the preference rankings of houses."
+      ],
+      "answer": "Reallocate their initially owned houses among themselves so everyone is weakly better off and at least one member is strictly better off.",
+      "explanation": "The core excludes allocations vulnerable to such internal trades.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ119",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "The core of a house-allocation market consists of:",
+      "choices": [
+        "Allocations with no blocking coalition.",
+        "Allocations maximizing the sum of ranks.",
+        "All Pareto-efficient allocations.",
+        "All strategyproof allocations."
+      ],
+      "answer": "Allocations with no blocking coalition.",
+      "explanation": "Core stability is defined relative to initial endowments.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ120",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "For strict preferences in the Shapley-Scarf housing market, TTC returns:",
+      "choices": [
+        "The unique core allocation.",
+        "Every stable matching.",
+        "The revenue-maximizing allocation.",
+        "A random serial dictatorship outcome only."
+      ],
+      "answer": "The unique core allocation.",
+      "explanation": "TTC successively fixes cycles that every core allocation must respect.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ121",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which strategic property is associated with TTC under the standard house-allocation model?",
+      "choices": [
+        "Strategyproofness (DSIC): truthful preference reporting is a dominant strategy.",
+        "Truthfulness only in Bayes-Nash equilibrium.",
+        "No truthful implementation is possible.",
+        "Group strategyproofness for all variants with ties automatically."
+      ],
+      "answer": "Strategyproofness (DSIC): truthful preference reporting is a dominant strategy.",
+      "explanation": "An agent cannot obtain a more preferred house by misreporting under the standard strict-preference model.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ122",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "In kidney exchange, a directed compatibility edge from pair \\(i\\) to pair \\(j\\) commonly means:",
+      "choices": [
+        "The donor associated with pair \\(i\\) can donate to the patient associated with pair \\(j\\).",
+        "Patient \\(i\\) prefers donor \\(j\\) monetarily.",
+        "Pair \\(j\\) owns pair \\(i\\)'s kidney.",
+        "Both pairs are incompatible with everyone."
+      ],
+      "answer": "The donor associated with pair \\(i\\) can donate to the patient associated with pair \\(j\\).",
+      "explanation": "A directed cycle corresponds to a feasible exchange among patient-donor pairs.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ123",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why are long cycles operationally difficult in kidney exchange?",
+      "choices": [
+        "Transplants in a cycle are typically performed simultaneously to prevent reneging, and coordinating many simultaneous surgeries is hard.",
+        "Long cycles are mathematically impossible in directed graphs.",
+        "Long cycles are never welfare-improving.",
+        "They require monetary transfers."
+      ],
+      "answer": "Transplants in a cycle are typically performed simultaneously to prevent reneging, and coordinating many simultaneous surgeries is hard.",
+      "explanation": "This motivates cycle-length constraints.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ124",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "If kidney exchange is modeled by an undirected compatibility graph where only pairwise exchanges are allowed, maximizing the number of transplants reduces to:",
+      "choices": [
+        "Finding a maximum-cardinality matching.",
+        "Finding a minimum cut.",
+        "Computing a Nash equilibrium.",
+        "Finding a shortest path."
+      ],
+      "answer": "Finding a maximum-cardinality matching.",
+      "explanation": "Each matching edge represents one 2-way exchange covering two patient-donor pairs.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ125",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why can arbitrary tie-breaking among maximum matchings create incentives to hide compatible edges?",
+      "choices": [
+        "An agent may alter which maximum matching is selected and become matched without reducing maximum cardinality.",
+        "Removing edges can increase the size of every matching.",
+        "Truthful edge reports are always dominant under arbitrary tie-breaking.",
+        "Maximum matching is NP-hard."
+      ],
+      "answer": "An agent may alter which maximum matching is selected and become matched without reducing maximum cardinality.",
+      "explanation": "Strategic selection among multiple optima matters.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ126",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A fixed priority order used to refine maximum matchings aims to:",
+      "choices": [
+        "Select, among maximum-cardinality matchings, one that lexicographically prioritizes agents according to a report-independent order.",
+        "Reduce matching cardinality to one.",
+        "Charge critical payments.",
+        "Create longer kidney cycles."
+      ],
+      "answer": "Select, among maximum-cardinality matchings, one that lexicographically prioritizes agents according to a report-independent order.",
+      "explanation": "Report-independent priorities can remove manipulations caused by arbitrary tie-breaking.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ127",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In the stable matching problem, a pair \\((a,h)\\) blocks matching \\(M\\) if:",
+      "choices": [
+        "Applicant \\(a\\) prefers \\(h\\) to \\(M(a)\\) and hospital \\(h\\) prefers \\(a\\) to \\(M(h)\\).",
+        "Exactly one side prefers the other.",
+        "Both are unmatched in every matching.",
+        "They have equal rank under both preference lists."
+      ],
+      "answer": "Applicant \\(a\\) prefers \\(h\\) to \\(M(a)\\) and hospital \\(h\\) prefers \\(a\\) to \\(M(h)\\).",
+      "explanation": "A stable matching has no mutually beneficial deviation pair.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ128",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In applicant-proposing Deferred Acceptance, when a hospital receives a new proposal it:",
+      "choices": [
+        "Tentatively keeps its most preferred applicant among its current tentative match and the new proposer, rejecting the other.",
+        "Accepts the first proposal permanently.",
+        "Rejects every applicant until the final round.",
+        "Chooses the applicant with the lowest priority."
+      ],
+      "answer": "Tentatively keeps its most preferred applicant among its current tentative match and the new proposer, rejecting the other.",
+      "explanation": "Tentative acceptance can be replaced only by a more preferred proposer.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ129",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Why are there at most \\(n^2\\) proposals in one-to-one Deferred Acceptance with \\(n\\) applicants and \\(n\\) hospitals?",
+      "choices": [
+        "Each applicant proposes to each hospital at most once.",
+        "Each hospital receives at most one proposal.",
+        "The algorithm ends after exactly \\(n\\) rounds.",
+        "Every rejection removes two applicants."
+      ],
+      "answer": "Each applicant proposes to each hospital at most once.",
+      "explanation": "There are at most \\(n\\cdot n\\) distinct applicant-hospital proposals.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ130",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Why does Deferred Acceptance produce a full matching under complete preference lists and equal numbers?",
+      "choices": [
+        "If an applicant were unmatched, she must have proposed to every hospital; then every hospital would be holding someone, contradicting the existence of an unmatched hospital.",
+        "Hospitals never reject proposals.",
+        "Stability directly implies fullness without assumptions.",
+        "Every applicant proposes exactly once."
+      ],
+      "answer": "If an applicant were unmatched, she must have proposed to every hospital; then every hospital would be holding someone, contradicting the existence of an unmatched hospital.",
+      "explanation": "The counting argument uses completeness and equal market sizes.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ131",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "The standard stability proof for applicant-proposing Deferred Acceptance considers a supposed blocking pair \\((a,h)\\). If \\(a\\) proposed to \\(h\\), then:",
+      "choices": [
+        "Hospital \\(h\\) rejected \\(a\\) either immediately or later for an applicant it prefers, so \\(h\\) cannot prefer \\(a\\) to its final match.",
+        "\\(a\\) must have withdrawn the proposal for a worse hospital.",
+        "\\(h\\) remains unmatched.",
+        "The pair necessarily blocks."
+      ],
+      "answer": "Hospital \\(h\\) rejected \\(a\\) either immediately or later for an applicant it prefers, so \\(h\\) cannot prefer \\(a\\) to its final match.",
+      "explanation": "Hospitals' tentative matches improve monotonically over time.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ132",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "If applicant \\(a\\) never proposed to hospital \\(h\\), then in the final matching:",
+      "choices": [
+        "\\(a\\) is matched to a hospital she prefers to \\(h\\) (under complete lists), so \\((a,h)\\) cannot block.",
+        "\\(h\\) must be unmatched.",
+        "\\(a\\) prefers \\(h\\) to her match.",
+        "Deferred Acceptance is unstable."
+      ],
+      "answer": "\\(a\\) is matched to a hospital she prefers to \\(h\\) (under complete lists), so \\((a,h)\\) cannot block.",
+      "explanation": "Applicants propose in decreasing order of preference.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ133",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Applicant-proposing Deferred Acceptance returns which stable matching?",
+      "choices": [
+        "The applicant-optimal and hospital-pessimal stable matching.",
+        "The hospital-optimal stable matching.",
+        "The unique stable matching in every instance.",
+        "The welfare-maximizing matching by cardinal utilities."
+      ],
+      "answer": "The applicant-optimal and hospital-pessimal stable matching.",
+      "explanation": "Every applicant weakly prefers this outcome to any other stable matching.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ134",
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which side has a dominant strategy to report truthfully in the standard one-to-one Deferred Acceptance mechanism?",
+      "choices": [
+        "The proposing side.",
+        "The receiving side only.",
+        "Both sides always.",
+        "Neither side under any assumptions."
+      ],
+      "answer": "The proposing side.",
+      "explanation": "Applicant-proposing DA is strategyproof for applicants, but not generally for hospitals.",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ135",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which pairing of concept and comparator is correct?",
+      "choices": [
+        "DSIC: compare truthful reporting with every misreport for each fixed \\(b_{-i}\\); Nash: compare unilateral deviations at one equilibrium profile.",
+        "DSIC and Nash use identical quantifiers.",
+        "Nash compares against every opponents' profile, while DSIC fixes one equilibrium profile.",
+        "DSIC is weaker than Nash."
+      ],
+      "answer": "DSIC: compare truthful reporting with every misreport for each fixed \\(b_{-i}\\); Nash: compare unilateral deviations at one equilibrium profile.",
+      "explanation": "The quantifier order makes dominant strategies much stronger.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ136",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which mechanism-design statement is correct?",
+      "choices": [
+        "A welfare-maximizing allocation plus arbitrary payments need not be DSIC; payments must align incentives.",
+        "Any efficient allocation is automatically truthful.",
+        "Any critical payment makes any allocation monotone.",
+        "Revenue maximization implies VCG payments."
+      ],
+      "answer": "A welfare-maximizing allocation plus arbitrary payments need not be DSIC; payments must align incentives.",
+      "explanation": "Allocation and payment rules jointly determine incentives.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ137",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which analogy is most accurate?",
+      "choices": [
+        "VCG externality payments generalize second-price payments; marginal-cost tolls internalize congestion externalities.",
+        "First-price payments and Pigouvian tolls both equal reported values.",
+        "TTC and VCG both require monetary transfers.",
+        "Nash equilibrium and DSIC are both social-welfare optima."
+      ],
+      "answer": "VCG externality payments generalize second-price payments; marginal-cost tolls internalize congestion externalities.",
+      "explanation": "Both charge an agent for harm imposed on others.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ138",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which result most directly links online learning to equilibrium?",
+      "choices": [
+        "Vanishing external regret yields empirical coarse correlated equilibrium.",
+        "Myerson's lemma yields Nash equilibrium.",
+        "TTC yields correlated equilibrium.",
+        "VCG yields no-regret dynamics."
+      ],
+      "answer": "Vanishing external regret yields empirical coarse correlated equilibrium.",
+      "explanation": "Average regret inequalities are exactly CCE constraints.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ139",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which result most directly links equilibrium inefficiency to learning outcomes?",
+      "choices": [
+        "Smoothness bounds extend from Nash equilibrium to CCE, so they apply to empirical outcomes of no-regret dynamics.",
+        "Nash's theorem implies all equilibria are efficient.",
+        "The Revelation Principle converts CCE into DSIC.",
+        "Bulow-Klemperer bounds routing latency."
+      ],
+      "answer": "Smoothness bounds extend from Nash equilibrium to CCE, so they apply to empirical outcomes of no-regret dynamics.",
+      "explanation": "This provides welfare guarantees even when play does not converge pointwise.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ140",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which combination is generally impossible to infer from an approximation ratio alone?",
+      "choices": [
+        "Truthfulness of the mechanism implementing the approximation algorithm.",
+        "A lower bound on objective value relative to optimum.",
+        "Polynomial running time if explicitly stated by the algorithm.",
+        "Feasibility of the returned allocation if proved by the algorithm."
+      ],
+      "answer": "Truthfulness of the mechanism implementing the approximation algorithm.",
+      "explanation": "Strategic monotonicity is a separate property.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ141",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "An agent wins under a monotone single-parameter rule at bid \\(8\\), loses at bid \\(7\\), and tie-breaking is fixed. Which payment is consistent with DSIC?",
+      "choices": [
+        "A critical value in \\([7,8]\\).",
+        "Any number larger than \\(8\\).",
+        "Exactly her report, regardless of threshold.",
+        "A payment depending on her true value but not her report."
+      ],
+      "answer": "A critical value in \\([7,8]\\).",
+      "explanation": "The exact threshold may lie between the tested bids.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ142",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "In VCG, replacing exact welfare maximization with an arbitrary approximation algorithm while keeping VCG-style payments:",
+      "choices": [
+        "Does not generally preserve DSIC.",
+        "Always preserves DSIC if the ratio is constant.",
+        "Always improves revenue.",
+        "Is equivalent to Myerson's auction."
+      ],
+      "answer": "Does not generally preserve DSIC.",
+      "explanation": "Truthfulness of VCG relies on exact maximization over a report-independent range, or on carefully structured variants.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ143",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "A distribution over outcomes is a CCE but not a CE when:",
+      "choices": [
+        "No player benefits from committing to a fixed deviation ex ante, but some player would benefit from a deviation conditioned on her recommendation.",
+        "It is a product distribution.",
+        "It is supported on one pure Nash equilibrium.",
+        "Every conditional deviation is unprofitable."
+      ],
+      "answer": "No player benefits from committing to a fixed deviation ex ante, but some player would benefit from a deviation conditioned on her recommendation.",
+      "explanation": "CE imposes the stronger, recommendation-contingent constraints.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ144",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which statement about core stability and pairwise stability is correct?",
+      "choices": [
+        "House-allocation core stability rules out blocking coalitions, while stable matching rules out blocking pairs.",
+        "They are identical definitions in all markets.",
+        "Stable matching permits blocking pairs but not coalitions.",
+        "The core requires monetary transfers."
+      ],
+      "answer": "House-allocation core stability rules out blocking coalitions, while stable matching rules out blocking pairs.",
+      "explanation": "The relevant deviation structures differ across the two models.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ145",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which theorem uses additional competition rather than distribution-specific optimization to guarantee revenue?",
+      "choices": [
+        "Bulow-Klemperer.",
+        "Nash's theorem.",
+        "Myerson's lemma for payments.",
+        "Gale-Shapley stability."
+      ],
+      "answer": "Bulow-Klemperer.",
+      "explanation": "One extra i.i.d. bidder lets Vickrey outperform the optimal auction with one fewer bidder.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ146",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which theorem asserts an outcome-equivalent truthful direct mechanism exists, rather than constructing efficient payments for a particular allocation rule?",
+      "choices": [
+        "The Revelation Principle.",
+        "Myerson's lemma.",
+        "The Prophet Inequality.",
+        "Rosenthal's theorem."
+      ],
+      "answer": "The Revelation Principle.",
+      "explanation": "It is a reduction from arbitrary dominant-strategy mechanisms to direct revelation.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ147",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Which theorem is primarily an implementability characterization?",
+      "choices": [
+        "Myerson's lemma for single-parameter environments.",
+        "Nash's existence theorem.",
+        "Bulow-Klemperer.",
+        "Gale-Shapley termination."
+      ],
+      "answer": "Myerson's lemma for single-parameter environments.",
+      "explanation": "It characterizes exactly which allocation rules admit DSIC payments.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ148",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which property can fail for the receiving side in Deferred Acceptance even though the output is stable?",
+      "choices": [
+        "Strategyproofness.",
+        "Existence of a matching.",
+        "Termination.",
+        "Absence of blocking pairs."
+      ],
+      "answer": "Strategyproofness.",
+      "explanation": "Stability and incentive compatibility are distinct properties.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ149",
+      "type": "multiple_choice",
+      "deck": "synthesis_exam_style",
+      "priority": 2,
+      "difficulty": "hard",
+      "prompt": "Which statement best explains why equilibrium analysis is needed when DSIC mechanisms are unavailable?",
+      "choices": [
+        "Without dominant strategies, outcomes depend on strategic responses to others, so solution concepts such as Nash equilibrium predict stable behavior.",
+        "Equilibrium analysis eliminates strategic behavior.",
+        "Nash equilibrium makes every game truthful.",
+        "DSIC and Nash equilibrium are identical."
+      ],
+      "answer": "Without dominant strategies, outcomes depend on strategic responses to others, so solution concepts such as Nash equilibrium predict stable behavior.",
+      "explanation": "The course shifts from rule design to the analysis of decentralized strategic interaction.",
+      "tags": [
+        "synthesis_exam_style"
+      ]
+    },
+    {
+      "id": "ECQ150",
+      "type": "short_answer",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write the normalized Myerson payment identity for a single-parameter allocation rule \\(x_i(b_i,b_{-i})\\).",
+      "answer": "\\(p_i(b_i,b_{-i})=b_ix_i(b_i,b_{-i})-\\int_0^{b_i}x_i(z,b_{-i})\\,dz\\).",
+      "explanation": "Assumes \\(p_i(0,b_{-i})=0\\).",
+      "tags": [
+        "mechanism_design_basics"
+      ]
+    },
+    {
+      "id": "ECQ151",
+      "type": "short_answer",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write the Clarke pivot payment of agent \\(i\\).",
+      "answer": "\\(p_i(\\mathbf b)=\\max_{x\\in X}\\sum_{j\\ne i}b_j(x)-\\sum_{j\\ne i}b_j(x(\\mathbf b))\\).",
+      "explanation": "Maximum welfare of others without \\(i\\) minus their welfare in the chosen outcome.",
+      "tags": [
+        "multi_parameter_vcg"
+      ]
+    },
+    {
+      "id": "ECQ152",
+      "type": "short_answer",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write bidder \\(i\\)'s virtual valuation.",
+      "answer": "\\(\\phi_i(v)=v-\\frac{1-F_i(v)}{f_i(v)}\\).",
+      "explanation": "",
+      "tags": [
+        "revenue_maximization"
+      ]
+    },
+    {
+      "id": "ECQ153",
+      "type": "short_answer",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write the social cost of a nonatomic flow \\(f\\).",
+      "answer": "\\(C(f)=\\sum_e f_ec_e(f_e)\\).",
+      "explanation": "",
+      "tags": [
+        "selfish_routing_poa"
+      ]
+    },
+    {
+      "id": "ECQ154",
+      "type": "short_answer",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write Rosenthal's potential for an atomic congestion game.",
+      "answer": "\\(\\Phi(s)=\\sum_e\\sum_{j=1}^{n_e(s)}c_e(j)\\).",
+      "explanation": "",
+      "tags": [
+        "potential_games_equilibria"
+      ]
+    },
+    {
+      "id": "ECQ155",
+      "type": "short_answer",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "State the empirical equilibrium concept reached by vanishing external regret.",
+      "answer": "Coarse correlated equilibrium (CCE).",
+      "explanation": "",
+      "tags": [
+        "no_regret_learning"
+      ]
+    },
+    {
+      "id": "ECQ156",
+      "type": "short_answer",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "State the proposal bound for one-to-one Deferred Acceptance with \\(n\\) applicants and \\(n\\) hospitals.",
+      "answer": "At most \\(n^2\\) proposals.",
+      "explanation": "",
+      "tags": [
+        "mechanism_design_without_money"
+      ]
+    },
+    {
+      "id": "ECQ157",
+      "type": "short_answer",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "hard",
+      "prompt": "Write the mixed expected payoff of the row player in a zero-sum matrix game.",
+      "answer": "\\(x^TAy\\).",
+      "explanation": "",
+      "tags": [
+        "computational_game_theory"
+      ]
+    }
+  ]
+}

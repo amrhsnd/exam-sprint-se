@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const APP_VERSION = "20260716-no-signin-dark-v1";
+  const APP_VERSION = "20260716-econ-computation-v1";
   const EXAM_CATALOG_URL = `./data/exams.json?v=${APP_VERSION}`;
   const LEGACY_STORAGE_KEY = "exam-sprint-state-v1";
   const STATE_KEY_PREFIX = "exam-sprint-state";
@@ -166,6 +166,10 @@
   }
 
   async function loadQuizData(exam) {
+    if (window.EXAM_SPRINT_DATA_BY_URL && window.EXAM_SPRINT_DATA_BY_URL[exam.dataUrl]) {
+      return window.EXAM_SPRINT_DATA_BY_URL[exam.dataUrl];
+    }
+
     if (window.EXAM_SPRINT_DATA) {
       return window.EXAM_SPRINT_DATA;
     }

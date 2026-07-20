@@ -1,0 +1,1761 @@
+{
+  "metadata": {
+    "title": "Economics and Computation - Basic Pass-Focused Question Bank",
+    "version": "3.0",
+    "created_for": "Relearning the course from zero and passing the exam",
+    "level": "basic and high-yield",
+    "study_method": "Answer every question, read every explanation, then repeat all mistakes until correct twice.",
+    "sources_reviewed": [
+      "EC0506-Intro.pdf",
+      "Mechanism Design Basics.pdf",
+      "Algorithmic Mechanism Design.pdf",
+      "MultiParameter.pdf",
+      "Mechanism Design Without Money.pdf",
+      "Computational Game Theory.pdf",
+      "cgt1.pdf",
+      "Selfish Routing.pdf",
+      "l5.pdf",
+      "l6.pdf",
+      "l12.pdf",
+      "l13.pdf",
+      "l17.pdf",
+      "l18.pdf"
+    ],
+    "counts": {
+      "questions": 90,
+      "by_type": {
+        "multiple_choice": 65,
+        "true_false": 16,
+        "short_answer": 9
+      },
+      "by_deck": {
+        "mechanism_design_basics": 10,
+        "algorithmic_mechanism_design": 10,
+        "multi_parameter_vcg": 10,
+        "revenue_maximization": 10,
+        "computational_game_theory": 10,
+        "selfish_routing_poa": 10,
+        "potential_games_equilibria": 10,
+        "no_regret_learning": 10,
+        "mechanism_design_without_money": 10
+      }
+    },
+    "important_note": "This bank targets the central definitions, formulas, theorem statements, and standard examples. It is designed as a pass-focused foundation, not a guarantee of any particular exam result."
+  },
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What is the main goal of mechanism design?",
+      "choices": [
+        "Design rules so self-interested agents produce a desirable outcome",
+        "Predict weather",
+        "Find the shortest path only",
+        "Encrypt private data"
+      ],
+      "answer": "Design rules so self-interested agents produce a desirable outcome",
+      "explanation": "Mechanism design works backward: choose rules that make strategic behavior lead to good outcomes.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB001"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a direct-revelation mechanism, what does each agent report?",
+      "choices": [
+        "A type or valuation",
+        "A computer program",
+        "Only a payment",
+        "A random number"
+      ],
+      "answer": "A type or valuation",
+      "explanation": "The report represents the agent’s private information, such as a value or cost.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB002"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What does DSIC mean?",
+      "choices": [
+        "Truth-telling is a dominant strategy for every agent",
+        "Truth-telling is best only when others are truthful",
+        "The mechanism always maximizes revenue",
+        "Every agent pays zero"
+      ],
+      "answer": "Truth-telling is a dominant strategy for every agent",
+      "explanation": "Under DSIC, reporting truthfully is best no matter what the other agents report.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB003"
+    },
+    {
+      "type": "true_false",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a DSIC mechanism, an agent must know the other agents’ reports before truth-telling becomes optimal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Dominant-strategy truthfulness does not depend on knowing the reports of others.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB004"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What does individual rationality usually guarantee?",
+      "choices": [
+        "A truthful participant gets nonnegative utility",
+        "The seller always earns positive revenue",
+        "Every outcome is socially optimal",
+        "All agents receive the item"
+      ],
+      "answer": "A truthful participant gets nonnegative utility",
+      "explanation": "Individual rationality makes voluntary participation reasonable because truthful utility is at least zero.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB005"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For a bidder with value v who wins and pays p, what is quasilinear utility?",
+      "choices": [
+        "v - p",
+        "v + p",
+        "p - v",
+        "v × p"
+      ],
+      "answer": "v - p",
+      "explanation": "A winner receives value v and loses payment p, so utility is v-p.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB006"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For a bidder who does not receive the item and pays nothing, utility is usually:",
+      "choices": [
+        "0",
+        "Her value",
+        "The winning bid",
+        "Negative infinity"
+      ],
+      "answer": "0",
+      "explanation": "With no allocation and no payment, quasilinear utility is zero.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB007"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What is social welfare in an allocation problem?",
+      "choices": [
+        "The sum of the values of allocated outcomes",
+        "The sum of all payments only",
+        "The number of bidders",
+        "The seller’s cost only"
+      ],
+      "answer": "The sum of the values of allocated outcomes",
+      "explanation": "Welfare measures the total value created by the chosen allocation.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB008"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What does the revelation principle let us focus on?",
+      "choices": [
+        "Truthful direct mechanisms",
+        "Only first-price auctions",
+        "Only randomized mechanisms",
+        "Mechanisms with no payments"
+      ],
+      "answer": "Truthful direct mechanisms",
+      "explanation": "If an outcome can be implemented in equilibrium, it can often be represented by a truthful direct mechanism.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB009"
+    },
+    {
+      "type": "short_answer",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "State the utility formula for agent i in a quasilinear mechanism.",
+      "answer": "u_i = v_i(x) - p_i",
+      "explanation": "Utility equals the agent’s value for the chosen outcome minus the payment.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECB010"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A single-parameter agent has private information described by:",
+      "choices": [
+        "One number",
+        "A full matrix",
+        "A probability distribution only",
+        "No private information"
+      ],
+      "answer": "One number",
+      "explanation": "Examples include one value for winning or one cost per unit of work.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB011"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a truthful single-parameter mechanism, the allocation rule should be:",
+      "choices": [
+        "Monotone",
+        "Decreasing for winners",
+        "Independent of bids in all cases",
+        "Random without rules"
+      ],
+      "answer": "Monotone",
+      "explanation": "Raising a bid should not make a bidder lose when the bidder previously won.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB012"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What is a critical value?",
+      "choices": [
+        "The smallest bid needed to win, holding others fixed",
+        "The winner’s true value",
+        "The sum of all bids",
+        "The seller’s reserve in every mechanism"
+      ],
+      "answer": "The smallest bid needed to win, holding others fixed",
+      "explanation": "A winner pays the threshold at which she would just stop winning.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB013"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a second-price auction, the highest bidder pays:",
+      "choices": [
+        "The second-highest bid",
+        "Her own bid",
+        "Zero",
+        "The average bid"
+      ],
+      "answer": "The second-highest bid",
+      "explanation": "The second-highest bid is the winner’s critical value.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB014"
+    },
+    {
+      "type": "true_false",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The standard second-price auction is DSIC for a single item.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "Bidding one’s true value is a dominant strategy in a Vickrey auction.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB015"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a first-price auction, the winner pays:",
+      "choices": [
+        "Her own bid",
+        "The second-highest bid",
+        "Zero",
+        "The lowest bid"
+      ],
+      "answer": "Her own bid",
+      "explanation": "This creates an incentive to shade bids, so truth-telling is not generally dominant.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB016"
+    },
+    {
+      "type": "true_false",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A first-price auction is generally truthful in dominant strategies.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Bidders usually benefit from bidding below their values, depending on beliefs about others.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB017"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why are payments important in truthful mechanism design?",
+      "choices": [
+        "They align incentives with the allocation rule",
+        "They make computation unnecessary",
+        "They remove all private information",
+        "They guarantee equal outcomes"
+      ],
+      "answer": "They align incentives with the allocation rule",
+      "explanation": "Proper payments make truthful reporting personally optimal.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB018"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "If a bidder wins whenever b_i ≥ 8, what is the normalized truthful payment when she wins?",
+      "choices": [
+        "8",
+        "Her exact bid",
+        "0",
+        "The highest possible value"
+      ],
+      "answer": "8",
+      "explanation": "The critical threshold is 8, so a winner pays 8.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB019"
+    },
+    {
+      "type": "short_answer",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Give the two basic ingredients of a mechanism.",
+      "answer": "An allocation rule and a payment rule",
+      "explanation": "The allocation chooses an outcome; the payment rule specifies how much each agent pays.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECB020"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "VCG mechanisms choose an outcome that maximizes:",
+      "choices": [
+        "Reported total welfare",
+        "Seller revenue only",
+        "The number of losers",
+        "The lowest individual value"
+      ],
+      "answer": "Reported total welfare",
+      "explanation": "VCG selects the feasible outcome with the highest sum of reported values.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB021"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The VCG payment of an agent is based on:",
+      "choices": [
+        "The externality imposed on the other agents",
+        "The agent’s own report only",
+        "A fixed entry fee",
+        "A random coin flip"
+      ],
+      "answer": "The externality imposed on the other agents",
+      "explanation": "The agent pays for the welfare loss her presence causes to others.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB022"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why is VCG truthful?",
+      "choices": [
+        "An agent maximizes her utility by making reported welfare match true welfare",
+        "All payments are zero",
+        "The mechanism hides the outcome",
+        "Agents cannot submit false reports"
+      ],
+      "answer": "An agent maximizes her utility by making reported welfare match true welfare",
+      "explanation": "The payment removes terms the agent cannot control, so truth aligns utility with total welfare.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB023"
+    },
+    {
+      "type": "true_false",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "VCG is designed primarily to maximize social welfare.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The allocation rule maximizes the sum of reported valuations over feasible outcomes.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB024"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "If an agent causes no loss to others by participating, her VCG payment is typically:",
+      "choices": [
+        "0",
+        "Her full value",
+        "The sum of all values",
+        "Always negative"
+      ],
+      "answer": "0",
+      "explanation": "No externality means no Clarke pivot payment.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB025"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a single-item auction, VCG becomes:",
+      "choices": [
+        "A second-price auction",
+        "A first-price auction",
+        "An all-pay auction",
+        "A lottery with no bids"
+      ],
+      "answer": "A second-price auction",
+      "explanation": "The winner’s externality is the value of the best excluded bidder, i.e. the second-highest bid.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB026"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A multi-parameter valuation means an agent may have:",
+      "choices": [
+        "Different values for different outcomes",
+        "Exactly one private number",
+        "No preferences",
+        "The same value for every outcome"
+      ],
+      "answer": "Different values for different outcomes",
+      "explanation": "The agent’s private type is a vector or function over outcomes.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB027"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which part of VCG can be computationally difficult?",
+      "choices": [
+        "Finding the welfare-maximizing outcome",
+        "Writing down the utility formula",
+        "Counting agents",
+        "Checking whether payments are numbers"
+      ],
+      "answer": "Finding the welfare-maximizing outcome",
+      "explanation": "If welfare optimization is hard, directly implementing VCG may also be hard.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB028"
+    },
+    {
+      "type": "true_false",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "VCG always maximizes the seller’s revenue.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "VCG is welfare-maximizing, not generally revenue-maximizing.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB029"
+    },
+    {
+      "type": "short_answer",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In words, what is a VCG payment?",
+      "answer": "The harm or externality an agent causes to everyone else",
+      "explanation": "It compares the best welfare others could get without the agent with their welfare in the chosen outcome with the agent.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECB030"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What is the seller trying to maximize in optimal auction design?",
+      "choices": [
+        "Expected revenue",
+        "Total number of bids",
+        "Only social welfare",
+        "The second-highest value in every case"
+      ],
+      "answer": "Expected revenue",
+      "explanation": "Revenue-optimal mechanisms use distributional information to maximize expected payments.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB031"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A reserve price means:",
+      "choices": [
+        "The item is not sold below a minimum acceptable bid",
+        "The winner always pays zero",
+        "Every bidder must win",
+        "The seller accepts every bid"
+      ],
+      "answer": "The item is not sold below a minimum acceptable bid",
+      "explanation": "A reserve can increase revenue by withholding the item when bids are too low.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB032"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Myerson’s optimal auction ranks bidders using:",
+      "choices": [
+        "Virtual values",
+        "Names",
+        "Arrival times only",
+        "Raw utilities after payment"
+      ],
+      "answer": "Virtual values",
+      "explanation": "For regular distributions, allocate to the bidder with the highest nonnegative virtual value.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB033"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For distribution F with density f, the virtual value is:",
+      "choices": [
+        "φ(v)=v-(1-F(v))/f(v)",
+        "φ(v)=F(v)+f(v)",
+        "φ(v)=v+1",
+        "φ(v)=1/v"
+      ],
+      "answer": "φ(v)=v-(1-F(v))/f(v)",
+      "explanation": "This transformation adjusts value by an information-rent term.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB034"
+    },
+    {
+      "type": "true_false",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A bidder with negative virtual value should always receive the item in the basic regular optimal auction.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The seller usually withholds the item when all virtual values are negative.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB035"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What does regularity mean in Myerson’s framework?",
+      "choices": [
+        "Virtual value is nondecreasing",
+        "All bidders have the same value",
+        "The density is always 1",
+        "The seller has zero cost"
+      ],
+      "answer": "Virtual value is nondecreasing",
+      "explanation": "Monotone virtual values support a monotone allocation rule.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB036"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Expected revenue is connected to expected:",
+      "choices": [
+        "Virtual surplus",
+        "Actual welfare only",
+        "Number of bidders squared",
+        "Maximum payment minus minimum payment"
+      ],
+      "answer": "Virtual surplus",
+      "explanation": "Myerson’s lemma relates expected payments to expected virtual welfare.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB037"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For a single bidder, the optimal posted price balances:",
+      "choices": [
+        "Price and probability of sale",
+        "Only the highest possible value",
+        "The number of competitors",
+        "The bidder’s name and budget"
+      ],
+      "answer": "Price and probability of sale",
+      "explanation": "Expected revenue is price multiplied by the chance the bidder accepts.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB038"
+    },
+    {
+      "type": "true_false",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Adding a reserve price can sometimes leave the item unsold.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "Not selling at low bids can increase expected revenue.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB039"
+    },
+    {
+      "type": "short_answer",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What is the difference between welfare maximization and revenue maximization?",
+      "answer": "Welfare maximization maximizes total value created; revenue maximization maximizes expected payments to the seller.",
+      "explanation": "The two objectives can select different allocations, especially when low values have negative virtual values.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECB040"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A normal-form game specifies:",
+      "choices": [
+        "Players, strategies, and payoffs",
+        "Only a graph",
+        "Only prices",
+        "A mechanism with truthful reports"
+      ],
+      "answer": "Players, strategies, and payoffs",
+      "explanation": "These three ingredients define strategic interaction.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB041"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A pure strategy is:",
+      "choices": [
+        "One definite action",
+        "A probability distribution over actions",
+        "A payment rule",
+        "A social choice function"
+      ],
+      "answer": "One definite action",
+      "explanation": "The player chooses a single action with probability one.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB042"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A mixed strategy is:",
+      "choices": [
+        "A probability distribution over pure strategies",
+        "A strategy that always loses",
+        "A deterministic algorithm",
+        "A type report"
+      ],
+      "answer": "A probability distribution over pure strategies",
+      "explanation": "Randomization can make opponents indifferent among actions.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB043"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A best response is a strategy that:",
+      "choices": [
+        "Maximizes a player’s payoff given others’ strategies",
+        "Maximizes total welfare regardless of others",
+        "Minimizes every player’s payoff",
+        "Is always truthful"
+      ],
+      "answer": "Maximizes a player’s payoff given others’ strategies",
+      "explanation": "Best responses are defined relative to what the other players do.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB044"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A Nash equilibrium is a strategy profile where:",
+      "choices": [
+        "No player can gain by changing alone",
+        "Every player gets the same payoff",
+        "Total welfare is maximum",
+        "All players use pure strategies"
+      ],
+      "answer": "No player can gain by changing alone",
+      "explanation": "Each player’s strategy is a best response to the others.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB045"
+    },
+    {
+      "type": "true_false",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Every finite game has at least one mixed Nash equilibrium.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "Nash’s theorem guarantees existence in finite games, possibly using mixed strategies.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB046"
+    },
+    {
+      "type": "true_false",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Every finite game has a pure Nash equilibrium.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Some games, such as matching pennies, have no pure equilibrium.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB047"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A dominant strategy is best:",
+      "choices": [
+        "For every possible strategy choice of the others",
+        "Only at equilibrium",
+        "Only if all players cooperate",
+        "Only in zero-sum games"
+      ],
+      "answer": "For every possible strategy choice of the others",
+      "explanation": "Dominance is stronger than being a best response at one profile.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB048"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A zero-sum game has payoffs whose sum is:",
+      "choices": [
+        "Zero",
+        "Always one",
+        "Always positive",
+        "Equal to social welfare"
+      ],
+      "answer": "Zero",
+      "explanation": "One player’s gain is exactly the other player’s loss.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB049"
+    },
+    {
+      "type": "short_answer",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Define a Nash equilibrium in one sentence.",
+      "answer": "A strategy profile in which no single player can improve her payoff by deviating alone.",
+      "explanation": "The key words are unilateral deviation: all other strategies are held fixed.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECB050"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In selfish routing, each user chooses a path to minimize:",
+      "choices": [
+        "Her own travel time or latency",
+        "Total social cost directly",
+        "The operator’s revenue",
+        "The number of edges in the entire network"
+      ],
+      "answer": "Her own travel time or latency",
+      "explanation": "Users act selfishly rather than coordinating to minimize total delay.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB051"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A Wardrop equilibrium has the property that:",
+      "choices": [
+        "All used paths have minimum latency",
+        "All paths have zero latency",
+        "Only one user may travel",
+        "The social optimum is always reached"
+      ],
+      "answer": "All used paths have minimum latency",
+      "explanation": "No infinitesimal user can improve by switching paths.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB052"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The social cost of a routing flow is usually:",
+      "choices": [
+        "The sum of flow times latency over all edges",
+        "The number of paths",
+        "The maximum bid",
+        "The seller’s payment"
+      ],
+      "answer": "The sum of flow times latency over all edges",
+      "explanation": "Total travel time equals Σ_e x_e l_e(x_e).",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB053"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The price of anarchy compares:",
+      "choices": [
+        "Worst equilibrium cost with optimal cost",
+        "Best equilibrium revenue with zero",
+        "Two truthful mechanisms",
+        "The number of players with the number of edges"
+      ],
+      "answer": "Worst equilibrium cost with optimal cost",
+      "explanation": "PoA measures efficiency loss caused by selfish behavior.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB054"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For a cost-minimization problem, PoA is usually:",
+      "choices": [
+        "At least 1",
+        "At most 0",
+        "Always exactly 1",
+        "Negative"
+      ],
+      "answer": "At least 1",
+      "explanation": "The optimum cannot cost more than the worst equilibrium.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB055"
+    },
+    {
+      "type": "true_false",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A price of anarchy equal to 1 means equilibrium is socially optimal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The equilibrium and optimal costs coincide.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB056"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In the classic Pigou network, inefficiency arises because users:",
+      "choices": [
+        "Ignore the congestion externality they impose",
+        "Pay VCG prices",
+        "Coordinate perfectly",
+        "Have no path choice"
+      ],
+      "answer": "Ignore the congestion externality they impose",
+      "explanation": "Each user considers private delay, not the extra delay caused to others.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB057"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A toll can improve routing by:",
+      "choices": [
+        "Making users account for congestion externalities",
+        "Removing all edges",
+        "Forcing everyone onto the slowest path",
+        "Making latency independent of flow"
+      ],
+      "answer": "Making users account for congestion externalities",
+      "explanation": "Proper marginal-cost tolls align selfish choices with social cost.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB058"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For affine latency functions, the well-known worst-case PoA bound is:",
+      "choices": [
+        "4/3",
+        "1/2",
+        "2/3",
+        "10"
+      ],
+      "answer": "4/3",
+      "explanation": "For nonatomic selfish routing with affine latencies, equilibrium cost is at most 4/3 of optimum.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB059"
+    },
+    {
+      "type": "short_answer",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Write the basic definition of price of anarchy for a cost problem.",
+      "answer": "PoA = cost of the worst equilibrium / cost of the social optimum.",
+      "explanation": "A larger ratio means more inefficiency from selfish behavior.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECB060"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A potential function is useful because it tracks:",
+      "choices": [
+        "Changes in players’ incentives",
+        "Only seller revenue",
+        "Only probabilities",
+        "The number of mixed strategies"
+      ],
+      "answer": "Changes in players’ incentives",
+      "explanation": "In an exact potential game, a unilateral payoff change matches the change in potential.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB061"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a finite exact potential game, repeated strict better responses must:",
+      "choices": [
+        "Eventually stop at a pure Nash equilibrium",
+        "Cycle forever",
+        "Always lower the potential",
+        "Produce a mixed equilibrium only"
+      ],
+      "answer": "Eventually stop at a pure Nash equilibrium",
+      "explanation": "The potential strictly improves and there are finitely many profiles.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB062"
+    },
+    {
+      "type": "true_false",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Every finite potential game has at least one pure Nash equilibrium.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "A profile maximizing the potential is a pure equilibrium.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB063"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Congestion games are important examples of:",
+      "choices": [
+        "Potential games",
+        "Games with no equilibrium",
+        "Truthful auctions",
+        "Zero-player games"
+      ],
+      "answer": "Potential games",
+      "explanation": "Rosenthal constructed a potential function for congestion games.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB064"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "At a pure Nash equilibrium, every player’s current strategy is:",
+      "choices": [
+        "A best response to the others",
+        "A dominant strategy necessarily",
+        "Socially optimal necessarily",
+        "Randomized necessarily"
+      ],
+      "answer": "A best response to the others",
+      "explanation": "No unilateral move yields a higher payoff.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB065"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Best-response dynamics means players repeatedly:",
+      "choices": [
+        "Switch to a payoff-maximizing response",
+        "Report truthfully to a mechanism",
+        "Choose random actions forever",
+        "Minimize total welfare"
+      ],
+      "answer": "Switch to a payoff-maximizing response",
+      "explanation": "The process updates one player at a time using a best response.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB066"
+    },
+    {
+      "type": "true_false",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Best-response dynamics converges in every finite game.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "It can cycle in general games; potential games provide a convergence guarantee for improving moves.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB067"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A local maximum of an exact potential corresponds to:",
+      "choices": [
+        "A pure Nash equilibrium",
+        "A dominated strategy",
+        "A VCG payment",
+        "A reserve price"
+      ],
+      "answer": "A pure Nash equilibrium",
+      "explanation": "No unilateral deviation increases potential, so none improves the deviator’s payoff.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB068"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which concept is stronger?",
+      "choices": [
+        "Dominant strategy",
+        "Best response at one particular profile",
+        "They are always identical",
+        "Neither can be compared"
+      ],
+      "answer": "Dominant strategy",
+      "explanation": "A dominant strategy is best against every action profile of the others.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB069"
+    },
+    {
+      "type": "short_answer",
+      "deck": "potential_games_equilibria",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why does a potential function help prove convergence?",
+      "answer": "Every improving move raises the potential, and in a finite game it cannot rise forever.",
+      "explanation": "This rules out cycles of strict improvement.",
+      "tags": [
+        "potential_games_equilibria",
+        "pass_core"
+      ],
+      "id": "ECB070"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "External regret compares a learner’s payoff with:",
+      "choices": [
+        "The best fixed action in hindsight",
+        "The best action chosen separately every round",
+        "The social optimum only",
+        "The worst opponent action"
+      ],
+      "answer": "The best fixed action in hindsight",
+      "explanation": "External regret asks how much better one fixed action would have performed over all rounds.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB071"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A no-regret algorithm guarantees average regret:",
+      "choices": [
+        "Goes to zero as time grows",
+        "Goes to infinity",
+        "Is always exactly one",
+        "Equals social welfare"
+      ],
+      "answer": "Goes to zero as time grows",
+      "explanation": "Sublinear total regret implies vanishing regret per round.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB072"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Multiplicative weights changes action weights based on:",
+      "choices": [
+        "Observed rewards or losses",
+        "Player names",
+        "VCG payments",
+        "Graph diameter only"
+      ],
+      "answer": "Observed rewards or losses",
+      "explanation": "Good-performing actions gain relative weight; bad-performing actions lose it.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB073"
+    },
+    {
+      "type": "true_false",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "No-regret learning requires the player to know the opponent’s future actions.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The guarantee is online and does not assume knowledge of the future.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB074"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "If every player has low external regret, the empirical distribution of play approaches:",
+      "choices": [
+        "A coarse correlated equilibrium",
+        "A dominant-strategy equilibrium only",
+        "A VCG allocation",
+        "A socially optimal pure strategy always"
+      ],
+      "answer": "A coarse correlated equilibrium",
+      "explanation": "No player can gain much by committing in advance to a fixed deviation.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB075"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Regret is called sublinear when total regret R(T) satisfies:",
+      "choices": [
+        "R(T)/T → 0",
+        "R(T)=T²",
+        "R(T)/T → infinity",
+        "R(T) is always negative"
+      ],
+      "answer": "R(T)/T → 0",
+      "explanation": "Sublinear growth makes average regret vanish.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB076"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The learning rate controls:",
+      "choices": [
+        "How aggressively weights react to feedback",
+        "The number of players",
+        "The auction reserve",
+        "The network flow"
+      ],
+      "answer": "How aggressively weights react to feedback",
+      "explanation": "Too large can be unstable; too small can learn slowly.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB077"
+    },
+    {
+      "type": "true_false",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "No-regret learning always converges to a single pure Nash equilibrium.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Time-average play has equilibrium properties, but actual actions may continue to fluctuate.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB078"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "One reason no-regret learning is useful is that it:",
+      "choices": [
+        "Works even when the environment is not known in advance",
+        "Requires solving every game exactly first",
+        "Eliminates all randomness",
+        "Guarantees maximum welfare in every round"
+      ],
+      "answer": "Works even when the environment is not known in advance",
+      "explanation": "It provides robust online performance against arbitrary sequences.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB079"
+    },
+    {
+      "type": "short_answer",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "What does “no regret” mean informally?",
+      "answer": "Over time, the learner performs almost as well as the best single fixed action chosen after seeing all rounds.",
+      "explanation": "The difference per round becomes negligible.",
+      "tags": [
+        "no_regret_learning",
+        "pass_core"
+      ],
+      "id": "ECB080"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Mechanism design without money studies settings where:",
+      "choices": [
+        "Transfers or payments cannot be used",
+        "Agents have no preferences",
+        "All mechanisms are auctions",
+        "Computation is free"
+      ],
+      "answer": "Transfers or payments cannot be used",
+      "explanation": "Examples include voting, school choice, organ exchange, and facility location.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB081"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In voting, a social choice function maps reported preferences to:",
+      "choices": [
+        "A chosen alternative",
+        "A payment vector only",
+        "A network path",
+        "A virtual value"
+      ],
+      "answer": "A chosen alternative",
+      "explanation": "The mechanism selects one candidate or outcome from the alternatives.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB082"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Strategy-proofness without money means:",
+      "choices": [
+        "Truthful preference reporting is a dominant strategy",
+        "Every voter receives money",
+        "The majority always wins",
+        "The outcome is always unanimous"
+      ],
+      "answer": "Truthful preference reporting is a dominant strategy",
+      "explanation": "No agent can benefit from misreporting, regardless of others’ reports.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB083"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A dictatorship in social choice means:",
+      "choices": [
+        "One agent’s top choice always determines the outcome",
+        "All agents vote randomly",
+        "The mechanism maximizes revenue",
+        "No alternative can win twice"
+      ],
+      "answer": "One agent’s top choice always determines the outcome",
+      "explanation": "The dictator’s most preferred alternative is selected regardless of others.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB084"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The Gibbard-Satterthwaite theorem applies, roughly, when there are:",
+      "choices": [
+        "At least three alternatives and unrestricted preferences",
+        "Exactly one alternative",
+        "Only monetary auctions",
+        "No strategic agents"
+      ],
+      "answer": "At least three alternatives and unrestricted preferences",
+      "explanation": "A deterministic onto strategy-proof rule must then be dictatorial.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB085"
+    },
+    {
+      "type": "true_false",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Gibbard-Satterthwaite shows that every reasonable voting rule can be both non-dictatorial and strategy-proof on unrestricted preferences.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "It is an impossibility theorem: under its assumptions, strategy-proofness forces dictatorship.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB086"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A matching mechanism without money may assign:",
+      "choices": [
+        "Students to schools",
+        "Bidders to payments only",
+        "Virtual values to sellers",
+        "Flows to tolls only"
+      ],
+      "answer": "Students to schools",
+      "explanation": "Matching problems allocate indivisible opportunities without monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB087"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In one-dimensional facility location, the median rule is important because it is:",
+      "choices": [
+        "Strategy-proof under standard distance preferences",
+        "Revenue maximizing",
+        "A VCG auction with payments",
+        "Always dictatorial"
+      ],
+      "answer": "Strategy-proof under standard distance preferences",
+      "explanation": "Choosing a median prevents an agent from moving the facility closer by lying past her true location.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB088"
+    },
+    {
+      "type": "true_false",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Randomization can sometimes avoid deterministic social-choice impossibility conclusions.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "Randomized strategy-proof rules can be non-dictatorial, though they face their own characterization results.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB089"
+    },
+    {
+      "type": "short_answer",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Name two applications of mechanism design without money.",
+      "answer": "Examples: voting, school choice, kidney exchange, course allocation, facility location, or matching.",
+      "explanation": "These settings rely on allocation rules rather than monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "pass_core"
+      ],
+      "id": "ECB090"
+    }
+  ]
+}

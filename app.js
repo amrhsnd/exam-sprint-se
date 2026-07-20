@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const APP_VERSION = "20260720-latex-delimiters-v1";
+  const APP_VERSION = "20260720-basic-pass-exam-v1";
   const EXAM_CATALOG_URL = `./data/exams.json?v=${APP_VERSION}`;
   const LEGACY_STORAGE_KEY = "exam-sprint-state-v1";
   const STATE_KEY_PREFIX = "exam-sprint-state";

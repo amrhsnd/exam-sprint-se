@@ -22,6 +22,13 @@
       "status": "ready"
     },
     {
+      "id": "economics-computation-basic-pass",
+      "title": "Economics and Computation — Basic Pass",
+      "description": "90 foundational, high-yield questions for relearning the core definitions, formulas, theorems, and standard examples.",
+      "dataUrl": "./data/economics_computation_basic_pass_question_bank.json",
+      "status": "ready"
+    },
+    {
       "id": "new-exam",
       "title": "New Exam",
       "description": "Add this exam's question JSON when the material is ready.",

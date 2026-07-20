@@ -1,5 +1,5 @@
-const APP_VERSION = "20260716-exam-switcher-v1";
-const CACHE_NAME = "exam-sprint-v14";
+const APP_VERSION = "20260720-economics-set-2-v1";
+const CACHE_NAME = "exam-sprint-v15";
 const ASSETS = [
   "./",
   "./index.html",
@@ -9,7 +9,8 @@ const ASSETS = [
   "./icon.svg",
   `./data/exams.json?v=${APP_VERSION}`,
   `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`,
-  `./data/economics_computation_exam_questions.json?v=${APP_VERSION}`
+  `./data/economics_computation_exam_questions.json?v=${APP_VERSION}`,
+  `./data/economics_computation_exam_questions_set_2.json?v=${APP_VERSION}`
 ];
 
 self.addEventListener("install", (event) => {

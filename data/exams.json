@@ -15,6 +15,13 @@
       "status": "ready"
     },
     {
+      "id": "economics-computation-set-2",
+      "title": "Economics and Computation — Set 2",
+      "description": "100 fresh exam-style questions covering calculations, proof steps, counterexamples, theorem selection, and cross-topic discrimination.",
+      "dataUrl": "./data/economics_computation_exam_questions_set_2.json",
+      "status": "ready"
+    },
+    {
       "id": "new-exam",
       "title": "New Exam",
       "description": "Add this exam's question JSON when the material is ready.",

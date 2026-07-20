@@ -36,6 +36,13 @@
       "status": "ready"
     },
     {
+      "id": "economics-computation-focus-review",
+      "title": "Economics and Computation — Focus Review",
+      "description": "90 focused multiple-choice questions on VCG and multi-parameter mechanisms, mechanisms without money, social choice, and no-regret learning.",
+      "dataUrl": "./data/economics_computation_focus_multi_social_noregret.json",
+      "status": "ready"
+    },
+    {
       "id": "new-exam",
       "title": "New Exam",
       "description": "Add this exam's question JSON when the material is ready.",

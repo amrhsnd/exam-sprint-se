@@ -1,5 +1,5 @@
-const APP_VERSION = "20260720-mc-pass-exam-v1";
-const CACHE_NAME = "exam-sprint-v18";
+const APP_VERSION = "20260720-focus-review-exam-v1";
+const CACHE_NAME = "exam-sprint-v19";
 const ASSETS = [
   "./",
   "./index.html",
@@ -12,7 +12,8 @@ const ASSETS = [
   `./data/economics_computation_exam_questions.json?v=${APP_VERSION}`,
   `./data/economics_computation_exam_questions_set_2.json?v=${APP_VERSION}`,
   `./data/economics_computation_basic_pass_question_bank.json?v=${APP_VERSION}`,
-  `./data/economics_computation_mc_pass_question_bank.json?v=${APP_VERSION}`
+  `./data/economics_computation_mc_pass_question_bank.json?v=${APP_VERSION}`,
+  `./data/economics_computation_focus_multi_social_noregret.json?v=${APP_VERSION}`
 ];
 
 self.addEventListener("install", (event) => {

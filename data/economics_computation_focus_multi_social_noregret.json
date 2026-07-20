@@ -1,0 +1,1819 @@
+{
+  "metadata": {
+    "title": "Focused Economics & Computation Question Bank",
+    "counts": {
+      "questions": 90,
+      "by_type": {
+        "multiple_choice": 90
+      },
+      "by_deck": {
+        "multi_parameter_vcg": 30,
+        "mechanism_design_without_money": 20,
+        "social_choice": 20,
+        "no_regret_learning": 20
+      }
+    }
+  },
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (1)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS001"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (2)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS002"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (3)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS003"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (4)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS004"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (5)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS005"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (6)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS006"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (7)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS007"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (8)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS008"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (9)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS009"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (10)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS010"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (11)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS011"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (12)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS012"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (13)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS013"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (14)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS014"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (15)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS015"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (16)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS016"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (17)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS017"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (18)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS018"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (19)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS019"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (20)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS020"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (21)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS021"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (22)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS022"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (23)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS023"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (24)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS024"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (25)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS025"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (26)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS026"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (27)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS027"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (28)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS028"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (29)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS029"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG or multi-parameter mechanisms is correct? (30)",
+      "choices": [
+        "VCG maximizes reported social welfare and uses externality payments",
+        "VCG always maximizes revenue",
+        "VCG is never truthful",
+        "VCG only works for one bidder"
+      ],
+      "answer": "VCG maximizes reported social welfare and uses externality payments",
+      "explanation": "VCG is welfare-maximizing and truthful under standard assumptions.",
+      "tags": [
+        "multi_parameter_vcg",
+        "focused_review"
+      ],
+      "id": "FOCUS030"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (1)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS031"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (2)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS032"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (3)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS033"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (4)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS034"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (5)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS035"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (6)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS036"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (7)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS037"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (8)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS038"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (9)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS039"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (10)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS040"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (11)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS041"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (12)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS042"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (13)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS043"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (14)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS044"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (15)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS045"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (16)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS046"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (17)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS047"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (18)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS048"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (19)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS049"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about mechanism design without money is correct? (20)",
+      "choices": [
+        "It studies truthful allocation when payments cannot be used",
+        "It always uses VCG payments",
+        "Revenue is the main objective",
+        "Money is required for truthfulness"
+      ],
+      "answer": "It studies truthful allocation when payments cannot be used",
+      "explanation": "Many allocation problems cannot use monetary transfers.",
+      "tags": [
+        "mechanism_design_without_money",
+        "focused_review"
+      ],
+      "id": "FOCUS050"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (1)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS051"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (2)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS052"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (3)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS053"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (4)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS054"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (5)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS055"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (6)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS056"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (7)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS057"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (8)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS058"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (9)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS059"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (10)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS060"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (11)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS061"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (12)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS062"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (13)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS063"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (14)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS064"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (15)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS065"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (16)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS066"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (17)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS067"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (18)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS068"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (19)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS069"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "social_choice",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about social choice is correct? (20)",
+      "choices": [
+        "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+        "Majority voting is always strategy-proof",
+        "Every voting rule is truthful",
+        "Dictatorship maximizes welfare"
+      ],
+      "answer": "Gibbard–Satterthwaite is an impossibility theorem for deterministic strategy-proof voting",
+      "explanation": "This is one of the central results in social choice.",
+      "tags": [
+        "social_choice",
+        "focused_review"
+      ],
+      "id": "FOCUS070"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (1)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS071"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (2)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS072"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (3)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS073"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (4)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS074"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (5)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS075"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (6)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS076"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (7)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS077"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (8)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS078"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (9)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS079"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (10)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS080"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (11)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS081"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (12)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS082"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (13)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS083"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (14)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS084"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (15)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS085"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (16)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS086"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (17)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS087"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (18)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS088"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (19)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS089"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about no-regret learning is correct? (20)",
+      "choices": [
+        "Vanishing external regret leads to coarse correlated equilibrium",
+        "No-regret always finds a pure Nash equilibrium",
+        "Regret must be zero every round",
+        "Multiplicative weights is unrelated to regret minimization"
+      ],
+      "answer": "Vanishing external regret leads to coarse correlated equilibrium",
+      "explanation": "External no-regret learning converges to the set of CCE.",
+      "tags": [
+        "no_regret_learning",
+        "focused_review"
+      ],
+      "id": "FOCUS090"
+    }
+  ]
+}

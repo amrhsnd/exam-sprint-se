@@ -1,0 +1,1845 @@
+{
+  "metadata": {
+    "title": "Economics and Computation - Multiple-Choice Pass-Focused Question Bank",
+    "version": "4.0",
+    "created_for": "Last-minute exam review and passing the course",
+    "level": "basic and high-yield",
+    "study_method": "Answer every question without looking at the solution, read every explanation, and repeat each mistake until correct twice.",
+    "sources_reviewed": [
+      "EC0506-Intro.pdf",
+      "Mechanism Design Basics.pdf",
+      "Algorithmic Mechanism Design.pdf",
+      "MultiParameter.pdf",
+      "Mechanism Design Without Money.pdf",
+      "Computational Game Theory.pdf",
+      "cgt1.pdf",
+      "Selfish Routing.pdf",
+      "l5.pdf",
+      "l6.pdf",
+      "l12.pdf",
+      "l13.pdf",
+      "l17.pdf",
+      "l18.pdf"
+    ],
+    "counts": {
+      "questions": 90,
+      "by_type": {
+        "multiple_choice": 90
+      },
+      "by_deck": {
+        "mechanism_design_basics": 10,
+        "algorithmic_mechanism_design": 10,
+        "multi_parameter_vcg": 10,
+        "revenue_maximization": 10,
+        "computational_game_theory": 10,
+        "selfish_routing_poa": 10,
+        "potential_games_equilibria": 10,
+        "no_regret_learning": 10,
+        "mechanism_design_without_money": 10
+      }
+    },
+    "important_note": "This bank contains only multiple-choice questions and targets the central definitions, formulas, theorem statements, standard examples, and common exam distinctions. It is designed as a pass-focused foundation, not a guarantee of any particular exam result."
+  },
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement best describes a direct-revelation mechanism?",
+      "choices": [
+        "Agents report private types and the mechanism selects an outcome and payments",
+        "Agents choose outcomes without reporting information",
+        "The mechanism observes all true values automatically",
+        "Only the seller submits a report"
+      ],
+      "answer": "Agents report private types and the mechanism selects an outcome and payments",
+      "explanation": "A direct mechanism asks agents to report their private information and then applies allocation and payment rules.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM001"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For quasilinear preferences, an agent's utility is best written as:",
+      "choices": [
+        "Value for the outcome minus payment",
+        "Value plus payment",
+        "Payment minus value",
+        "Social welfare minus revenue"
+      ],
+      "answer": "Value for the outcome minus payment",
+      "explanation": "Quasilinear utility separates value from money: u_i = v_i(x)-p_i.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM002"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which condition says truthful reporting is optimal regardless of the other agents' reports?",
+      "choices": [
+        "Dominant-strategy incentive compatibility",
+        "Individual rationality",
+        "Budget balance",
+        "Pareto efficiency"
+      ],
+      "answer": "Dominant-strategy incentive compatibility",
+      "explanation": "DSIC requires truth-telling to be a dominant strategy.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM003"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Ex-post individual rationality means that:",
+      "choices": [
+        "A truthful agent gets nonnegative utility for every realized profile",
+        "The mechanism always earns nonnegative revenue",
+        "Every agent receives an item",
+        "Truthful reporting is a Nash equilibrium only"
+      ],
+      "answer": "A truthful agent gets nonnegative utility for every realized profile",
+      "explanation": "Ex-post IR guarantees nonnegative truthful utility after values are realized.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM004"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which quantity is normally excluded from social welfare when payments are pure transfers?",
+      "choices": [
+        "Payments between agents and the mechanism",
+        "Agents' valuations",
+        "Production costs",
+        "Allocation feasibility constraints"
+      ],
+      "answer": "Payments between agents and the mechanism",
+      "explanation": "Payments redistribute utility and usually cancel from total welfare.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM005"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The revelation principle is useful because it allows the designer to study:",
+      "choices": [
+        "Truthful direct mechanisms instead of arbitrary indirect implementations",
+        "Only first-price auctions",
+        "Only mechanisms without money",
+        "Only randomized social choice functions"
+      ],
+      "answer": "Truthful direct mechanisms instead of arbitrary indirect implementations",
+      "explanation": "It reduces many implementation questions to truthful direct mechanisms.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM006"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A mechanism is composed primarily of:",
+      "choices": [
+        "An allocation rule and a payment rule",
+        "A strategy set and a probability density only",
+        "A reserve price and a graph",
+        "A utility function chosen by the seller"
+      ],
+      "answer": "An allocation rule and a payment rule",
+      "explanation": "The allocation chooses the outcome and the payment rule determines transfers.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM007"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement correctly distinguishes value and utility?",
+      "choices": [
+        "Value measures benefit from the outcome; utility subtracts payment",
+        "They are always identical",
+        "Utility is always larger than value",
+        "Value includes the agent's payment"
+      ],
+      "answer": "Value measures benefit from the outcome; utility subtracts payment",
+      "explanation": "Under quasilinear preferences, utility equals value minus payment.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM008"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "If a bidder values an item at 12, wins, and pays 7, her utility is:",
+      "choices": [
+        "5",
+        "7",
+        "12",
+        "19"
+      ],
+      "answer": "5",
+      "explanation": "The utility is 12-7=5.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM009"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_basics",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A mechanism is welfare maximizing when it selects:",
+      "choices": [
+        "A feasible outcome with maximum total reported value",
+        "The outcome with maximum total payment",
+        "The outcome preferred by the seller only",
+        "An arbitrary outcome with nonnegative revenue"
+      ],
+      "answer": "A feasible outcome with maximum total reported value",
+      "explanation": "Welfare maximization chooses the feasible allocation with largest total value.",
+      "tags": [
+        "mechanism_design_basics",
+        "pass_core"
+      ],
+      "id": "ECM010"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a single-parameter environment, each agent's private type is:",
+      "choices": [
+        "One scalar value or cost",
+        "A complete ranking over all outcomes",
+        "A matrix of pairwise utilities",
+        "Always a probability distribution"
+      ],
+      "answer": "One scalar value or cost",
+      "explanation": "Single-parameter types are summarized by one number.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM011"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For a value-maximization bidder, monotonicity requires that increasing her bid cannot:",
+      "choices": [
+        "Turn a winning outcome into a losing one, holding others fixed",
+        "Increase her payment",
+        "Change another bidder's bid",
+        "Raise the social welfare"
+      ],
+      "answer": "Turn a winning outcome into a losing one, holding others fixed",
+      "explanation": "A monotone allocation preserves winning when a bidder raises her bid.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM012"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The critical value of a winning bidder is:",
+      "choices": [
+        "The smallest report at which she would still win",
+        "Her true value",
+        "The highest report allowed",
+        "The sum of losing bids"
+      ],
+      "answer": "The smallest report at which she would still win",
+      "explanation": "It is the threshold separating winning from losing.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM013"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A normalized truthful single-parameter mechanism charges a winner:",
+      "choices": [
+        "Her critical value",
+        "Her own bid in every case",
+        "Zero in every case",
+        "The average of all bids"
+      ],
+      "answer": "Her critical value",
+      "explanation": "Threshold payments support DSIC when the allocation rule is monotone.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM014"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a Vickrey single-item auction with bids 15, 11, and 4, the winner pays:",
+      "choices": [
+        "11",
+        "15",
+        "4",
+        "30"
+      ],
+      "answer": "11",
+      "explanation": "The highest bidder wins and pays the second-highest bid.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM015"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why is bidding above one's value risky in a second-price auction?",
+      "choices": [
+        "One may win and pay more than the item is worth",
+        "It always lowers the payment",
+        "It guarantees losing",
+        "It changes the second-highest bid to zero"
+      ],
+      "answer": "One may win and pay more than the item is worth",
+      "explanation": "Overbidding can create negative utility when the price exceeds true value.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM016"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why can bidding below one's value be harmful in a second-price auction?",
+      "choices": [
+        "One may lose an item that would have yielded positive utility",
+        "It always increases the price",
+        "It violates feasibility",
+        "It makes every other bidder truthful"
+      ],
+      "answer": "One may lose an item that would have yielded positive utility",
+      "explanation": "Underbidding can cause a profitable winning opportunity to be missed.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM017"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A first-price auction encourages bid shading because:",
+      "choices": [
+        "The winner pays her own bid",
+        "The winner pays the second-highest bid",
+        "Losers pay their values",
+        "The allocation is independent of bids"
+      ],
+      "answer": "The winner pays her own bid",
+      "explanation": "Bidders trade off winning probability against a lower payment.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM018"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which pair characterizes truthful normalized single-parameter mechanisms?",
+      "choices": [
+        "Monotone allocation and critical-value payments",
+        "Arbitrary allocation and first-price payments",
+        "Welfare maximization and zero payments",
+        "Random allocation and reserve prices"
+      ],
+      "answer": "Monotone allocation and critical-value payments",
+      "explanation": "This is the central characterization for deterministic single-parameter mechanisms.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM019"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "algorithmic_mechanism_design",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Algorithmic mechanism design becomes difficult when:",
+      "choices": [
+        "The desired allocation problem is computationally hard",
+        "Agents have quasilinear utility",
+        "There is only one bidder",
+        "Payments can be computed instantly"
+      ],
+      "answer": "The desired allocation problem is computationally hard",
+      "explanation": "Truthfulness must be combined with computationally feasible allocation.",
+      "tags": [
+        "algorithmic_mechanism_design",
+        "pass_core"
+      ],
+      "id": "ECM020"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A multi-parameter type differs from a single-parameter type because it:",
+      "choices": [
+        "May assign different values to many different outcomes",
+        "Contains exactly one number",
+        "Cannot be private",
+        "Never affects allocation"
+      ],
+      "answer": "May assign different values to many different outcomes",
+      "explanation": "Multi-parameter agents have a valuation vector or function.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM021"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "VCG selects the feasible outcome maximizing:",
+      "choices": [
+        "The sum of reported valuations",
+        "The seller's reported cost only",
+        "The number of payments",
+        "The minimum individual valuation"
+      ],
+      "answer": "The sum of reported valuations",
+      "explanation": "VCG uses welfare maximization as its allocation rule.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM022"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Under Clarke pivot payments, agent i pays:",
+      "choices": [
+        "Best welfare achievable by others without i minus others' welfare in the chosen outcome",
+        "Her own reported value",
+        "The total welfare of all agents",
+        "A fixed participation fee"
+      ],
+      "answer": "Best welfare achievable by others without i minus others' welfare in the chosen outcome",
+      "explanation": "The payment equals the externality imposed on the others.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM023"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "If an agent's presence does not change the welfare attainable by others, her VCG payment is:",
+      "choices": [
+        "Zero",
+        "Her full value",
+        "The second-highest value in every setting",
+        "Negative infinity"
+      ],
+      "answer": "Zero",
+      "explanation": "No externality implies no pivot payment.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM024"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a single-item setting, the VCG winner's externality equals:",
+      "choices": [
+        "The highest value among the losing bidders",
+        "Her own value",
+        "The sum of every bid",
+        "Zero regardless of bids"
+      ],
+      "answer": "The highest value among the losing bidders",
+      "explanation": "Without the winner, the best loser would receive the item.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM025"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which property is guaranteed by standard VCG under quasilinear preferences?",
+      "choices": [
+        "Dominant-strategy truthfulness",
+        "Maximum seller revenue",
+        "Strong budget balance in every problem",
+        "Polynomial-time computation in every domain"
+      ],
+      "answer": "Dominant-strategy truthfulness",
+      "explanation": "VCG is DSIC but need not maximize revenue or be computationally easy.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM026"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why can VCG be computationally impractical?",
+      "choices": [
+        "It may require solving a hard welfare-optimization problem several times",
+        "Its payment formula never uses optimization",
+        "It cannot handle more than two agents",
+        "It requires agents to reveal no information"
+      ],
+      "answer": "It may require solving a hard welfare-optimization problem several times",
+      "explanation": "Computing the allocation and counterfactual welfare can be hard.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM027"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement about VCG and revenue is correct?",
+      "choices": [
+        "VCG maximizes welfare, not generally revenue",
+        "VCG always produces the largest possible revenue",
+        "VCG always has zero revenue",
+        "VCG is identical to first-price bidding"
+      ],
+      "answer": "VCG maximizes welfare, not generally revenue",
+      "explanation": "Revenue optimality is a different design objective.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM028"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a combinatorial auction, a bidder's value for {A,B} can differ from the sum of values for A and B because of:",
+      "choices": [
+        "Complements or substitutes",
+        "Dominant strategies only",
+        "Reserve prices only",
+        "Zero-sum payoffs"
+      ],
+      "answer": "Complements or substitutes",
+      "explanation": "Bundle valuations can capture complementarities and substitution.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM029"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "multi_parameter_vcg",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The key intuition behind VCG truthfulness is that each agent's utility is aligned with:",
+      "choices": [
+        "Total welfare up to a term independent of her report",
+        "Only the payment she reports",
+        "The number of other agents",
+        "The seller's private cost"
+      ],
+      "answer": "Total welfare up to a term independent of her report",
+      "explanation": "The pivot payment removes the agent's effect on others into an externality term.",
+      "tags": [
+        "multi_parameter_vcg",
+        "pass_core"
+      ],
+      "id": "ECM030"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Revenue-maximizing auction design usually requires:",
+      "choices": [
+        "A probabilistic model of bidders' values",
+        "Knowledge of every realized value in advance",
+        "Zero reserve prices",
+        "Identical bids from all agents"
+      ],
+      "answer": "A probabilistic model of bidders' values",
+      "explanation": "Bayesian auction design uses known value distributions.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM031"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For one bidder offered price r, expected revenue is:",
+      "choices": [
+        "r times the probability that value is at least r",
+        "r plus the bidder's expected value",
+        "The bidder's value minus r",
+        "Always r"
+      ],
+      "answer": "r times the probability that value is at least r",
+      "explanation": "Revenue is r upon sale and zero otherwise.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM032"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A reserve price primarily serves to:",
+      "choices": [
+        "Prevent sale when the highest acceptable bid is too low",
+        "Guarantee that every bidder wins",
+        "Make a first-price auction truthful",
+        "Eliminate all uncertainty"
+      ],
+      "answer": "Prevent sale when the highest acceptable bid is too low",
+      "explanation": "Withholding the item can improve expected revenue.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM033"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Myerson's virtual value for distribution F with density f is:",
+      "choices": [
+        "v-(1-F(v))/f(v)",
+        "v+(1-F(v))/f(v)",
+        "F(v)/f(v)",
+        "v-f(v)"
+      ],
+      "answer": "v-(1-F(v))/f(v)",
+      "explanation": "This is the standard virtual valuation formula.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM034"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A distribution is regular when:",
+      "choices": [
+        "Its virtual value is nondecreasing",
+        "Its density is constant",
+        "All values are equally likely",
+        "Its support begins at zero"
+      ],
+      "answer": "Its virtual value is nondecreasing",
+      "explanation": "Regularity makes virtual-surplus maximization monotone.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM035"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Myerson's lemma connects expected revenue with expected:",
+      "choices": [
+        "Virtual welfare",
+        "Actual welfare only",
+        "Maximum bid only",
+        "Number of winners"
+      ],
+      "answer": "Virtual welfare",
+      "explanation": "Expected payments equal expected virtual surplus under the standard conditions.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM036"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In the regular single-item optimal auction, the item is allocated to:",
+      "choices": [
+        "The bidder with the highest nonnegative virtual value",
+        "The bidder with the lowest value",
+        "A uniformly random bidder",
+        "The bidder with the highest payment after allocation"
+      ],
+      "answer": "The bidder with the highest nonnegative virtual value",
+      "explanation": "Negative virtual values lead the seller to withhold the item.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM037"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "For i.i.d. regular bidders, the optimal single-item auction is often described as:",
+      "choices": [
+        "A Vickrey auction with an appropriate reserve price",
+        "A first-price auction with no reserve",
+        "An all-pay auction",
+        "A random dictatorship"
+      ],
+      "answer": "A Vickrey auction with an appropriate reserve price",
+      "explanation": "The monopoly reserve augments the second-price auction.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM038"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement best compares welfare and revenue?",
+      "choices": [
+        "The welfare-maximizing allocation can differ from the revenue-maximizing allocation",
+        "They always select the same outcome",
+        "Revenue ignores payments",
+        "Welfare uses virtual values by definition"
+      ],
+      "answer": "The welfare-maximizing allocation can differ from the revenue-maximizing allocation",
+      "explanation": "Revenue optimization can reject low positive values because virtual values may be negative.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM039"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "revenue_maximization",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Simple near-optimal auctions are studied because:",
+      "choices": [
+        "Exactly optimal auctions can be complex or fragile",
+        "Optimal auctions never use distributions",
+        "Approximation always increases welfare",
+        "Simple auctions require no incentive analysis"
+      ],
+      "answer": "Exactly optimal auctions can be complex or fragile",
+      "explanation": "Approximation can trade a little revenue for simplicity and robustness.",
+      "tags": [
+        "revenue_maximization",
+        "pass_core"
+      ],
+      "id": "ECM040"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A normal-form game consists of:",
+      "choices": [
+        "Players, strategy sets, and payoff functions",
+        "Only players and payments",
+        "A graph and a reserve price",
+        "Types and truthful reports only"
+      ],
+      "answer": "Players, strategy sets, and payoff functions",
+      "explanation": "These ingredients specify strategic interaction.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM041"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A pure strategy chooses:",
+      "choices": [
+        "One action with probability one",
+        "A distribution over every action",
+        "A correlated recommendation",
+        "A payment threshold"
+      ],
+      "answer": "One action with probability one",
+      "explanation": "Pure strategies are deterministic actions.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM042"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A mixed strategy is:",
+      "choices": [
+        "A probability distribution over pure strategies",
+        "A sequence of dominant actions",
+        "A welfare function",
+        "A mechanism without payments"
+      ],
+      "answer": "A probability distribution over pure strategies",
+      "explanation": "Mixed strategies randomize among pure actions.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM043"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A strategy is a best response when it:",
+      "choices": [
+        "Maximizes the player's payoff given the others' strategies",
+        "Maximizes total social welfare",
+        "Is dominant in every game",
+        "Minimizes all players' payoffs"
+      ],
+      "answer": "Maximizes the player's payoff given the others' strategies",
+      "explanation": "Best responses are conditional on opponents' behavior.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM044"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "At a Nash equilibrium:",
+      "choices": [
+        "Every player's strategy is a best response to the others",
+        "All players receive equal payoff",
+        "Every strategy is dominant",
+        "Social welfare must be maximal"
+      ],
+      "answer": "Every player's strategy is a best response to the others",
+      "explanation": "No player has a profitable unilateral deviation.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM045"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Which statement follows from Nash's theorem?",
+      "choices": [
+        "Every finite game has at least one mixed Nash equilibrium",
+        "Every finite game has a pure Nash equilibrium",
+        "Every equilibrium is unique",
+        "Every game is zero-sum"
+      ],
+      "answer": "Every finite game has at least one mixed Nash equilibrium",
+      "explanation": "Existence is guaranteed when mixed strategies are allowed.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM046"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Matching pennies has no pure Nash equilibrium because:",
+      "choices": [
+        "At every pure profile, one player wants to deviate",
+        "Both players have dominant strategies",
+        "All payoffs are identical",
+        "The game has only one strategy per player"
+      ],
+      "answer": "At every pure profile, one player wants to deviate",
+      "explanation": "No pure profile is stable under unilateral deviation.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM047"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A strictly dominant strategy is one that:",
+      "choices": [
+        "Gives a higher payoff than every alternative against every opponents' profile",
+        "Is optimal only at one equilibrium",
+        "Maximizes social welfare",
+        "Must be randomized"
+      ],
+      "answer": "Gives a higher payoff than every alternative against every opponents' profile",
+      "explanation": "Dominance is stronger than being a best response at one profile.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM048"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In a zero-sum two-player game:",
+      "choices": [
+        "One player's gain equals the other's loss",
+        "Both players always receive zero",
+        "Every equilibrium is pure",
+        "Cooperation maximizes both payoffs"
+      ],
+      "answer": "One player's gain equals the other's loss",
+      "explanation": "The two payoffs sum to a constant, usually normalized to zero.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM049"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "computational_game_theory",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A correlated equilibrium differs from a Nash equilibrium because:",
+      "choices": [
+        "Players may condition actions on recommendations from a correlation device",
+        "Players must use pure strategies",
+        "It never exists",
+        "It requires monetary transfers"
+      ],
+      "answer": "Players may condition actions on recommendations from a correlation device",
+      "explanation": "Correlation permits coordinated recommendations while preserving obedience incentives.",
+      "tags": [
+        "computational_game_theory",
+        "pass_core"
+      ],
+      "id": "ECM050"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In nonatomic selfish routing, each traveler is modeled as:",
+      "choices": [
+        "Infinitesimally small relative to total flow",
+        "A monopolist controlling all traffic",
+        "A mechanism designer",
+        "A bidder with a reserve price"
+      ],
+      "answer": "Infinitesimally small relative to total flow",
+      "explanation": "An individual traveler does not noticeably change edge latency alone.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM051"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A Wardrop equilibrium requires that:",
+      "choices": [
+        "Every used path has minimum latency among available paths",
+        "Every path carries equal flow",
+        "The total latency is globally minimal",
+        "Unused paths have lower latency than used paths"
+      ],
+      "answer": "Every used path has minimum latency among available paths",
+      "explanation": "No infinitesimal user can improve by switching routes.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM052"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "The social cost of an edge with flow x_e and latency l_e(x_e) is:",
+      "choices": [
+        "x_e l_e(x_e)",
+        "l_e(x_e)/x_e",
+        "x_e+l_e(x_e)",
+        "Only l_e(0)"
+      ],
+      "answer": "x_e l_e(x_e)",
+      "explanation": "Total delay on an edge equals number of users times delay per user.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM053"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Price of anarchy for a cost-minimization game is:",
+      "choices": [
+        "Worst equilibrium cost divided by optimal cost",
+        "Optimal cost divided by worst equilibrium cost",
+        "Best equilibrium cost minus revenue",
+        "Total flow divided by path count"
+      ],
+      "answer": "Worst equilibrium cost divided by optimal cost",
+      "explanation": "PoA quantifies the inefficiency of selfish behavior.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM054"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A price of anarchy of 4/3 means:",
+      "choices": [
+        "The worst equilibrium cost can be 33.3% above optimum",
+        "The optimum is four times the equilibrium",
+        "Every equilibrium is optimal",
+        "Only three of four agents travel"
+      ],
+      "answer": "The worst equilibrium cost can be 33.3% above optimum",
+      "explanation": "The ratio compares equilibrium cost with optimal cost.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM055"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In the Pigou network with one unit of demand, latencies x and 1, the Wardrop equilibrium sends:",
+      "choices": [
+        "All flow on the edge with latency x",
+        "Half the flow on each edge",
+        "All flow on the constant edge",
+        "No flow at all"
+      ],
+      "answer": "All flow on the edge with latency x",
+      "explanation": "At total flow one, both used-path latency conditions support all flow on x, yielding cost one.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM056"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "In the same Pigou example, the socially optimal split places:",
+      "choices": [
+        "Half the flow on each edge",
+        "All flow on latency x",
+        "All flow on latency 1",
+        "One quarter on each edge"
+      ],
+      "answer": "Half the flow on each edge",
+      "explanation": "Minimizing x^2+(1-x) yields x=1/2.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM057"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Why does selfish routing become inefficient?",
+      "choices": [
+        "Users ignore the delay they impose on others",
+        "Users minimize total cost directly",
+        "Latencies never depend on flow",
+        "Every user pays a VCG price"
+      ],
+      "answer": "Users ignore the delay they impose on others",
+      "explanation": "The unpriced congestion externality separates private and social costs.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM058"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "A marginal-cost toll on edge e is based on:",
+      "choices": [
+        "x_e times the derivative of latency",
+        "The fixed latency l_e(0) only",
+        "The number of paths squared",
+        "The highest bidder's value"
+      ],
+      "answer": "x_e times the derivative of latency",
+      "explanation": "The toll charges the external congestion cost x_e l'_e(x_e).",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM059"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "selfish_routing_poa",
+      "priority": 1,
+      "difficulty": "basic",
+      "prompt": "Braess's paradox shows that:",
+      "choices": [
+        "Adding a road can worsen equilibrium travel time",
+        "Removing every road always helps",
+        "Wardrop equilibria never exist",
+        "Tolls always increase social cost"
+      ],
+      "answer": "Adding a road can worsen equilibrium travel time",
+      "explanation": "More capacity can alter incentives and create a worse equilibrium.",
+      "tags": [
+        "selfish_routing_poa",
+        "pass_core"
+      ],
+      "id": "ECM060"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "An exact potential function has the property that:",
+      "choices": [
+        "A unilateral payoff change equals the corresponding potential change",
+        "It always equals social welfare",
+        "It is constant across all profiles",
+        "It exists in every finite game"
+      ],
+      "answer": "A unilateral payoff change equals the corresponding potential change",
+      "explanation": "Exact potentials track unilateral incentives exactly.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM061"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Why must strict better-response dynamics terminate in a finite potential game?",
+      "choices": [
+        "The potential strictly improves and only finitely many profiles exist",
+        "Every player has a dominant strategy",
+        "The game is zero-sum",
+        "Payments eventually become zero"
+      ],
+      "answer": "The potential strictly improves and only finitely many profiles exist",
+      "explanation": "Strict improvement cannot cycle through finitely many potential values.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM062"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "A local maximum of an exact potential is:",
+      "choices": [
+        "A pure Nash equilibrium",
+        "Always the unique social optimum",
+        "A dominated strategy profile",
+        "A mixed strategy only"
+      ],
+      "answer": "A pure Nash equilibrium",
+      "explanation": "No unilateral deviation can improve payoff at a potential local maximum.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM063"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Rosenthal's potential is associated with:",
+      "choices": [
+        "Congestion games",
+        "Second-price auctions",
+        "Voting rules",
+        "Zero-sum matrix games"
+      ],
+      "answer": "Congestion games",
+      "explanation": "Rosenthal proved that congestion games are potential games.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM064"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "In an atomic congestion game, a player's cost depends on:",
+      "choices": [
+        "The resources she uses and how many players use them",
+        "Only her private valuation",
+        "The seller's reserve price",
+        "A random external signal only"
+      ],
+      "answer": "The resources she uses and how many players use them",
+      "explanation": "Resource congestion determines individual costs.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM065"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Which statement is true of every finite exact potential game?",
+      "choices": [
+        "It has at least one pure Nash equilibrium",
+        "It has exactly one equilibrium",
+        "Every equilibrium is socially optimal",
+        "It has no mixed equilibrium"
+      ],
+      "answer": "It has at least one pure Nash equilibrium",
+      "explanation": "A global potential maximum is a pure Nash equilibrium.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM066"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Best-response dynamics can cycle in a general finite game because:",
+      "choices": [
+        "There may be no global potential that improves with every move",
+        "Every player has one strategy",
+        "Nash equilibria never exist",
+        "Payoffs are always constant"
+      ],
+      "answer": "There may be no global potential that improves with every move",
+      "explanation": "Potential structure is what rules out improvement cycles.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM067"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "A congestion game's potential is generally:",
+      "choices": [
+        "Not identical to total social cost",
+        "Always zero",
+        "Equal to seller revenue",
+        "Defined only for mixed strategies"
+      ],
+      "answer": "Not identical to total social cost",
+      "explanation": "Rosenthal potential is a separate function used to track incentives.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM068"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Finite improvement property means:",
+      "choices": [
+        "Every sequence of strict unilateral improvements is finite",
+        "Every player improves simultaneously",
+        "Every equilibrium maximizes welfare",
+        "Only mixed strategies are allowed"
+      ],
+      "answer": "Every sequence of strict unilateral improvements is finite",
+      "explanation": "FIP is the convergence property induced by ordinal potentials.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM069"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "potential_games_equilibria",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "An ordinal potential needs to preserve:",
+      "choices": [
+        "The sign of unilateral payoff improvements",
+        "The exact numerical payoff difference",
+        "Total revenue",
+        "The number of players"
+      ],
+      "answer": "The sign of unilateral payoff improvements",
+      "explanation": "Ordinal potentials rise whenever a player makes a strict improvement.",
+      "tags": [
+        "potential_games_equilibria",
+        "exam_review"
+      ],
+      "id": "ECM070"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "External regret compares actual performance with:",
+      "choices": [
+        "The best single fixed action in hindsight",
+        "The best changing action each round",
+        "The social optimum of the game",
+        "The opponent's worst action"
+      ],
+      "answer": "The best single fixed action in hindsight",
+      "explanation": "External regret uses one fixed benchmark action.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM071"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "A learning algorithm is no-external-regret when:",
+      "choices": [
+        "Average external regret converges to zero",
+        "Total regret is always exactly zero",
+        "It predicts every future loss",
+        "It converges to a pure Nash equilibrium every time"
+      ],
+      "answer": "Average external regret converges to zero",
+      "explanation": "Sublinear total regret implies vanishing regret per round.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM072"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "If total regret is O(sqrt(T)), average regret is:",
+      "choices": [
+        "O(1/sqrt(T))",
+        "O(sqrt(T))",
+        "O(T)",
+        "Always one"
+      ],
+      "answer": "O(1/sqrt(T))",
+      "explanation": "Divide total regret by T.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM073"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Multiplicative weights assigns more future probability to:",
+      "choices": [
+        "Actions that have performed relatively well",
+        "Actions with the largest index",
+        "Only the action played in round one",
+        "Actions chosen by the opponent"
+      ],
+      "answer": "Actions that have performed relatively well",
+      "explanation": "Weights are updated using observed rewards or losses.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM074"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "The learning-rate parameter controls:",
+      "choices": [
+        "How aggressively weights react to feedback",
+        "The number of players in the game",
+        "Whether the game has a Nash equilibrium",
+        "The reserve price"
+      ],
+      "answer": "How aggressively weights react to feedback",
+      "explanation": "Large learning rates react quickly; small ones update gradually.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM075"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "When every player has vanishing external regret, empirical play approaches:",
+      "choices": [
+        "A coarse correlated equilibrium",
+        "A dominant-strategy equilibrium",
+        "A VCG outcome",
+        "A pure Nash equilibrium necessarily"
+      ],
+      "answer": "A coarse correlated equilibrium",
+      "explanation": "External no-regret corresponds to CCE.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM076"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Coarse correlated equilibrium prevents profitable deviations that are:",
+      "choices": [
+        "Chosen in advance as fixed alternative actions",
+        "Conditioned on each recommendation",
+        "Coordinated through payments",
+        "Made by all players simultaneously"
+      ],
+      "answer": "Chosen in advance as fixed alternative actions",
+      "explanation": "CCE uses unconditional fixed deviations.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM077"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "No-swap-regret learning is connected to:",
+      "choices": [
+        "Correlated equilibrium",
+        "Only coarse correlated equilibrium",
+        "Second-price auctions",
+        "Wardrop equilibrium"
+      ],
+      "answer": "Correlated equilibrium",
+      "explanation": "Swap regret controls recommendation-dependent deviations and yields CE.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM078"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Which statement about no-regret play is correct?",
+      "choices": [
+        "The time-average can converge even if period-by-period actions keep changing",
+        "Actions must eventually become constant",
+        "Every round must be socially optimal",
+        "Players need full knowledge of future losses"
+      ],
+      "answer": "The time-average can converge even if period-by-period actions keep changing",
+      "explanation": "Convergence applies to empirical distributions, not necessarily realized actions.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM079"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "no_regret_learning",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "The experts setting is useful because it models:",
+      "choices": [
+        "Repeated choice among actions under uncertain or adversarial feedback",
+        "One-shot truthful bidding only",
+        "A fixed Nash equilibrium computation",
+        "Facility location without preferences"
+      ],
+      "answer": "Repeated choice among actions under uncertain or adversarial feedback",
+      "explanation": "Online learning repeatedly selects among experts or actions.",
+      "tags": [
+        "no_regret_learning",
+        "exam_review"
+      ],
+      "id": "ECM080"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Mechanism design without money is relevant when:",
+      "choices": [
+        "Transfers are unavailable, illegal, or inappropriate",
+        "Every agent has no preferences",
+        "Only revenue matters",
+        "The mechanism observes true types"
+      ],
+      "answer": "Transfers are unavailable, illegal, or inappropriate",
+      "explanation": "Many allocation and social-choice settings cannot use payments.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM081"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "In house allocation, the mechanism assigns:",
+      "choices": [
+        "Indivisible houses to agents",
+        "Reserve prices to bidders",
+        "Flows to network edges",
+        "Virtual values to sellers"
+      ],
+      "answer": "Indivisible houses to agents",
+      "explanation": "House allocation is a canonical no-money assignment problem.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM082"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "A matching is stable when there is no:",
+      "choices": [
+        "Blocking pair that prefer each other to their assignments",
+        "Agent receiving her first choice",
+        "Unmatched school",
+        "Monetary payment"
+      ],
+      "answer": "Blocking pair that prefer each other to their assignments",
+      "explanation": "A blocking pair would undermine the proposed matching.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM083"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Student-proposing deferred acceptance is strategy-proof for:",
+      "choices": [
+        "Students",
+        "Schools in every preference domain",
+        "Both sides simultaneously",
+        "Neither side"
+      ],
+      "answer": "Students",
+      "explanation": "The proposing side can truthfully report preferences as a dominant strategy.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM084"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Top trading cycles is commonly used for:",
+      "choices": [
+        "House allocation with initial ownership",
+        "Single-item revenue maximization",
+        "Selfish routing",
+        "Computing virtual values"
+      ],
+      "answer": "House allocation with initial ownership",
+      "explanation": "TTC reallocates houses through cycles of pointing.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM085"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "In one-dimensional facility location with distance costs, choosing the median is:",
+      "choices": [
+        "Strategy-proof",
+        "Revenue maximizing",
+        "Dictatorial",
+        "Equivalent to VCG with payments"
+      ],
+      "answer": "Strategy-proof",
+      "explanation": "An agent cannot beneficially move the median by misreporting.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM086"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "The Gibbard-Satterthwaite theorem concerns deterministic voting with:",
+      "choices": [
+        "At least three alternatives and unrestricted preferences",
+        "Exactly two alternatives",
+        "Monetary transfers",
+        "Only single-peaked preferences"
+      ],
+      "answer": "At least three alternatives and unrestricted preferences",
+      "explanation": "Under onto and strategy-proofness, such a rule must be dictatorial.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM087"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "A dictatorship in social choice selects:",
+      "choices": [
+        "The top-ranked alternative of one fixed agent",
+        "The majority winner in every profile",
+        "A random alternative uniformly",
+        "The alternative with maximum payment"
+      ],
+      "answer": "The top-ranked alternative of one fixed agent",
+      "explanation": "One agent's ranking determines the outcome.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM088"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Random serial dictatorship is:",
+      "choices": [
+        "A randomized assignment rule based on a random agent order",
+        "A deterministic VCG auction",
+        "A congestion-game equilibrium",
+        "A reserve-price rule"
+      ],
+      "answer": "A randomized assignment rule based on a random agent order",
+      "explanation": "Agents choose in a random priority order.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM089"
+    },
+    {
+      "type": "multiple_choice",
+      "deck": "mechanism_design_without_money",
+      "priority": 2,
+      "difficulty": "basic_to_intermediate",
+      "prompt": "Restricting preferences to a structured domain can help because:",
+      "choices": [
+        "It may permit non-dictatorial strategy-proof rules",
+        "It always creates monetary transfers",
+        "It eliminates all strategic behavior automatically",
+        "It makes every rule welfare maximizing"
+      ],
+      "answer": "It may permit non-dictatorial strategy-proof rules",
+      "explanation": "Impossibility results can weaken on restricted domains such as single-peaked preferences.",
+      "tags": [
+        "mechanism_design_without_money",
+        "exam_review"
+      ],
+      "id": "ECM090"
+    }
+  ]
+}

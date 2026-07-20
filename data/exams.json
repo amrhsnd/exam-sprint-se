@@ -29,6 +29,13 @@
       "status": "ready"
     },
     {
+      "id": "economics-computation-mc-pass",
+      "title": "Economics and Computation — MC Pass",
+      "description": "90 multiple-choice, pass-focused questions covering core definitions, formulas, theorems, standard examples, and common exam distinctions.",
+      "dataUrl": "./data/economics_computation_mc_pass_question_bank.json",
+      "status": "ready"
+    },
+    {
       "id": "new-exam",
       "title": "New Exam",
       "description": "Add this exam's question JSON when the material is ready.",

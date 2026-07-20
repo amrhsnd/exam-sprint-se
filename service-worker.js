@@ -1,5 +1,5 @@
-const APP_VERSION = "20260720-basic-pass-exam-v1";
-const CACHE_NAME = "exam-sprint-v17";
+const APP_VERSION = "20260720-mc-pass-exam-v1";
+const CACHE_NAME = "exam-sprint-v18";
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,7 +11,8 @@ const ASSETS = [
   `./data/se_duolingo_quiz_data.json?v=${APP_VERSION}`,
   `./data/economics_computation_exam_questions.json?v=${APP_VERSION}`,
   `./data/economics_computation_exam_questions_set_2.json?v=${APP_VERSION}`,
-  `./data/economics_computation_basic_pass_question_bank.json?v=${APP_VERSION}`
+  `./data/economics_computation_basic_pass_question_bank.json?v=${APP_VERSION}`,
+  `./data/economics_computation_mc_pass_question_bank.json?v=${APP_VERSION}`
 ];
 
 self.addEventListener("install", (event) => {

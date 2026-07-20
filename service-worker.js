@@ -1,5 +1,5 @@
-const APP_VERSION = "20260720-economics-set-2-v1";
-const CACHE_NAME = "exam-sprint-v15";
+const APP_VERSION = "20260720-latex-delimiters-v1";
+const CACHE_NAME = "exam-sprint-v16";
 const ASSETS = [
   "./",
   "./index.html",
